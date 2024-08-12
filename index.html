@@ -632,23 +632,68 @@ button:hover {
     }
 
     function generatePrompt() {
-      // ... (Your prompt generation logic - remains the same) ...
+function generatePrompt() {
+  // Get values from ALL form elements
+  const characterName = document.getElementById("characterName").value;
+  const framing = document.getElementById("framing").value;
+  const pose = document.getElementById("pose").value;
+  const ethnicity = document.getElementById("ethnicity").value;
+  const hairColor = document.getElementById("hairColor").value;
+  const hairstyle = document.getElementById("hairstyle").value;
+  const eyeColor = document.getElementById("eyeColor").value;
+  const bodyType = document.getElementById("bodyType").value;
+  const skinComplexion = document.getElementById("skinComplexion").value;
 
-      // Show loading animation
-      document.getElementById('loading').style.display = 'block';
+  const headwear = document.getElementById("headwear").value;
+  const top = document.getElementById("top").value;
+  const bottom = document.getElementById("bottom").value;
+  const shoes = document.getElementById("shoes").value;
+  const accessories = document.getElementById("accessories").value;
 
-      // Simulate delay (replace with actual API call)
-      setTimeout(() => {
-        // Hide loading animation
-        document.getElementById('loading').style.display = 'none';
+  const background = document.getElementById("background").value;
+  const lighting = document.getElementById("lighting").value;
 
-        // Display generated prompt (move to the result step)
-        nextStep(5); 
-      }, 1000); 
+  // Start constructing the prompt string
+  let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`; 
 
-      // Display the generated prompt (moved outside setTimeout)
-      document.getElementById("generatedPrompt").innerText = prompt(); 
-    }
+  // Add pose if selected
+  if (pose) { 
+    prompt += `, in a ${pose}`; 
+  } 
+
+  // Add details, making them optional
+  if (ethnicity) prompt += `, ${ethnicity}`;
+  if (hairColor) prompt += `, ${hairColor} hair`;
+  if (hairstyle) prompt += ` (${hairstyle})`;
+  if (eyeColor) prompt += `, ${eyeColor} eyes`;
+  if (bodyType) prompt += `, ${bodyType}`; 
+  if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
+
+  // Add clothing details if provided
+  if (headwear) prompt += `. She is wearing a ${headwear}`;
+  if (top) prompt += `, a ${top}`;
+  if (bottom) prompt += `, and ${bottom}`;
+  if (shoes) prompt += `. She has ${shoes} on her feet`;
+  if (accessories) prompt += `. Her accessories include ${accessories}`;
+
+  // Add environment and lighting
+  prompt += `. The background is ${background} with ${lighting} lighting.`;
+
+  // Show loading animation
+  document.getElementById('loading').style.display = 'block';
+
+  // Simulate a short delay 
+  setTimeout(() => {
+    // Hide loading animation
+    document.getElementById('loading').style.display = 'none';
+
+    // Display the generated prompt 
+    document.getElementById("generatedPrompt").innerText = prompt; 
+
+    // Move to the result step
+    nextStep(5); 
+  }, 1000); // Adjust the delay (in milliseconds) as needed 
+}
 
   </script>
 </body>
