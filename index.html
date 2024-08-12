@@ -1,1 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Minimalist Text2Image Prompt Generator</title>
+<style>
+body {
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
 
+textarea {
+  width: 400px;
+  height: 100px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+</style>
+</head>
+<body>
+  <h1>Text2Image Prompt Generator</h1>
+  <textarea id="concept" placeholder="Enter your concept..."></textarea>
+  <button onclick="generatePrompt()">Generate Prompt</button>
+  <p id="prompt"></p>
+
+  <script>
+    function generatePrompt() {
+      const concept = document.getElementById('concept').value;
+
+      // Basic prompt structure
+      let prompt = `A ${concept}`;
+
+      // Optional additions based on user input
+      const addDetails = confirm("Add details like style, color, etc.?");
+      if (addDetails) {
+        const details = prompt("Enter details (e.g., 'in the style of Van Gogh', 'with vibrant colors'):");
+        prompt += `, ${details}`;
+      }
+
+      document.getElementById('prompt').innerText = prompt;
+    }
+  </script>
+</body>
+</html>
