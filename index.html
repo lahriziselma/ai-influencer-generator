@@ -13,161 +13,159 @@ body {
   margin: 0;
 }
 
-.step, #promptOutput {
-  margin-bottom: 20px;
+select, input {
+  margin-bottom: 10px; 
 }
 </style>
 </head>
 <body>
   <h1>AI Influencer Prompt Generator</h1>
 
-  <div id="stepsContainer">
-    </div>
-  <button onclick="generatePrompt()">Generate Prompt</button>
-  <p id="promptOutput"></p>
+  <form id="promptForm">
+    <h2>Subject & Composition</h2>
+    <label for="framing">Framing:</label>
+    <select id="framing" name="framing">
+      <option value="Headshot">Headshot</option>
+      <option value="Half Body">Half Body</option>
+      <option value="Full Body">Full Body</option>
+      <option value="Portrait">Portrait</option>
+      <option value="Close-up">Close-up</option> 
+    </select><br>
+
+    <h2>Physical Appearance</h2>
+    <label for="ethnicity">Ethnicity:</label>
+    <select id="ethnicity" name="ethnicity">
+      <option value="Caucasian">Caucasian</option>
+      <option value="Asian">Asian</option>
+      <option value="African American">African American</option>
+      <option value="Hispanic/Latinx">Hispanic/Latinx</option>
+      <option value="Indian">Indian</option>
+      <option value="Middle Eastern">Middle Eastern</option>
+      <option value="Multiracial">Multiracial</option>
+      <option value="Other">Other</option> 
+    </select><br>
+
+    <label for="hairColor">Hair Color:</label>
+    <select id="hairColor" name="hairColor">
+      <option value="Blonde">Blonde</option>
+      <option value="Brunette">Brunette</option>
+      <option value="Redhead">Redhead</option>
+      <option value="Black">Black</option>
+      <option value="Gray/White">Gray/White</option>
+      <option value="Other">Other</option>
+    </select><br>
+
+    <label for="hairstyle">Hairstyle:</label>
+    <input type="text" id="hairstyle" name="hairstyle" placeholder="e.g., Messy Bun, Long Straight"><br>
+
+    <label for="eyeColor">Eye Color:</label>
+    <select id="eyeColor" name="eyeColor">
+      <option value="Blue">Blue</option>
+      <option value="Green">Green</option>
+      <option value="Brown">Brown</option>
+      <option value="Hazel">Hazel</option>
+      <option value="Amber">Amber</option>
+      <option value="Gray">Gray</option>
+    </select><br>
+
+    <label for="bodyType">Body Type:</label>
+    <select id="bodyType" name="bodyType">
+      <option value="Slim">Slim</option>
+      <option value="Athletic">Athletic</option>
+      <option value="Curvy">Curvy</option>
+      <option value="Plus-size">Plus-size</option>
+      <option value="Other">Other</option> 
+    </select><br>
+
+    <label for="skinComplexion">Skin Complexion:</label>
+    <select id="skinComplexion" name="skinComplexion">
+      <option value="Fair">Fair</option>
+      <option value="Medium">Medium</option>
+      <option value="Olive">Olive</option>
+      <option value="Dark">Dark</option>
+      <option value="Tanned">Tanned</option>
+      <option value="Freckles">Freckles</option>
+      <option value="Other">Other</option> 
+    </select><br>
+
+    <h2>Clothing</h2>
+    <label for="headwear">Headwear (Optional):</label>
+    <input type="text" id="headwear" name="headwear" placeholder="e.g., Beanie, Sunglasses"><br>
+
+    <label for="top">Top:</label>
+    <input type="text" id="top" name="top" placeholder="e.g., T-shirt, Blouse, Dress"><br>
+
+    <label for="bottom">Bottom (Optional):</label>
+    <input type="text" id="bottom" name="bottom" placeholder="e.g., Jeans, Skirt"><br>
+
+    <label for="shoes">Shoes (Optional):</label>
+    <input type="text" id="shoes" name="shoes" placeholder="e.g., Sneakers, Heels"><br>
+
+    <label for="accessories">Accessories (Optional):</label>
+    <input type="text" id="accessories" name="accessories" placeholder="e.g., Necklace, Earrings"><br>
+
+    <h2>Environment & Lighting</h2>
+    <label for="background">Background:</label>
+    <select id="background" name="background">
+      <option value="Outdoor">Outdoor</option>
+      <option value="Indoor">Indoor</option>
+      <option value="Abstract">Abstract</option> 
+    </select><br>
+
+    <label for="lighting">Lighting:</label>
+    <select id="lighting" name="lighting">
+      <option value="Soft">Soft</option>
+      <option value="Natural">Natural</option>
+      <option value="Harsh">Harsh</option>
+      <option value="Studio lighting">Studio lighting</option>
+      <option value="Backlit">Backlit</option>
+      <option value="Golden Hour">Golden Hour</option> 
+    </select><br>
+
+    <button type="button" onclick="generatePrompt()">Generate Prompt</button>
+  </form>
+
+  <p id="generatedPrompt"></p>
 
   <script>
-    const steps = [
-      {
-        title: "Subject & Composition",
-        questions: [
-          { type: "select", label: "Pose/Framing:", options: ["Headshot", "Half Body", "Full Body", "Portrait", "Close-up"] },
-          { type: "number", label: "Number of Subjects:", min: 1, max: 5, default: 1 } // Assuming max 5 people in the photo
-        ]
-      },
-      {
-        title: "Physical Appearance",
-        questions: [
-          { type: "select", label: "Ethnicity:", options: ["Caucasian", "Asian", "African American", "Hispanic/Latinx", "Indian", "Middle Eastern",  "Multiracial", "Other"] },
-          { type: "select", label: "Hair Color:", options: ["Blonde", "Brunette", "Redhead", "Black", "Gray/White", "Other"] },
-          { type: "select", label: "Hairstyle:", options: ["Long", "Short", "Curly", "Straight", "Wavy", "Braided", "Updo", "Messy Bun", "Other"] },
-          { type: "select", label: "Eye Color:", options: ["Blue", "Green", "Brown", "Hazel", "Amber", "Gray"] },
-          { type: "select", label: "Body Type:", options: ["Slim", "Athletic", "Curvy", "Plus-size", "Other"] },
-          { type: "select", label: "Skin Complexion:", options: ["Fair", "Medium", "Olive", "Dark", "Tanned", "Freckles", "Other"] },
-          { type: "select", label: "Age Range (approx.):", options: ["Young (18-25)", "Adult (25-40)", "Middle-aged (40-60)", "Senior (60+)"] }
-        ]
-      },
-      {
-        title: "Clothing & Accessories",
-        questions: [
-          { type: "select", label: "Clothing Style:", options: ["Casual", "Formal", "Business",  "Swimwear",  "Sportswear",  "Costume",  "Other"] },
-          { type: "select", label: "Dominant Color:", options: ["Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Pink", "Brown", "Black", "White", "Gray", "Beige"] },
-          { type: "text", label: "Specific Clothing Item (Optional):" }
-        ]
-      },
-      {
-        title: "Environment and Lighting",
-        questions: [
-          { type: "select", label: "Background:", options: ["Outdoor - Forest", "Outdoor - City", "Outdoor - Beach", "Indoor - Studio", "Indoor - Home", "Indoor - Cafe", "Abstract"] },
-          { type: "select", label: "Lighting:", options: ["Soft", "Natural", "Harsh", "Studio lighting", "Backlit",  "Golden Hour",  "Other"] }
-        ]
-      },
-      {
-        title: "Style and Recognition",
-        questions: [
-          { type: "select", label: "Image Style:", options: ["Photorealistic",  "Painting-like",  "Illustrative",  "Abstract",  "Cinematic",  "Dreamlike",  "Other"] },
-          { type: "select", label: "Awards/Recognition (Optional):", options: ["Contest Winner",  "Featured on CG Society", "Featured on ArtStation", "None"] }
-        ]
-      }
-    ];
+  function generatePrompt() {
+    // Get values from form elements
+    const framing = document.getElementById("framing").value;
+    const ethnicity = document.getElementById("ethnicity").value;
+    const hairColor = document.getElementById("hairColor").value;
+    const hairstyle = document.getElementById("hairstyle").value;
+    const eyeColor = document.getElementById("eyeColor").value;
+    const bodyType = document.getElementById("bodyType").value;
+    const skinComplexion = document.getElementById("skinComplexion").value;
 
-    const photographers = ["Annie Leibovitz", "David LaChapelle", "Mario Testino", "Ellen von Unwerth"]; 
+    const headwear = document.getElementById("headwear").value;
+    const top = document.getElementById("top").value;
+    const bottom = document.getElementById("bottom").value;
+    const shoes = document.getElementById("shoes").value;
+    const accessories = document.getElementById("accessories").value;
 
-    const stepsContainer = document.getElementById("stepsContainer");
+    const background = document.getElementById("background").value;
+    const lighting = document.getElementById("lighting").value;
 
-    // Function to dynamically create form elements
-    function createQuestionElement(question) {
-      const questionDiv = document.createElement("div");
-      questionDiv.innerHTML = `<label for="${question.label}">${question.label}:</label> `;
+    // Construct the prompt string
+    let prompt = `A ${framing} photo of a beautiful ${ethnicity} woman, `;
+    prompt += `${hairColor} hair (${hairstyle}), ${eyeColor} eyes, `;
+    prompt += `${bodyType} with ${skinComplexion} skin complexion. `;
 
-      if (question.type === "select") {
-        const select = document.createElement("select");
-        select.id = question.label;
-        for (const option of question.options) {
-          select.innerHTML += `<option value="${option}">${option}</option>`;
-        }
-        questionDiv.appendChild(select);
-      } else if (question.type === "number") {
-        const numberInput = document.createElement("input");
-        numberInput.type = "number";
-        numberInput.id = question.label;
-        numberInput.min = question.min;
-        numberInput.max = question.max;
-        numberInput.value = question.default;
-        questionDiv.appendChild(numberInput);
-      } else if (question.type === "text") {
-        const textInput = document.createElement("input");
-        textInput.type = "text";
-        textInput.id = question.label;
-        questionDiv.appendChild(textInput);
-      }
+    // Add clothing details if provided
+    if (headwear) prompt += `She is wearing a ${headwear}, `;
+    if (top) prompt += `a ${top}, `;
+    if (bottom) prompt += `and ${bottom}. `;
+    if (shoes) prompt += `She has ${shoes} on her feet. `;
+    if (accessories) prompt += `Her accessories include ${accessories}. `;
 
-      return questionDiv;
-    }
+    // Add environment and lighting
+    prompt += `The background is ${background} with ${lighting} lighting.`;
 
-    // Generate the steps/questions dynamically
-    steps.forEach(step => {
-      const stepDiv = document.createElement("div");
-      stepDiv.classList.add("step");
-      stepDiv.innerHTML = `<h2>${step.title}</h2>`;
-      step.questions.forEach(question => {
-        stepDiv.appendChild(createQuestionElement(question));
-      });
-      stepsContainer.appendChild(stepDiv);
-    });
-
-    function generatePrompt() {
-      let prompt = "A ";
-
-      // Get values from the form
-      const pose = document.getElementById("Pose/Framing:").value;
-      const numSubjects = document.getElementById("Number of Subjects:").value;
-      const ethnicity = document.getElementById("Ethnicity:").value;
-      const hairColor = document.getElementById("Hair Color:").value;
-      const hairstyle = document.getElementById("Hairstyle:").value;
-      const eyeColor = document.getElementById("Eye Color:").value;
-      const bodyType = document.getElementById("Body Type:").value;
-      const skinComplexion = document.getElementById("Skin Complexion:").value;
-      const ageRange = document.getElementById("Age Range (approx.):").value;
-      const clothingStyle = document.getElementById("Clothing Style:").value;
-      const dominantColor = document.getElementById("Dominant Color:").value;
-      const specificClothing = document.getElementById("Specific Clothing Item (Optional):").value;
-      const background = document.getElementById("Background:").value;
-      const lighting = document.getElementById("Lighting:").value;
-      const imageStyle = document.getElementById("Image Style:").value;
-      const recognition = document.getElementById("Awards/Recognition (Optional):").value;
-
-      // Construct the prompt
-      prompt += `${pose} photo of ${numSubjects} `;
-      if (numSubjects === "1") {
-        prompt += "beautiful ";
-      } 
-      prompt += `woman, ${ethnicity}, ${hairColor} hair, `;
-
-      if (hairstyle !== "Other") {
-        prompt += `${hairstyle} hairstyle, `;
-      } 
-      prompt += `${eyeColor} eyes, ${bodyType}, ${skinComplexion} skin complexion, `;
-
-      if (specificClothing) {
-        prompt += `${specificClothing}, `; 
-      } else {
-        prompt += `${clothingStyle} clothing, `;
-      }
-
-      prompt += `${dominantColor.toLowerCase()} dominant color, ${background.toLowerCase()} background, ${lighting.toLowerCase()} lighting, `;
-
-      // Add photographer
-      prompt += `captured by ${photographers[Math.floor(Math.random() * photographers.length)]}. `;
-
-      prompt += `This image looks ${imageStyle.toLowerCase()} in style. `;
-
-      if (recognition !== "None") {
-        prompt += `It ${recognition.toLowerCase()}. `;
-      }
-
-      document.getElementById("promptOutput").innerText = prompt;
-    }
+    // Display the generated prompt
+    document.getElementById("generatedPrompt").innerText = prompt;
+  }
   </script>
+
 </body>
 </html>
