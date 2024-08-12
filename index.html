@@ -47,6 +47,35 @@ select, input {
       <option value="Dynamic Framing">Dynamic Framing</option> 
     </select><br>
 
+    <label for="pose">Pose:</label>
+    <select id="pose" name="pose">
+      <option value="Chic Pose">Chic Pose</option>
+      <option value="Seductive Pose">Seductive Pose</option>
+      <option value="Confident Pose">Confident Pose</option>
+      <option value="Shy Pose">Shy Pose</option>
+      <option value="Playful Pose">Playful Pose</option>
+      <option value="Dramatic Pose">Dramatic Pose</option>
+      <option value="Elegant Pose">Elegant Pose</option>
+      <option value="Casual Pose">Casual Pose</option>
+      <option value="Artistic Pose">Artistic Pose</option>
+      <option value="Energetic Pose">Energetic Pose</option>
+      <option value="Glamorous Pose">Glamorous Pose</option>
+      <option value="Mysterious Pose">Mysterious Pose</option>
+      <option value="Sporty Pose">Sporty Pose</option>
+      <option value="Power Pose">Power Pose</option>
+      <option value="Elegant Sitting Pose">Elegant Sitting Pose</option>
+      <option value="Sassy Pose">Sassy Pose</option>
+      <option value="Melancholic Pose">Melancholic Pose</option>
+      <option value="Cheerful Pose">Cheerful Pose</option>
+      <option value="Sophisticated Pose">Sophisticated Pose</option>
+      <option value="Relaxed Pose">Relaxed Pose</option>
+      <option value="Angelic Pose">Angelic Pose</option>
+      <option value="Rebel Pose">Rebel Pose</option>
+      <option value="Vintage Pose">Vintage Pose</option>
+      <option value="Power Walk Pose">Power Walk Pose</option>
+      <option value="Editorial Pose">Editorial Pose</option>
+    </select><br>
+
     <h2>Physical Appearance</h2>
     <label for="ethnicity">Ethnicity:</label>
     <select id="ethnicity" name="ethnicity">
@@ -146,6 +175,7 @@ select, input {
   function generatePrompt() {
     // Get values from form elements
     const framing = document.getElementById("framing").value;
+    const pose = document.getElementById("pose").value;
     const ethnicity = document.getElementById("ethnicity").value;
     const hairColor = document.getElementById("hairColor").value;
     const hairstyle = document.getElementById("hairstyle").value;
@@ -164,6 +194,7 @@ select, input {
 
     // Construct the prompt string
     let prompt = `A ${framing} photo of a beautiful ${ethnicity} woman, `;
+    prompt += `in a ${pose}, `;
     prompt += `${hairColor} hair (${hairstyle}), ${eyeColor} eyes, `;
     prompt += `${bodyType} with ${skinComplexion} skin complexion. `;
 
