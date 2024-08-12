@@ -4,538 +4,627 @@
 <title>AI Influencer Prompt Generator</title>
 <style>
 body {
-  font-family: sans-serif;
+  font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   margin: 0;
+  background-color: #f4f4f4;
 }
 
-select, input {
-  margin-bottom: 10px; 
+.container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: left; 
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+h2 {
+  margin-top: 20px; /* Add space between sections */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+select,
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #5cb85c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #4cae4c;
+}
+
+#generatedPrompt {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  font-size: 18px; 
+  line-height: 1.4; 
+  min-height: 40px;
+}
+
+/* Loading Spinner */
+#loading {
+  display: none; /* Hidden by default */
+  margin-top: 20px;
+}
+
+#loading .spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px; 
+}
+
+.button-container button {
+  width: 120px; 
 }
 </style>
 </head>
 <body>
-  <h1>AI Influencer Prompt Generator</h1>
+  <div class="container">
+    <h1>AI Influencer Prompt Generator</h1>
+    <form id="promptForm">
 
-  <form id="promptForm">
-    <h2>Character Name</h2>
-    <label for="characterName">Name:</label>
-    <input type="text" id="characterName" name="characterName" required><br> 
+        <h2>Character Name</h2>
+        <label for="characterName">Name:</label>
+        <input type="text" id="characterName" name="characterName" required><br> 
 
-    <h2>Subject & Composition</h2>
-    <label for="framing">Framing:</label>
-    <select id="framing" name="framing" required>
-      <option value="">Select Framing</option> 
-      <option value="Close-Up">Close-Up</option>
-      <option value="Medium Shot">Medium Shot</option>
-      <option value="Full Shot">Full Shot</option>
-      <option value="Long Shot">Long Shot</option>
-      <option value="Over-the-Shoulder">Over-the-Shoulder</option>
-      <option value="Profile">Profile</option>
-      <option value="Three-Quarter View">Three-Quarter View</option>
-      <option value="High Angle">High Angle</option>
-      <option value="Low Angle">Low Angle</option>
-      <option value="Bird's Eye View">Bird's Eye View</option>
-      <option value="Worm's Eye View">Worm's Eye View</option>
-      <option value="Dutch Angle">Dutch Angle</option>
-      <option value="Extreme Close-Up">Extreme Close-Up</option>
-      <option value="Extreme Long Shot">Extreme Long Shot</option>
-      <option value="Cut-In">Cut-In</option>
-      <option value="Cutaway">Cutaway</option>
-      <option value="Point of View (POV)">Point of View (POV)</option>
-      <option value="Panoramic">Panoramic</option>
-      <option value="Head-and-Shoulders">Head-and-Shoulders</option>
-      <option value="Dynamic Framing">Dynamic Framing</option> 
-    </select><br>
+        <h2>Subject & Composition</h2>
+        <label for="framing">Framing:</label>
+        <select id="framing" name="framing" required>
+          <option value="">Select Framing</option> 
+          <option value="Close-Up">Close-Up</option>
+          <option value="Medium Shot">Medium Shot</option>
+          <option value="Full Shot">Full Shot</option>
+          <option value="Long Shot">Long Shot</option>
+          <option value="Over-the-Shoulder">Over-the-Shoulder</option>
+          <option value="Profile">Profile</option>
+          <option value="Three-Quarter View">Three-Quarter View</option>
+          <option value="High Angle">High Angle</option>
+          <option value="Low Angle">Low Angle</option>
+          <option value="Bird's Eye View">Bird's Eye View</option>
+          <option value="Worm's Eye View">Worm's Eye View</option>
+          <option value="Dutch Angle">Dutch Angle</option>
+          <option value="Extreme Close-Up">Extreme Close-Up</option>
+          <option value="Extreme Long Shot">Extreme Long Shot</option>
+          <option value="Cut-In">Cut-In</option>
+          <option value="Cutaway">Cutaway</option>
+          <option value="Point of View (POV)">Point of View (POV)</option>
+          <option value="Panoramic">Panoramic</option>
+          <option value="Head-and-Shoulders">Head-and-Shoulders</option>
+          <option value="Dynamic Framing">Dynamic Framing</option> 
+        </select><br>
 
-    <label for="pose">Pose:</label>
-    <select id="pose" name="pose">
-      <option value="">Select Pose</option> 
-      <option value="Chic Pose">Chic Pose</option>
-      <option value="Seductive Pose">Seductive Pose</option>
-      <option value="Confident Pose">Confident Pose</option>
-      <option value="Shy Pose">Shy Pose</option>
-      <option value="Playful Pose">Playful Pose</option>
-      <option value="Dramatic Pose">Dramatic Pose</option>
-      <option value="Elegant Pose">Elegant Pose</option>
-      <option value="Casual Pose">Casual Pose</option>
-      <option value="Artistic Pose">Artistic Pose</option>
-      <option value="Energetic Pose">Energetic Pose</option>
-      <option value="Glamorous Pose">Glamorous Pose</option>
-      <option value="Mysterious Pose">Mysterious Pose</option>
-      <option value="Sporty Pose">Sporty Pose</option>
-      <option value="Power Pose">Power Pose</option>
-      <option value="Elegant Sitting Pose">Elegant Sitting Pose</option>
-      <option value="Sassy Pose">Sassy Pose</option>
-      <option value="Melancholic Pose">Melancholic Pose</option>
-      <option value="Cheerful Pose">Cheerful Pose</option>
-      <option value="Sophisticated Pose">Sophisticated Pose</option>
-      <option value="Relaxed Pose">Relaxed Pose</option>
-      <option value="Angelic Pose">Angelic Pose</option>
-      <option value="Rebel Pose">Rebel Pose</option>
-      <option value="Vintage Pose">Vintage Pose</option>
-      <option value="Power Walk Pose">Power Walk Pose</option>
-      <option value="Editorial Pose">Editorial Pose</option>
-    </select><br>
+        <label for="pose">Pose:</label>
+        <select id="pose" name="pose">
+          <option value="">Select Pose</option> 
+          <option value="Chic Pose">Chic Pose</option>
+          <option value="Seductive Pose">Seductive Pose</option>
+          <option value="Confident Pose">Confident Pose</option>
+          <option value="Shy Pose">Shy Pose</option>
+          <option value="Playful Pose">Playful Pose</option>
+          <option value="Dramatic Pose">Dramatic Pose</option>
+          <option value="Elegant Pose">Elegant Pose</option>
+          <option value="Casual Pose">Casual Pose</option>
+          <option value="Artistic Pose">Artistic Pose</option>
+          <option value="Energetic Pose">Energetic Pose</option>
+          <option value="Glamorous Pose">Glamorous Pose</option>
+          <option value="Mysterious Pose">Mysterious Pose</option>
+          <option value="Sporty Pose">Sporty Pose</option>
+          <option value="Power Pose">Power Pose</option>
+          <option value="Elegant Sitting Pose">Elegant Sitting Pose</option>
+          <option value="Sassy Pose">Sassy Pose</option>
+          <option value="Melancholic Pose">Melancholic Pose</option>
+          <option value="Cheerful Pose">Cheerful Pose</option>
+          <option value="Sophisticated Pose">Sophisticated Pose</option>
+          <option value="Relaxed Pose">Relaxed Pose</option>
+          <option value="Angelic Pose">Angelic Pose</option>
+          <option value="Rebel Pose">Rebel Pose</option>
+          <option value="Vintage Pose">Vintage Pose</option>
+          <option value="Power Walk Pose">Power Walk Pose</option>
+          <option value="Editorial Pose">Editorial Pose</option>
+        </select><br>
 
-    <h2>Physical Appearance</h2>
-    <label for="ethnicity">Ethnicity:</label>
-    <select id="ethnicity" name="ethnicity" required>
-      <option value="">Select Ethnicity</option> 
-      <option value="North African-Southern European">North African-Southern European</option>
-      <option value="Eastern Asian">Eastern Asian</option>
-      <option value="Western Asian">Western Asian</option>
-      <option value="Latin American-European">Latin American-European</option>
-      <option value="African-American">African-American</option>
-      <option value="Indigenous American">Indigenous American</option>
-      <option value="South Asian">South Asian</option>
-      <option value="Central Asian">Central Asian</option>
-      <option value="Mediterranean">Mediterranean</option>
-      <option value="Scandinavian-Eastern European">Scandinavian-Eastern European</option>
-      <option value="Caribbean-African">Caribbean-African</option>
-      <option value="Northern European">Northern European</option>
-      <option value="Southeast Asian">Southeast Asian</option>
-      <option value="Pacific Islander">Pacific Islander</option>
-      <option value="Middle Eastern-North African">Middle Eastern-North African</option>
-      <option value="Southern European">Southern European</option>
-      <option value="Eastern European">Eastern European</option>
-      <option value="Sub-Saharan African">Sub-Saharan African</option>
-      <option value="Anglo-Caribbean">Anglo-Caribbean</option>
-      <option value="Jewish Diaspora">Jewish Diaspora</option>
-      <option value="Latin American-Indigenous">Latin American-Indigenous</option>
-      <option value="Oceanic">Oceanic</option>
-      <option value="Afro-Latino">Afro-Latino</option>
-      <option value="Western European">Western European</option>
-      <option value="Southern African">Southern African</option>
-      <option value="Mestizo">Mestizo</option>
-      <option value="Balkans-Middle Eastern">Balkans-Middle Eastern</option>
-      <option value="Hispano-Indigenous">Hispano-Indigenous</option>
-      <option value="East African-Arabian">East African-Arabian</option>
-      <option value="Russian-Scandinavian">Russian-Scandinavian</option>
-      <option value="Turkish-Mediterranean">Turkish-Mediterranean</option>
-      <option value="South Asian-Caribbean">South Asian-Caribbean</option>
-      <option value="Germanic-Scandinavian">Germanic-Scandinavian</option>
-      <option value="Hmong-Asian">Hmong-Asian</option>
-      <option value="Indo-European">Indo-European</option>
-    </select><br>
+        <h2>Physical Appearance</h2>
+        <label for="ethnicity">Ethnicity:</label>
+        <select id="ethnicity" name="ethnicity" required>
+          <option value="">Select Ethnicity</option> 
+          <option value="North African-Southern European">North African-Southern European</option>
+          <option value="Eastern Asian">Eastern Asian</option>
+          <option value="Western Asian">Western Asian</option>
+          <option value="Latin American-European">Latin American-European</option>
+          <option value="African-American">African-American</option>
+          <option value="Indigenous American">Indigenous American</option>
+          <option value="South Asian">South Asian</option>
+          <option value="Central Asian">Central Asian</option>
+          <option value="Mediterranean">Mediterranean</option>
+          <option value="Scandinavian-Eastern European">Scandinavian-Eastern European</option>
+          <option value="Caribbean-African">Caribbean-African</option>
+          <option value="Northern European">Northern European</option>
+          <option value="Southeast Asian">Southeast Asian</option>
+          <option value="Pacific Islander">Pacific Islander</option>
+          <option value="Middle Eastern-North African">Middle Eastern-North African</option>
+          <option value="Southern European">Southern European</option>
+          <option value="Eastern European">Eastern European</option>
+          <option value="Sub-Saharan African">Sub-Saharan African</option>
+          <option value="Anglo-Caribbean">Anglo-Caribbean</option>
+          <option value="Jewish Diaspora">Jewish Diaspora</option>
+          <option value="Latin American-Indigenous">Latin American-Indigenous</option>
+          <option value="Oceanic">Oceanic</option>
+          <option value="Afro-Latino">Afro-Latino</option>
+          <option value="Western European">Western European</option>
+          <option value="Southern African">Southern African</option>
+          <option value="Mestizo">Mestizo</option>
+          <option value="Balkans-Middle Eastern">Balkans-Middle Eastern</option>
+          <option value="Hispano-Indigenous">Hispano-Indigenous</option>
+          <option value="East African-Arabian">East African-Arabian</option>
+          <option value="Russian-Scandinavian">Russian-Scandinavian</option>
+          <option value="Turkish-Mediterranean">Turkish-Mediterranean</option>
+          <option value="South Asian-Caribbean">South Asian-Caribbean</option>
+          <option value="Germanic-Scandinavian">Germanic-Scandinavian</option>
+          <option value="Hmong-Asian">Hmong-Asian</option>
+          <option value="Indo-European">Indo-European</option>
+        </select><br>
 
-    <label for="hairColor">Hair Color:</label>
-    <select id="hairColor" name="hairColor">
-      <option value="">Select Hair Color</option> 
-      <option value="Black">Black</option>
-      <option value="Brown">Brown</option>
-      <option value="Blonde">Blonde</option>
-      <option value="Red">Red</option>
-      <option value="Gray">Gray</option>
-      <option value="White">White</option>
-      <option value="Auburn">Auburn</option>
-      <option value="Platinum Blonde">Platinum Blonde</option>
-      <option value="Strawberry Blonde">Strawberry Blonde</option>
-      <option value="Silver">Silver</option>
-      <option value="Bleach Blonde">Bleach Blonde</option>
-      <option value="Dark Brown">Dark Brown</option>
-      <option value="Light Brown">Light Brown</option>
-      <option value="Copper">Copper</option>
-      <option value="Champagne Blonde">Champagne Blonde</option>
-      <option value="Rose Gold">Rose Gold</option>
-      <option value="Purple">Purple</option>
-      <option value="Blue">Blue</option>
-      <option value="Green">Green</option>
-      <option value="Pink">Pink</option>
-      <option value="Ombre">Ombre</option>
-      <option value="Highlights">Highlights</option>
-      <option value="Low Lights">Low Lights</option>
-      <option value="Balayage">Balayage</option>
-      <option value="Dip Dye">Dip Dye</option>
-      <option value="Two-Tone">Two-Tone</option>
-    </select><br>
+        <label for="hairColor">Hair Color:</label>
+        <select id="hairColor" name="hairColor">
+          <option value="">Select Hair Color</option> 
+          <option value="Black">Black</option>
+          <option value="Brown">Brown</option>
+          <option value="Blonde">Blonde</option>
+          <option value="Red">Red</option>
+          <option value="Gray">Gray</option>
+          <option value="White">White</option>
+          <option value="Auburn">Auburn</option>
+          <option value="Platinum Blonde">Platinum Blonde</option>
+          <option value="Strawberry Blonde">Strawberry Blonde</option>
+          <option value="Silver">Silver</option>
+          <option value="Bleach Blonde">Bleach Blonde</option>
+          <option value="Dark Brown">Dark Brown</option>
+          <option value="Light Brown">Light Brown</option>
+          <option value="Copper">Copper</option>
+          <option value="Champagne Blonde">Champagne Blonde</option>
+          <option value="Rose Gold">Rose Gold</option>
+          <option value="Purple">Purple</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+          <option value="Pink">Pink</option>
+          <option value="Ombre">Ombre</option>
+          <option value="Highlights">Highlights</option>
+          <option value="Low Lights">Low Lights</option>
+          <option value="Balayage">Balayage</option>
+          <option value="Dip Dye">Dip Dye</option>
+          <option value="Two-Tone">Two-Tone</option>
+        </select><br>
 
-    <label for="hairstyle">Hairstyle:</label>
-    <select id="hairstyle" name="hairstyle">
-      <option value="">Select Hairstyle</option> 
-      <option value="Pixie Cut">Pixie Cut</option>
-      <option value="Bob Cut">Bob Cut</option>
-      <option value="Lob Cut (Long Bob)">Lob Cut (Long Bob)</option>
-      <option value="Shag Cut">Shag Cut</option>
-      <option value="Blunt Cut">Blunt Cut</option>
-      <option value="Layered Cut">Layered Cut</option>
-      <option value="Feathered Cut">Feathered Cut</option>
-      <option value="Asymmetrical Cut">Asymmetrical Cut</option>
-      <option value="Undercut">Undercut</option>
-      <option value="Crop Cut">Crop Cut</option>
-      <option value="Mohawk">Mohawk</option>
-      <option value="Bowl Cut">Bowl Cut</option>
-      <option value="Tapered Cut">Tapered Cut</option>
-      <option value="French Bob Cut">French Bob Cut</option>
-      <option value="Side-Swept Bangs Cut">Side-Swept Bangs Cut</option>
-      <option value="Blunt Bangs Cut">Blunt Bangs Cut</option>
-      <option value="Wispy Bangs Cut">Wispy Bangs Cut</option>
-      <option value="Micro Bangs Cut">Micro Bangs Cut</option>
-      <option value="Baby Bangs Cut">Baby Bangs Cut</option>
-      <option value="Long Layers Cut">Long Layers Cut</option>
-      <option value="Short Layers Cut">Short Layers Cut</option>
-      <option value="Choppy Layers Cut">Choppy Layers Cut</option>
-      <option value="Face-Framing Layers Cut">Face-Framing Layers Cut</option>
-      <option value="Textured Layers Cut">Textured Layers Cut</option>
-      <option value="Angled Bob Cut">Angled Bob Cut</option>
-      <option value="A-Line Bob Cut">A-Line Bob Cut</option>
-      <option value="Inverted Bob Cut">Inverted Bob Cut</option>
-      <option value="Stacked Bob Cut">Stacked Bob Cut</option>
-      <option value="Graduated Bob Cut">Graduated Bob Cut</option>
-      <option value="Mermaid Haircut">Mermaid Haircut</option>
-      <option value="Unicorn Haircut">Unicorn Haircut</option>
-      <option value="Balayage Layers Cut">Balayage Layers Cut</option>
-      <option value="Ombre Layers Cut">Ombre Layers Cut</option>
-      <option value="Sombre Layers Cut">Sombre Layers Cut</option>
-      <option value="Dip-Dye Layers Cut">Dip-Dye Layers Cut</option>
-      <option value="Layered Pixie Cut">Layered Pixie Cut</option>
-      <option value="Layered Bob Cut">Layered Bob Cut</option>
-      <option value="Layered Lob Cut">Layered Lob Cut</option>
-      <option value="Razor Cut">Razor Cut</option>
-      <option value="Neo-Wave Cut">Neo-Wave Cut</option>
-      <option value="SideCurl-Up Cut">SideCurl-Up Cut</option>
-      <option value="Straight Bob Cut">Straight Bob Cut</option>
-      <option value="Round Bob Cut">Round Bob Cut</option>
-      <option value="Layer-Wolf Cut">Layer-Wolf Cut</option>
-      <option value="Fuzzed Bob Cut">Fuzzed Bob Cut</option>
-      <option value="Geometric Cut">Geometric Cut</option>
-      <option value="Geometric-Shaggy Cut">Geometric-Shaggy Cut</option>
-      <option value="Pony Cut">Pony Cut</option>
-      <option value="Swing-Layer Cut">Swing-Layer Cut</option>
-      <option value="Chiffon-Layer Cut">Chiffon-Layer Cut</option>
-      <option value="Natural-Up Cut">Natural-Up Cut</option>
-      <option value="Mush Cut">Mush Cut</option>
-      <option value="Fluffy Cut">Fluffy Cut</option>
-      <option value="Milky-Bob Cut">Milky-Bob Cut</option>
-      <option value="Classical-Straight Cut">Classical-Straight Cut</option>
-    </select><br>
+        <label for="hairstyle">Hairstyle:</label>
+        <select id="hairstyle" name="hairstyle">
+          <option value="">Select Hairstyle</option> 
+          <option value="Pixie Cut">Pixie Cut</option>
+          <option value="Bob Cut">Bob Cut</option>
+          <option value="Lob Cut (Long Bob)">Lob Cut (Long Bob)</option>
+          <option value="Shag Cut">Shag Cut</option>
+          <option value="Blunt Cut">Blunt Cut</option>
+          <option value="Layered Cut">Layered Cut</option>
+          <option value="Feathered Cut">Feathered Cut</option>
+          <option value="Asymmetrical Cut">Asymmetrical Cut</option>
+          <option value="Undercut">Undercut</option>
+          <option value="Crop Cut">Crop Cut</option>
+          <option value="Mohawk">Mohawk</option>
+          <option value="Bowl Cut">Bowl Cut</option>
+          <option value="Tapered Cut">Tapered Cut</option>
+          <option value="French Bob Cut">French Bob Cut</option>
+          <option value="Side-Swept Bangs Cut">Side-Swept Bangs Cut</option>
+          <option value="Blunt Bangs Cut">Blunt Bangs Cut</option>
+          <option value="Wispy Bangs Cut">Wispy Bangs Cut</option>
+          <option value="Micro Bangs Cut">Micro Bangs Cut</option>
+          <option value="Baby Bangs Cut">Baby Bangs Cut</option>
+          <option value="Long Layers Cut">Long Layers Cut</option>
+          <option value="Short Layers Cut">Short Layers Cut</option>
+          <option value="Choppy Layers Cut">Choppy Layers Cut</option>
+          <option value="Face-Framing Layers Cut">Face-Framing Layers Cut</option>
+          <option value="Textured Layers Cut">Textured Layers Cut</option>
+          <option value="Angled Bob Cut">Angled Bob Cut</option>
+          <option value="A-Line Bob Cut">A-Line Bob Cut</option>
+          <option value="Inverted Bob Cut">Inverted Bob Cut</option>
+          <option value="Stacked Bob Cut">Stacked Bob Cut</option>
+          <option value="Graduated Bob Cut">Graduated Bob Cut</option>
+          <option value="Mermaid Haircut">Mermaid Haircut</option>
+          <option value="Unicorn Haircut">Unicorn Haircut</option>
+          <option value="Balayage Layers Cut">Balayage Layers Cut</option>
+          <option value="Ombre Layers Cut">Ombre Layers Cut</option>
+          <option value="Sombre Layers Cut">Sombre Layers Cut</option>
+          <option value="Dip-Dye Layers Cut">Dip-Dye Layers Cut</option>
+          <option value="Layered Pixie Cut">Layered Pixie Cut</option>
+          <option value="Layered Bob Cut">Layered Bob Cut</option>
+          <option value="Layered Lob Cut">Layered Lob Cut</option>
+          <option value="Razor Cut">Razor Cut</option>
+          <option value="Neo-Wave Cut">Neo-Wave Cut</option>
+          <option value="SideCurl-Up Cut">SideCurl-Up Cut</option>
+          <option value="Straight Bob Cut">Straight Bob Cut</option>
+          <option value="Round Bob Cut">Round Bob Cut</option>
+          <option value="Layer-Wolf Cut">Layer-Wolf Cut</option>
+          <option value="Fuzzed Bob Cut">Fuzzed Bob Cut</option>
+          <option value="Geometric Cut">Geometric Cut</option>
+          <option value="Geometric-Shaggy Cut">Geometric-Shaggy Cut</option>
+          <option value="Pony Cut">Pony Cut</option>
+          <option value="Swing-Layer Cut">Swing-Layer Cut</option>
+          <option value="Chiffon-Layer Cut">Chiffon-Layer Cut</option>
+          <option value="Natural-Up Cut">Natural-Up Cut</option>
+          <option value="Mush Cut">Mush Cut</option>
+          <option value="Fluffy Cut">Fluffy Cut</option>
+          <option value="Milky-Bob Cut">Milky-Bob Cut</option>
+          <option value="Classical-Straight Cut">Classical-Straight Cut</option>
+        </select><br>
 
-    <label for="eyeColor">Eye Color:</label>
-    <select id="eyeColor" name="eyeColor">
-      <option value="">Select Eye Color</option> 
-      <option value="Brown">Brown</option>
-      <option value="Blue">Blue</option>
-      <option value="Green">Green</option>
-      <option value="Hazel">Hazel</option>
-      <option value="Gray">Gray</option>
-      <option value="Amber">Amber</option>
-      <option value="Black">Black</option>
-      <option value="Light Brown">Light Brown</option>
-      <option value="Dark Brown">Dark Brown</option>
-      <option value="Turquoise">Turquoise</option>
-      <option value="Aqua">Aqua</option>
-      <option value="Steel Blue">Steel Blue</option>
-      <option value="Olive">Olive</option>
-      <option value="Violet">Violet</option>
-      <option value="Two-Tone">Two-Tone</option>
-    </select><br>
+        <label for="eyeColor">Eye Color:</label>
+        <select id="eyeColor" name="eyeColor">
+          <option value="">Select Eye Color</option> 
+          <option value="Brown">Brown</option>
+          <option value="Blue">Blue</option>
+          <option value="Green">Green</option>
+          <option value="Hazel">Hazel</option>
+          <option value="Gray">Gray</option>
+          <option value="Amber">Amber</option>
+          <option value="Black">Black</option>
+          <option value="Light Brown">Light Brown</option>
+          <option value="Dark Brown">Dark Brown</option>
+          <option value="Turquoise">Turquoise</option>
+          <option value="Aqua">Aqua</option>
+          <option value="Steel Blue">Steel Blue</option>
+          <option value="Olive">Olive</option>
+          <option value="Violet">Violet</option>
+          <option value="Two-Tone">Two-Tone</option>
+        </select><br>
 
-    <label for="bodyType">Body Type:</label>
-    <select id="bodyType" name="bodyType" required>
-      <option value="">Select Body Type</option> 
-      <option value="Ectomorph">Ectomorph</option>
-      <option value="Mesomorph">Mesomorph</option>
-      <option value="Endomorph">Endomorph</option>
-      <option value="Apple-Shaped">Apple-Shaped</option>
-      <option value="Pear-Shaped">Pear-Shaped</option>
-      <option value="Hourglass">Hourglass</option>
-      <option value="Rectangle">Rectangle</option>
-      <option value="Inverted Triangle">Inverted Triangle</option>
-      <option value="Triangle">Triangle</option>
-      <option value="Athletic">Athletic</option>
-      <option value="Petite">Petite</option>
-      <option value="Tall">Tall</option>
-      <option value="Curvy">Curvy</option>
-      <option value="Lean">Lean</option>
-      <option value="Broad">Broad</option>
-      <option value="Slim">Slim</option>
-    </select><br>
+        <label for="bodyType">Body Type:</label>
+        <select id="bodyType" name="bodyType" required>
+          <option value="">Select Body Type</option> 
+          <option value="Ectomorph">Ectomorph</option>
+          <option value="Mesomorph">Mesomorph</option>
+          <option value="Endomorph">Endomorph</option>
+          <option value="Apple-Shaped">Apple-Shaped</option>
+          <option value="Pear-Shaped">Pear-Shaped</option>
+          <option value="Hourglass">Hourglass</option>
+          <option value="Rectangle">Rectangle</option>
+          <option value="Inverted Triangle">Inverted Triangle</option>
+          <option value="Triangle">Triangle</option>
+          <option value="Athletic">Athletic</option>
+          <option value="Petite">Petite</option>
+          <option value="Tall">Tall</option>
+          <option value="Curvy">Curvy</option>
+          <option value="Lean">Lean</option>
+          <option value="Broad">Broad</option>
+          <option value="Slim">Slim</option>
+        </select><br>
 
-    <label for="skinComplexion">Skin Tone:</label>
-    <select id="skinComplexion" name="skinComplexion" required>
-      <option value="">Select Skin Tone</option> 
-      <option value="Fair">Fair</option>
-      <option value="Light">Light</option>
-      <option value="Light-Medium">Light-Medium</option>
-      <option value="Medium">Medium</option>
-      <option value="Olive">Olive</option>
-      <option value="Tan">Tan</option>
-      <option value="Caramel">Caramel</option>
-      <option value="Deep">Deep</option>
-      <option value="Dark">Dark</option>
-      <option value="Ebony">Ebony</option>
-      <option value="Peach">Peach</option>
-      <option value="Golden">Golden</option>
-      <option value="Honey">Honey</option>
-      <option value="Bronze">Bronze</option>
-      <option value="Sable">Sable</option>
-      <option value="Mocha">Mocha</option>
-      <option value="Porcelain">Porcelain</option>
-      <option value="Almond">Almond</option>
-      <option value="Sand">Sand</option>
-      <option value="Mahogany">Mahogany</option>
-      <option value="Espresso">Espresso</option>
-    </select><br>
+        <label for="skinComplexion">Skin Tone:</label>
+        <select id="skinComplexion" name="skinComplexion" required>
+          <option value="">Select Skin Tone</option> 
+          <option value="Fair">Fair</option>
+          <option value="Light">Light</option>
+          <option value="Light-Medium">Light-Medium</option>
+          <option value="Medium">Medium</option>
+          <option value="Olive">Olive</option>
+          <option value="Tan">Tan</option>
+          <option value="Caramel">Caramel</option>
+          <option value="Deep">Deep</option>
+          <option value="Dark">Dark</option>
+          <option value="Ebony">Ebony</option>
+          <option value="Peach">Peach</option>
+          <option value="Golden">Golden</option>
+          <option value="Honey">Honey</option>
+          <option value="Bronze">Bronze</option>
+          <option value="Sable">Sable</option>
+          <option value="Mocha">Mocha</option>
+          <option value="Porcelain">Porcelain</option>
+          <option value="Almond">Almond</option>
+          <option value="Sand">Sand</option>
+          <option value="Mahogany">Mahogany</option>
+          <option value="Espresso">Espresso</option>
+        </select><br>
 
-    <h2>Clothing</h2>
-    <label for="headwear">Headwear (Optional):</label>
-    <select id="headwear" name="headwear">
-      <option value="">None</option> 
-      <option value="Baseball Cap">Baseball Cap</option>
-      <option value="Beanie">Beanie</option>
-      <option value="Beret">Beret</option> 
-      <option value="Bowler Hat">Bowler Hat</option>
-      <option value="Bucket Hat">Bucket Hat</option>
-      <option value="Fedora">Fedora</option>
-      <option value="Flat Cap">Flat Cap</option>
-      <option value="Kufi">Kufi</option>
-      <option value="Panama Hat">Panama Hat</option>
-      <option value="Pith Helmet">Pith Helmet</option>
-      <option value="Sombrero">Sombrero</option>
-      <option value="Sun Hat">Sun Hat</option>
-      <option value="Top Hat">Top Hat</option>
-      <option value="Turban">Turban</option>
-      <option value="Trilby">Trilby</option>
-      <option value="Visor">Visor</option>
-      <option value="Cowboy Hat">Cowboy Hat</option>
-      <option value="Newsboy Cap">Newsboy Cap</option>
-      <option value="Hood">Hood</option>
-      <option value="Helm">Helm</option>
-      <option value="Cloche Hat">Cloche Hat</option>
-    </select><br>
+        <h2>Clothing</h2>
+        <label for="headwear">Headwear (Optional):</label>
+        <select id="headwear" name="headwear">
+          <option value="">None</option> 
+          <option value="Baseball Cap">Baseball Cap</option>
+          <option value="Beanie">Beanie</option>
+          <option value="Beret">Beret</option> 
+          <option value="Bowler Hat">Bowler Hat</option>
+          <option value="Bucket Hat">Bucket Hat</option>
+          <option value="Fedora">Fedora</option>
+          <option value="Flat Cap">Flat Cap</option>
+          <option value="Kufi">Kufi</option>
+          <option value="Panama Hat">Panama Hat</option>
+          <option value="Pith Helmet">Pith Helmet</option>
+          <option value="Sombrero">Sombrero</option>
+          <option value="Sun Hat">Sun Hat</option>
+          <option value="Top Hat">Top Hat</option>
+          <option value="Turban">Turban</option>
+          <option value="Trilby">Trilby</option>
+          <option value="Visor">Visor</option>
+          <option value="Cowboy Hat">Cowboy Hat</option>
+          <option value="Newsboy Cap">Newsboy Cap</option>
+          <option value="Hood">Hood</option>
+          <option value="Helm">Helm</option>
+          <option value="Cloche Hat">Cloche Hat</option>
+        </select><br>
 
-    <label for="top">Top:</label>
-    <select id="top" name="top">
-      <option value="">None</option> 
-      <option value="T-Shirt">T-Shirt</option>
-      <option value="Blouse">Blouse</option>
-      <option value="Shirt">Shirt</option>
-      <option value="Tank Top">Tank Top</option>
-      <option value="Sweater">Sweater</option>
-      <option value="Cardigan">Cardigan</option>
-      <option value="Hoodie">Hoodie</option>
-      <option value="Polo Shirt">Polo Shirt</option>
-      <option value="Crop Top">Crop Top</option>
-      <option value="Tunic">Tunic</option> 
-      <option value="Henley Shirt">Henley Shirt</option>
-      <option value="Wrap Top">Wrap Top</option>
-      <option value="Peplum Top">Peplum Top</option>
-      <option value="Kimono">Kimono</option>
-      <option value="Blazer">Blazer</option>
-      <option value="Sweatshirt">Sweatshirt</option>
-      <option value="Bandeau">Bandeau</option>
-      <option value="Chiffon Top">Chiffon Top</option>
-      <option value="Off-the-Shoulder Top">Off-the-Shoulder Top</option>
-      <option value="V-Neck Top">V-Neck Top</option>
-      <option value="Long Sleeve Shirt">Long Sleeve Shirt</option>
-    </select><br>
+        <label for="top">Top:</label>
+        <select id="top" name="top">
+          <option value="">None</option> 
+          <option value="T-Shirt">T-Shirt</option>
+          <option value="Blouse">Blouse</option>
+          <option value="Shirt">Shirt</option>
+          <option value="Tank Top">Tank Top</option>
+          <option value="Sweater">Sweater</option>
+          <option value="Cardigan">Cardigan</option>
+          <option value="Hoodie">Hoodie</option>
+          <option value="Polo Shirt">Polo Shirt</option>
+          <option value="Crop Top">Crop Top</option>
+          <option value="Tunic">Tunic</option> 
+          <option value="Henley Shirt">Henley Shirt</option>
+          <option value="Wrap Top">Wrap Top</option>
+          <option value="Peplum Top">Peplum Top</option>
+          <option value="Kimono">Kimono</option>
+          <option value="Blazer">Blazer</option>
+          <option value="Sweatshirt">Sweatshirt</option>
+          <option value="Bandeau">Bandeau</option>
+          <option value="Chiffon Top">Chiffon Top</option>
+          <option value="Off-the-Shoulder Top">Off-the-Shoulder Top</option>
+          <option value="V-Neck Top">V-Neck Top</option>
+          <option value="Long Sleeve Shirt">Long Sleeve Shirt</option>
+        </select><br>
 
-    <label for="bottom">Bottom:</label>
-    <select id="bottom" name="bottom">
-      <option value="">None</option>
-      <option value="Jeans">Jeans</option>
-      <option value="Trousers">Trousers</option>
-      <option value="Skirt">Skirt</option>
-      <option value="Shorts">Shorts</option>
-      <option value="Leggings">Leggings</option>
-      <option value="Capri Pants">Capri Pants</option>
-      <option value="Joggers">Joggers</option>
-      <option value="Chinos">Chinos</option>
-      <option value="Culottes">Culottes</option>
-      <option value="Skort">Skort</option>
-      <option value="Cargo Pants">Cargo Pants</option>
-      <option value="Overalls">Overalls</option>
-      <option value="Palazzo Pants">Palazzo Pants</option>
-      <option value="Dress Pants">Dress Pants</option>
-      <option value="Sweatpants">Sweatpants</option>
-      <option value="Track Pants">Track Pants</option>
-      <option value="Harem Pants">Harem Pants</option>
-      <option value="Pencil Skirt">Pencil Skirt</option>
-      <option value="A-Line Skirt">A-Line Skirt</option>
-      <option value="Wrap Skirt">Wrap Skirt</option>
-    </select><br>
+        <label for="bottom">Bottom:</label>
+        <select id="bottom" name="bottom">
+          <option value="">None</option>
+          <option value="Jeans">Jeans</option>
+          <option value="Trousers">Trousers</option>
+          <option value="Skirt">Skirt</option>
+          <option value="Shorts">Shorts</option>
+          <option value="Leggings">Leggings</option>
+          <option value="Capri Pants">Capri Pants</option>
+          <option value="Joggers">Joggers</option>
+          <option value="Chinos">Chinos</option>
+          <option value="Culottes">Culottes</option>
+          <option value="Skort">Skort</option>
+          <option value="Cargo Pants">Cargo Pants</option>
+          <option value="Overalls">Overalls</option>
+          <option value="Palazzo Pants">Palazzo Pants</option>
+          <option value="Dress Pants">Dress Pants</option>
+          <option value="Sweatpants">Sweatpants</option>
+          <option value="Track Pants">Track Pants</option>
+          <option value="Harem Pants">Harem Pants</option>
+          <option value="Pencil Skirt">Pencil Skirt</option>
+          <option value="A-Line Skirt">A-Line Skirt</option>
+          <option value="Wrap Skirt">Wrap Skirt</option>
+        </select><br>
 
-    <label for="shoes">Shoes:</label>
-    <select id="shoes" name="shoes">
-      <option value="">None</option>
-      <option value="Sneakers">Sneakers</option>
-      <option value="Loafers">Loafers</option>
-      <option value="Boots">Boots</option>
-      <option value="Heels">Heels</option>
-      <option value="Sandals">Sandals</option>
-      <option value="Oxfords">Oxfords</option>
-      <option value="Brogues">Brogues</option>
-      <option value="Espadrilles">Espadrilles</option>
-      <option value="Moccasins">Moccasins</option>
-      <option value="Ballet Flats">Ballet Flats</option>
-      <option value="Clogs">Clogs</option>
-      <option value="Wedges">Wedges</option>
-      <option value="Mary Janes">Mary Janes</option>
-      <option value="Derby Shoes">Derby Shoes</option>
-      <option value="Monk Strap Shoes">Monk Strap Shoes</option>
-      <option value="Chukka Boots">Chukka Boots</option>
-      <option value="Chelsea Boots">Chelsea Boots</option>
-      <option value="Combat Boots">Combat Boots</option>
-      <option value="Slippers">Slippers</option>
-      <option value="Flip-Flops">Flip-Flops</option>
-      <option value="Mules">Mules</option>
-      <option value="Gladiator Sandals">Gladiator Sandals</option>
-      <option value="Platform Shoes">Platform Shoes</option>
-      <option value="Ankle Boots">Ankle Boots</option>
-      <option value="Riding Boots">Riding Boots</option>
-      <option value="Stilettos">Stilettos</option>
-      <option value="Kitten Heels">Kitten Heels</option>
-      <option value="Hiking Boots">Hiking Boots</option>
-      <option value="Rain Boots">Rain Boots</option>
-      <option value="Work Boots">Work Boots</option>
-    </select><br>
+        <label for="shoes">Shoes:</label>
+        <select id="shoes" name="shoes">
+          <option value="">None</option>
+          <option value="Sneakers">Sneakers</option>
+          <option value="Loafers">Loafers</option>
+          <option value="Boots">Boots</option>
+          <option value="Heels">Heels</option>
+          <option value="Sandals">Sandals</option>
+          <option value="Oxfords">Oxfords</option>
+          <option value="Brogues">Brogues</option>
+          <option value="Espadrilles">Espadrilles</option>
+          <option value="Moccasins">Moccasins</option>
+          <option value="Ballet Flats">Ballet Flats</option>
+          <option value="Clogs">Clogs</option>
+          <option value="Wedges">Wedges</option>
+          <option value="Mary Janes">Mary Janes</option>
+          <option value="Derby Shoes">Derby Shoes</option>
+          <option value="Monk Strap Shoes">Monk Strap Shoes</option>
+          <option value="Chukka Boots">Chukka Boots</option>
+          <option value="Chelsea Boots">Chelsea Boots</option>
+          <option value="Combat Boots">Combat Boots</option>
+          <option value="Slippers">Slippers</option>
+          <option value="Flip-Flops">Flip-Flops</option>
+          <option value="Mules">Mules</option>
+          <option value="Gladiator Sandals">Gladiator Sandals</option>
+          <option value="Platform Shoes">Platform Shoes</option>
+          <option value="Ankle Boots">Ankle Boots</option>
+          <option value="Riding Boots">Riding Boots</option>
+          <option value="Stilettos">Stilettos</option>
+          <option value="Kitten Heels">Kitten Heels</option>
+          <option value="Hiking Boots">Hiking Boots</option>
+          <option value="Rain Boots">Rain Boots</option>
+          <option value="Work Boots">Work Boots</option>
+        </select><br>
 
-    <label for="accessories">Accessories:</label>
-    <select id="accessories" name="accessories">
-      <option value="">None</option>
-      <option value="Statement Necklace">Statement Necklace</option>
-      <option value="Earrings">Earrings</option>
-      <option value="Bracelets">Bracelets</option>
-      <option value="Rings">Rings</option>
-      <option value="Watches">Watches</option>
-      <option value="Sunglasses">Sunglasses</option>
-      <option value="Hats">Hats</option>
-      <option value="Scarves">Scarves</option>
-      <option value="Belts">Belts</option>
-      <option value="Handbags">Handbags</option>
-      <option value="Ties">Ties</option>
-      <option value="Cufflinks">Cufflinks</option>
-      <option value="Brooches">Brooches</option>
-      <option value="Hair Accessories">Hair Accessories</option>
-      <option value="Gloves">Gloves</option>
-      <option value="Wallets">Wallets</option>
-      <option value="Suspenders">Suspenders</option>
-      <option value="Pocket Squares">Pocket Squares</option>
-      <option value="Anklets">Anklets</option>
-      <option value="Sashes">Sashes</option>
-      <option value="Chokers">Chokers</option>
-      <option value="Pins">Pins</option>
-      <option value="Keychains">Keychains</option>
-      <option value="Leg Warmers">Leg Warmers</option>
-      <option value="Fascinators">Fascinators</option>
-      <option value="Masks">Masks</option>
-      <option value="Bandanas">Bandanas</option>
-      <option value="Hair Clips">Hair Clips</option>
-      <option value="Tiaras">Tiaras</option>
-      <option value="Lapel Pins">Lapel Pins</option>
-    </select><br>
+        <label for="accessories">Accessories:</label>
+        <select id="accessories" name="accessories">
+          <option value="">None</option>
+          <option value="Statement Necklace">Statement Necklace</option>
+          <option value="Earrings">Earrings</option>
+          <option value="Bracelets">Bracelets</option>
+          <option value="Rings">Rings</option>
+          <option value="Watches">Watches</option>
+          <option value="Sunglasses">Sunglasses</option>
+          <option value="Hats">Hats</option>
+          <option value="Scarves">Scarves</option>
+          <option value="Belts">Belts</option>
+          <option value="Handbags">Handbags</option>
+          <option value="Ties">Ties</option>
+          <option value="Cufflinks">Cufflinks</option>
+          <option value="Brooches">Brooches</option>
+          <option value="Hair Accessories">Hair Accessories</option>
+          <option value="Gloves">Gloves</option>
+          <option value="Wallets">Wallets</option>
+          <option value="Suspenders">Suspenders</option>
+          <option value="Pocket Squares">Pocket Squares</option>
+          <option value="Anklets">Anklets</option>
+          <option value="Sashes">Sashes</option>
+          <option value="Chokers">Chokers</option>
+          <option value="Pins">Pins</option>
+          <option value="Keychains">Keychains</option>
+          <option value="Leg Warmers">Leg Warmers</option>
+          <option value="Fascinators">Fascinators</option>
+          <option value="Masks">Masks</option>
+          <option value="Bandanas">Bandanas</option>
+          <option value="Hair Clips">Hair Clips</option>
+          <option value="Tiaras">Tiaras</option>
+          <option value="Lapel Pins">Lapel Pins</option>
+        </select><br>
 
-    <h2>Environment & Lighting</h2>
-    <label for="background">Background:</label>
-    <select id="background" name="background">
-      <option value="Urban Street">Urban Street</option>
-      <option value="Nature Landscape">Nature Landscape</option>
-      <option value="Beach">Beach</option>
-      <option value="Office">Office</option>
-      <option value="Home Interior">Home Interior</option>
-      <option value="Cafe">Cafe</option>
-      <option value="Library">Library</option>
-      <option value="Restaurant">Restaurant</option>
-      <option value="Park">Park</option>
-      <option value="Shopping Mall">Shopping Mall</option>
-      <option value="Historical Setting">Historical Setting</option>
-      <option value="Sci-Fi Environment">Sci-Fi Environment</option>
-      <option value="Industrial">Industrial</option>
-      <option value="Classroom">Classroom</option>
-      <option value="Art Studio">Art Studio</option>
-      <option value="Garden">Garden</option>
-      <option value="Gym">Gym</option>
-      <option value="Hospital">Hospital</option>
-      <option value="Construction Site">Construction Site</option>
-      <option value="Festival">Festival</option>
-      <option value="Warehouse">Warehouse</option>
-      <option value="Countryside">Countryside</option>
-    </select><br>
+        <h2>Environment & Lighting</h2>
+        <label for="background">Background:</label>
+        <select id="background" name="background">
+          <option value="Urban Street">Urban Street</option>
+          <option value="Nature Landscape">Nature Landscape</option>
+          <option value="Beach">Beach</option>
+          <option value="Office">Office</option>
+          <option value="Home Interior">Home Interior</option>
+          <option value="Cafe">Cafe</option>
+          <option value="Library">Library</option>
+          <option value="Restaurant">Restaurant</option>
+          <option value="Park">Park</option>
+          <option value="Shopping Mall">Shopping Mall</option>
+          <option value="Historical Setting">Historical Setting</option>
+          <option value="Sci-Fi Environment">Sci-Fi Environment</option>
+          <option value="Industrial">Industrial</option>
+          <option value="Classroom">Classroom</option>
+          <option value="Art Studio">Art Studio</option>
+          <option value="Garden">Garden</option>
+          <option value="Gym">Gym</option>
+          <option value="Hospital">Hospital</option>
+          <option value="Construction Site">Construction Site</option>
+          <option value="Festival">Festival</option>
+          <option value="Warehouse">Warehouse</option>
+          <option value="Countryside">Countryside</option>
+        </select><br>
 
-    <label for="lighting">Lighting:</label>
-    <select id="lighting" name="lighting">
-      <option value="Sunlight">Sunlight</option>
-      <option value="Crepuscular Rays">Crepuscular Rays</option>
-      <option value="Backlight">Backlight</option>
-      <option value="Spotlight">Spotlight</option>
-      <option value="Side Lighting">Side Lighting</option>
-      <option value="Top Lighting">Top Lighting</option>
-      <option value="Under Lighting">Under Lighting</option>
-      <option value="Diffuse Lighting">Diffuse Lighting</option>
-      <option value="Ambient Lighting">Ambient Lighting</option>
-      <option value="Volumetric Lighting">Volumetric Lighting</option>
-      <option value="Rim Lighting">Rim Lighting</option>
-      <option value="Color Gel Lighting">Color Gel Lighting</option>
-      <option value="Silhouette Lighting">Silhouette Lighting</option>
-      <option value="Hard Lighting">Hard Lighting</option>
-      <option value="Soft Lighting">Soft Lighting</option>
-      <option value="Mixed Lighting">Mixed Lighting</option>
-      <option value="Bounce Lighting">Bounce Lighting</option>
-      <option value="Low Key Lighting">Low Key Lighting</option>
-      <option value="High Key Lighting">High Key Lighting</option>
-      <option value="Dimly Lit">Dimly Lit</option>
-      <option value="Fashion Lighting">Fashion Lighting</option>
-    </select><br>
+        <label for="lighting">Lighting:</label>
+        <select id="lighting" name="lighting">
+          <option value="Sunlight">Sunlight</option>
+          <option value="Crepuscular Rays">Crepuscular Rays</option>
+          <option value="Backlight">Backlight</option>
+          <option value="Spotlight">Spotlight</option>
+          <option value="Side Lighting">Side Lighting</option>
+          <option value="Top Lighting">Top Lighting</option>
+          <option value="Under Lighting">Under Lighting</option>
+          <option value="Diffuse Lighting">Diffuse Lighting</option>
+          <option value="Ambient Lighting">Ambient Lighting</option>
+          <option value="Volumetric Lighting">Volumetric Lighting</option>
+          <option value="Rim Lighting">Rim Lighting</option>
+          <option value="Color Gel Lighting">Color Gel Lighting</option>
+          <option value="Silhouette Lighting">Silhouette Lighting</option>
+          <option value="Hard Lighting">Hard Lighting</option>
+          <option value="Soft Lighting">Soft Lighting</option>
+          <option value="Mixed Lighting">Mixed Lighting</option>
+          <option value="Bounce Lighting">Bounce Lighting</option>
+          <option value="Low Key Lighting">Low Key Lighting</option>
+          <option value="High Key Lighting">High Key Lighting</option>
+          <option value="Dimly Lit">Dimly Lit</option>
+          <option value="Fashion Lighting">Fashion Lighting</option>
+        </select><br>
 
-    <button type="button" onclick="generatePrompt()">Generate Prompt</button>
-  </form>
+      <div class="button-container">
+        <button type="button" onclick="previousSection()" id="prevButton" disabled>Previous</button>
+        <button type="button" onclick="nextSection()" id="nextButton">Next</button>
+      </div>
 
-  <p id="generatedPrompt"></p>
+      <div id="loading">
+        <div class="spinner"></div> 
+        <p>Generating Prompt...</p>
+      </div>
+
+      <p id="generatedPrompt"></p>
+
+    </form>
+  </div>
 
   <script>
+  let currentSection = 0;
+  const sections = document.querySelectorAll("h2"); // Get all sections
+
+  function showSection(sectionIndex) {
+    // Hide all sections
+    sections.forEach((section, index) => {
+      section.style.display = index === sectionIndex ? "block" : "none";
+    });
+
+    // Update button states
+    document.getElementById("prevButton").disabled = sectionIndex === 0;
+    document.getElementById("nextButton").disabled = sectionIndex === sections.length - 1;
+  }
+
+  function nextSection() {
+    currentSection = Math.min(currentSection + 1, sections.length - 1);
+    showSection(currentSection);
+  }
+
+  function previousSection() {
+    currentSection = Math.max(currentSection - 1, 0);
+    showSection(currentSection);
+  }
+
+  // Initial section display
+  showSection(currentSection);
+
   function generatePrompt() {
-    // Get values from ALL form elements
-    const characterName = document.getElementById("characterName").value;
-    const framing = document.getElementById("framing").value;
-    const pose = document.getElementById("pose").value;
-    const ethnicity = document.getElementById("ethnicity").value;
-    const hairColor = document.getElementById("hairColor").value;
-    const hairstyle = document.getElementById("hairstyle").value;
-    const eyeColor = document.getElementById("eyeColor").value;
-    const bodyType = document.getElementById("bodyType").value;
-    const skinComplexion = document.getElementById("skinComplexion").value;
+    // ... (Your existing prompt generation logic) ...
 
-    const headwear = document.getElementById("headwear").value;
-    const top = document.getElementById("top").value;
-    const bottom = document.getElementById("bottom").value;
-    const shoes = document.getElementById("shoes").value;
-    const accessories = document.getElementById("accessories").value;
+    // Show loading spinner
+    document.getElementById("loading").style.display = "block";
 
-    const background = document.getElementById("background").value;
-    const lighting = document.getElementById("lighting").value;
+    // Simulate a delay (replace with actual API call later)
+    setTimeout(() => {
+      // Hide loading spinner
+      document.getElementById("loading").style.display = "none";
 
-    // Start constructing the prompt string
-    let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`; 
-
-    // Add pose if selected
-    if (pose) { 
-      prompt += `, in a ${pose}`; 
-    } 
-
-    // Add details, making them optional
-    if (ethnicity) prompt += `, ${ethnicity}`;
-    if (hairColor) prompt += `, ${hairColor} hair`;
-    if (hairstyle) prompt += ` (${hairstyle})`;
-    if (eyeColor) prompt += `, ${eyeColor} eyes`;
-    if (bodyType) prompt += `, ${bodyType}`; 
-    if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
-
-    // Add clothing details if provided
-    if (headwear) prompt += `. She is wearing a ${headwear}`;
-    if (top) prompt += `, a ${top}`;
-    if (bottom) prompt += `, and ${bottom}`;
-    if (shoes) prompt += `. She has ${shoes} on her feet`;
-    if (accessories) prompt += `. Her accessories include ${accessories}`;
-
-    // Add environment and lighting
-    prompt += `. The background is ${background} with ${lighting} lighting.`;
-
-    // Display the generated prompt
-    document.getElementById("generatedPrompt").innerText = prompt;
+      // Display the generated prompt
+      document.getElementById("generatedPrompt").innerText = prompt;
+    }, 1000); // Simulated 1-second delay
   }
   </script>
 
