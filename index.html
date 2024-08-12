@@ -94,15 +94,20 @@ button:hover {
   flex: 1;
   text-align: center;
   padding: 12px;
-  background-color: #f1e9f1; /* Very light purple for inactive steps */
-  border-radius: 6px;
-  color: #7048e8; 
+  background-color: #f1e9f1;
+  border-radius: 50%; /* Make step indicators circles */
+  color: #7048e8;
   font-weight: bold;
   transition: background-color 0.3s ease;
+  line-height: 1; /* Adjust vertical centering if needed */
+}
+
+#steps li span { /* Display only the step number */
+  display: block;
 }
 
 #steps li.active {
-  background-color: #e83e8c; /* Pink for active step */
+  background-color: #e83e8c; 
   color: white; 
 }
 
@@ -133,11 +138,11 @@ button:hover {
       <h1>AI Influencer Prompt Generator</h1>
     
     <ul id="steps">
-      <li class="active">Step 1</li>
-      <li>Step 2</li>
-      <li>Step 3</li>
-      <li>Step 4</li>
-      <li>Step 5</li>
+      <li class="active"><span>1</span></li>
+      <li><span>2</span></li>
+      <li><span>3</span></li>
+      <li><span>4</span></li>
+      <li><span>5</span></li>
     </ul>
 
     <form id="promptForm">
