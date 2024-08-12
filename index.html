@@ -22,9 +22,14 @@ select, input {
   <h1>AI Influencer Prompt Generator</h1>
 
   <form id="promptForm">
+    <h2>Character Name</h2>
+    <label for="characterName">Name:</label>
+    <input type="text" id="characterName" name="characterName" required><br> 
+
     <h2>Subject & Composition</h2>
     <label for="framing">Framing:</label>
-    <select id="framing" name="framing">
+    <select id="framing" name="framing" required>
+      <option value="">Select Framing</option> 
       <option value="Close-Up">Close-Up</option>
       <option value="Medium Shot">Medium Shot</option>
       <option value="Full Shot">Full Shot</option>
@@ -49,6 +54,7 @@ select, input {
 
     <label for="pose">Pose:</label>
     <select id="pose" name="pose">
+      <option value="">Select Pose</option> 
       <option value="Chic Pose">Chic Pose</option>
       <option value="Seductive Pose">Seductive Pose</option>
       <option value="Confident Pose">Confident Pose</option>
@@ -78,7 +84,8 @@ select, input {
 
     <h2>Physical Appearance</h2>
     <label for="ethnicity">Ethnicity:</label>
-    <select id="ethnicity" name="ethnicity">
+    <select id="ethnicity" name="ethnicity" required>
+      <option value="">Select Ethnicity</option> 
       <option value="North African-Southern European">North African-Southern European</option>
       <option value="Eastern Asian">Eastern Asian</option>
       <option value="Western Asian">Western Asian</option>
@@ -118,6 +125,7 @@ select, input {
 
     <label for="hairColor">Hair Color:</label>
     <select id="hairColor" name="hairColor">
+      <option value="">Select Hair Color</option> 
       <option value="Black">Black</option>
       <option value="Brown">Brown</option>
       <option value="Blonde">Blonde</option>
@@ -147,10 +155,68 @@ select, input {
     </select><br>
 
     <label for="hairstyle">Hairstyle:</label>
-    <input type="text" id="hairstyle" name="hairstyle" placeholder="e.g., Messy Bun, Long Straight"><br>
+    <select id="hairstyle" name="hairstyle">
+      <option value="">Select Hairstyle</option> 
+      <option value="Pixie Cut">Pixie Cut</option>
+      <option value="Bob Cut">Bob Cut</option>
+      <option value="Lob Cut (Long Bob)">Lob Cut (Long Bob)</option>
+      <option value="Shag Cut">Shag Cut</option>
+      <option value="Blunt Cut">Blunt Cut</option>
+      <option value="Layered Cut">Layered Cut</option>
+      <option value="Feathered Cut">Feathered Cut</option>
+      <option value="Asymmetrical Cut">Asymmetrical Cut</option>
+      <option value="Undercut">Undercut</option>
+      <option value="Crop Cut">Crop Cut</option>
+      <option value="Mohawk">Mohawk</option>
+      <option value="Bowl Cut">Bowl Cut</option>
+      <option value="Tapered Cut">Tapered Cut</option>
+      <option value="French Bob Cut">French Bob Cut</option>
+      <option value="Side-Swept Bangs Cut">Side-Swept Bangs Cut</option>
+      <option value="Blunt Bangs Cut">Blunt Bangs Cut</option>
+      <option value="Wispy Bangs Cut">Wispy Bangs Cut</option>
+      <option value="Micro Bangs Cut">Micro Bangs Cut</option>
+      <option value="Baby Bangs Cut">Baby Bangs Cut</option>
+      <option value="Long Layers Cut">Long Layers Cut</option>
+      <option value="Short Layers Cut">Short Layers Cut</option>
+      <option value="Choppy Layers Cut">Choppy Layers Cut</option>
+      <option value="Face-Framing Layers Cut">Face-Framing Layers Cut</option>
+      <option value="Textured Layers Cut">Textured Layers Cut</option>
+      <option value="Angled Bob Cut">Angled Bob Cut</option>
+      <option value="A-Line Bob Cut">A-Line Bob Cut</option>
+      <option value="Inverted Bob Cut">Inverted Bob Cut</option>
+      <option value="Stacked Bob Cut">Stacked Bob Cut</option>
+      <option value="Graduated Bob Cut">Graduated Bob Cut</option>
+      <option value="Mermaid Haircut">Mermaid Haircut</option>
+      <option value="Unicorn Haircut">Unicorn Haircut</option>
+      <option value="Balayage Layers Cut">Balayage Layers Cut</option>
+      <option value="Ombre Layers Cut">Ombre Layers Cut</option>
+      <option value="Sombre Layers Cut">Sombre Layers Cut</option>
+      <option value="Dip-Dye Layers Cut">Dip-Dye Layers Cut</option>
+      <option value="Layered Pixie Cut">Layered Pixie Cut</option>
+      <option value="Layered Bob Cut">Layered Bob Cut</option>
+      <option value="Layered Lob Cut">Layered Lob Cut</option>
+      <option value="Razor Cut">Razor Cut</option>
+      <option value="Neo-Wave Cut">Neo-Wave Cut</option>
+      <option value="SideCurl-Up Cut">SideCurl-Up Cut</option>
+      <option value="Straight Bob Cut">Straight Bob Cut</option>
+      <option value="Round Bob Cut">Round Bob Cut</option>
+      <option value="Layer-Wolf Cut">Layer-Wolf Cut</option>
+      <option value="Fuzzed Bob Cut">Fuzzed Bob Cut</option>
+      <option value="Geometric Cut">Geometric Cut</option>
+      <option value="Geometric-Shaggy Cut">Geometric-Shaggy Cut</option>
+      <option value="Pony Cut">Pony Cut</option>
+      <option value="Swing-Layer Cut">Swing-Layer Cut</option>
+      <option value="Chiffon-Layer Cut">Chiffon-Layer Cut</option>
+      <option value="Natural-Up Cut">Natural-Up Cut</option>
+      <option value="Mush Cut">Mush Cut</option>
+      <option value="Fluffy Cut">Fluffy Cut</option>
+      <option value="Milky-Bob Cut">Milky-Bob Cut</option>
+      <option value="Classical-Straight Cut">Classical-Straight Cut</option>
+    </select><br>
 
     <label for="eyeColor">Eye Color:</label>
     <select id="eyeColor" name="eyeColor">
+      <option value="">Select Eye Color</option> 
       <option value="Brown">Brown</option>
       <option value="Blue">Blue</option>
       <option value="Green">Green</option>
@@ -169,7 +235,8 @@ select, input {
     </select><br>
 
     <label for="bodyType">Body Type:</label>
-    <select id="bodyType" name="bodyType">
+    <select id="bodyType" name="bodyType" required>
+      <option value="">Select Body Type</option> 
       <option value="Ectomorph">Ectomorph</option>
       <option value="Mesomorph">Mesomorph</option>
       <option value="Endomorph">Endomorph</option>
@@ -189,7 +256,8 @@ select, input {
     </select><br>
 
     <label for="skinComplexion">Skin Tone:</label>
-    <select id="skinComplexion" name="skinComplexion">
+    <select id="skinComplexion" name="skinComplexion" required>
+      <option value="">Select Skin Tone</option> 
       <option value="Fair">Fair</option>
       <option value="Light">Light</option>
       <option value="Light-Medium">Light-Medium</option>
@@ -420,7 +488,8 @@ select, input {
 
   <script>
   function generatePrompt() {
-    // Get values from form elements
+    // Get values from ALL form elements
+    const characterName = document.getElementById("characterName").value;
     const framing = document.getElementById("framing").value;
     const pose = document.getElementById("pose").value;
     const ethnicity = document.getElementById("ethnicity").value;
@@ -439,21 +508,31 @@ select, input {
     const background = document.getElementById("background").value;
     const lighting = document.getElementById("lighting").value;
 
-    // Construct the prompt string
-    let prompt = `A ${framing} photo of a beautiful ${ethnicity} woman, `;
-    prompt += `in a ${pose}, `;
-    prompt += `${hairColor} hair (${hairstyle}), ${eyeColor} eyes, `;
-    prompt += `${bodyType} with ${skinComplexion} skin complexion. `;
+    // Start constructing the prompt string
+    let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`; 
+
+    // Add pose if selected
+    if (pose) { 
+      prompt += `, in a ${pose}`; 
+    } 
+
+    // Add details, making them optional
+    if (ethnicity) prompt += `, ${ethnicity}`;
+    if (hairColor) prompt += `, ${hairColor} hair`;
+    if (hairstyle) prompt += ` (${hairstyle})`;
+    if (eyeColor) prompt += `, ${eyeColor} eyes`;
+    if (bodyType) prompt += `, ${bodyType}`; 
+    if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
 
     // Add clothing details if provided
-    if (headwear) prompt += `She is wearing a ${headwear}, `;
-    if (top) prompt += `a ${top}, `;
-    if (bottom) prompt += `and ${bottom}. `;
-    if (shoes) prompt += `She has ${shoes} on her feet. `;
-    if (accessories) prompt += `Her accessories include ${accessories}. `;
+    if (headwear) prompt += `. She is wearing a ${headwear}`;
+    if (top) prompt += `, a ${top}`;
+    if (bottom) prompt += `, and ${bottom}`;
+    if (shoes) prompt += `. She has ${shoes} on her feet`;
+    if (accessories) prompt += `. Her accessories include ${accessories}`;
 
     // Add environment and lighting
-    prompt += `The background is ${background} with ${lighting} lighting.`;
+    prompt += `. The background is ${background} with ${lighting} lighting.`;
 
     // Display the generated prompt
     document.getElementById("generatedPrompt").innerText = prompt;
