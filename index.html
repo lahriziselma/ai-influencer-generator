@@ -4,22 +4,22 @@
 <title>AI Influencer Prompt Generator</title>
 <style>
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background-color: #f4f4f4;
+  background-color: #f4f4f4; 
 }
 
 .container {
-  background-color: white;
+  background-color: #fff;
   padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: left; 
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 h1 {
@@ -29,7 +29,8 @@ h1 {
 }
 
 h2 {
-  margin-top: 20px; /* Add space between sections */
+  margin-top: 20px; 
+  color: #333;
 }
 
 label {
@@ -38,14 +39,13 @@ label {
   color: #555;
 }
 
-select,
-input[type="text"] {
+select, input[type="text"] {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
-  box-sizing: border-box;
+  box-sizing: border-box; 
 }
 
 button {
@@ -56,59 +56,69 @@ button {
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
+  margin-right: 5px; 
 }
 
 button:hover {
   background-color: #4cae4c;
 }
 
-#generatedPrompt {
-  margin-top: 20px;
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  background-color: #f9f9f9;
-  font-size: 18px; 
-  line-height: 1.4; 
-  min-height: 40px;
-}
-
-/* Loading Spinner */
-#loading {
-  display: none; /* Hidden by default */
-  margin-top: 20px;
-}
-
-#loading .spinner {
-  border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.button-container {
+#steps {
   display: flex;
   justify-content: space-around;
-  margin-top: 20px; 
+  margin-bottom: 20px;
+  list-style: none;
+  padding: 0;
 }
 
-.button-container button {
-  width: 120px; 
+#steps li {
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  background-color: #eee; 
+  border-radius: 5px;
+  color: #777; 
+}
+
+#steps li.active {
+  background-color: #5cb85c; 
+  color: white; 
+}
+
+.step-content {
+  display: none; 
+}
+
+.step-content.active {
+  display: block;
+}
+
+#loading {
+  display: none; 
+  text-align: center;
+  margin-top: 20px;
+}
+
+#loading img {
+  width: 50px; 
+  height: 50px; 
 }
 </style>
 </head>
 <body>
   <div class="container">
     <h1>AI Influencer Prompt Generator</h1>
-    <form id="promptForm">
 
+    <ul id="steps">
+      <li class="active">Step 1</li>
+      <li>Step 2</li>
+      <li>Step 3</li>
+      <li>Step 4</li>
+      <li>Step 5</li>
+    </ul>
+
+    <form id="promptForm">
+      <div class="step-content active" id="step1">
         <h2>Character Name</h2>
         <label for="characterName">Name:</label>
         <input type="text" id="characterName" name="characterName" required><br> 
@@ -168,8 +178,11 @@ button:hover {
           <option value="Power Walk Pose">Power Walk Pose</option>
           <option value="Editorial Pose">Editorial Pose</option>
         </select><br>
+        <button type="button" onclick="nextStep(2)">Next</button>
+      </div>
 
-        <h2>Physical Appearance</h2>
+      <div class="step-content" id="step2">
+        <h2>Physical Appearance</h2> 
         <label for="ethnicity">Ethnicity:</label>
         <select id="ethnicity" name="ethnicity" required>
           <option value="">Select Ethnicity</option> 
@@ -367,7 +380,11 @@ button:hover {
           <option value="Mahogany">Mahogany</option>
           <option value="Espresso">Espresso</option>
         </select><br>
+        <button type="button" onclick="nextStep(3)">Next</button>
+        <button type="button" onclick="prevStep(1)">Previous</button>
+      </div>
 
+      <div class="step-content" id="step3">
         <h2>Clothing</h2>
         <label for="headwear">Headwear (Optional):</label>
         <select id="headwear" name="headwear">
@@ -515,7 +532,11 @@ button:hover {
           <option value="Tiaras">Tiaras</option>
           <option value="Lapel Pins">Lapel Pins</option>
         </select><br>
+        <button type="button" onclick="nextStep(4)">Next</button>
+        <button type="button" onclick="prevStep(2)">Previous</button>
+      </div>
 
+      <div class="step-content" id="step4">
         <h2>Environment & Lighting</h2>
         <label for="background">Background:</label>
         <select id="background" name="background">
@@ -567,66 +588,65 @@ button:hover {
           <option value="Dimly Lit">Dimly Lit</option>
           <option value="Fashion Lighting">Fashion Lighting</option>
         </select><br>
+        <button type="button" onclick="generatePrompt()">Generate Prompt</button>
+        <button type="button" onclick="prevStep(3)">Previous</button>
+      </div>
 
-      <div class="button-container">
-        <button type="button" onclick="previousSection()" id="prevButton" disabled>Previous</button>
-        <button type="button" onclick="nextSection()" id="nextButton">Next</button>
+      <div class="step-content" id="step5">
+        <h2>Generated Prompt</h2>
+        <p id="generatedPrompt"></p>
+        <button type="button" onclick="window.location.reload()">Start Again</button> 
       </div>
 
       <div id="loading">
-        <div class="spinner"></div> 
-        <p>Generating Prompt...</p>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading...">
       </div>
-
-      <p id="generatedPrompt"></p>
-
     </form>
   </div>
 
   <script>
-  let currentSection = 0;
-  const sections = document.querySelectorAll("h2"); // Get all sections
+    let currentStep = 1;
 
-  function showSection(sectionIndex) {
-    // Hide all sections
-    sections.forEach((section, index) => {
-      section.style.display = index === sectionIndex ? "block" : "none";
-    });
+    function nextStep(stepNum) {
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      currentStep = stepNum;
+      document.getElementById(`step${currentStep}`).classList.add('active');
 
-    // Update button states
-    document.getElementById("prevButton").disabled = sectionIndex === 0;
-    document.getElementById("nextButton").disabled = sectionIndex === sections.length - 1;
-  }
+      updateStepsDisplay();
+    }
 
-  function nextSection() {
-    currentSection = Math.min(currentSection + 1, sections.length - 1);
-    showSection(currentSection);
-  }
+    function prevStep(stepNum) {
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      currentStep = stepNum;
+      document.getElementById(`step${currentStep}`).classList.add('active');
 
-  function previousSection() {
-    currentSection = Math.max(currentSection - 1, 0);
-    showSection(currentSection);
-  }
+      updateStepsDisplay();
+    }
 
-  // Initial section display
-  showSection(currentSection);
+    function updateStepsDisplay() {
+      // Update active step display
+      const stepIndicators = document.querySelectorAll('#steps li');
+      stepIndicators.forEach((step, index) => {
+        step.classList.toggle('active', index + 1 === currentStep);
+      });
+    }
 
-  function generatePrompt() {
-    // ... (Your existing prompt generation logic) ...
+    function generatePrompt() {
+      // ... (Your generatePrompt() logic from previous responses) ...
 
-    // Show loading spinner
-    document.getElementById("loading").style.display = "block";
+      // Show loading animation
+      document.getElementById('loading').style.display = 'block';
 
-    // Simulate a delay (replace with actual API call later)
-    setTimeout(() => {
-      // Hide loading spinner
-      document.getElementById("loading").style.display = "none";
+      // Simulate a short delay (replace with actual API call if you have one)
+      setTimeout(() => {
+        // Hide loading animation
+        document.getElementById('loading').style.display = 'none';
 
-      // Display the generated prompt
-      document.getElementById("generatedPrompt").innerText = prompt;
-    }, 1000); // Simulated 1-second delay
-  }
+        // Display generated prompt (move to the result step)
+        nextStep(5); 
+      }, 1000); 
+    }
+
   </script>
-
 </body>
 </html>
