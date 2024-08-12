@@ -84,22 +84,23 @@ button:hover {
 
 #steps {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the steps */
   margin-bottom: 30px;
   list-style: none;
   padding: 0;
+  gap: 20px; /* Add space between the circles */
 }
 
 #steps li {
-  flex: 1;
+  flex: 0 0 auto; /* Allow circles to shrink to content width */
   text-align: center;
   padding: 12px;
-  background-color: #f1e9f1;
-  border-radius: 50%; /* Make step indicators circles */
+  background-color: #f1e9f1; 
+  border-radius: 50%;
   color: #7048e8;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  line-height: 1; /* Adjust vertical centering if needed */
+  line-height: 1; 
 }
 
 #steps li span { /* Display only the step number */
