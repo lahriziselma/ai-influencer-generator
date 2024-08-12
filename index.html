@@ -2,7 +2,8 @@
 <html>
 <head>
 <title>AI Influencer Prompt Generator</title>
-<style>body {
+<style>
+  body {
   font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
@@ -29,24 +30,24 @@
 }
 
 .logo {
-  width: 120px; 
-  height: 120px;
+  width: 80px; /* Reduced size */
+  height: 80px; /* Reduced size */
   background-color: #d63384; 
   border-radius: 50%;
   margin-right: 20px;
 }
 
 .header h1 {
-  text-align: left; /* Align title to the left */
+  text-align: left;
   color: #e83e8c;
-  font-size: 2.5em;
-  margin: 0; /* Remove default margin */
+  font-size: 2em; /* Slightly smaller font size */
+  margin: 0;
 }
 
 h2 {
-  margin-top: 25px; 
+  margin-top: 20px; /* Reduced spacing */
   color: #7048e8;
-  font-size: 1.8em;
+  font-size: 1.5em; /* Slightly smaller font size */
 }
 
 label {
@@ -58,8 +59,8 @@ label {
 
 select, input[type="text"] {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 20px;
+  padding: 10px; /* Reduced padding */
+  margin-bottom: 15px; /* Reduced spacing */
   border: 1px solid #d1c4e9;
   border-radius: 6px;
   box-sizing: border-box; 
@@ -68,7 +69,7 @@ select, input[type="text"] {
 button {
   background-color: #e83e8c;
   color: white;
-  padding: 14px 25px;
+  padding: 12px 20px; /* Reduced padding */
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -87,21 +88,22 @@ button:hover {
   margin-bottom: 30px;
   list-style: none;
   padding: 0;
+  width: 100%; /* Make steps take full container width */
 }
 
 #steps li {
-  flex: 0 0 auto;
+  flex: 1; /* Distribute steps evenly */
   text-align: center;
-  padding: 12px;
+  padding: 10px; /* Reduced padding */
   background-color: #f1e9f1;
-  border-radius: 50%; /* Make step indicators circles */
+  border-radius: 50%;
   color: #7048e8;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  line-height: 1; /* Adjust vertical centering if needed */
+  line-height: 1;
 }
 
-#steps li span { /* Display only the step number */
+#steps li span {
   display: block;
 }
 
