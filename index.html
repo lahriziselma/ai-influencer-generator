@@ -380,7 +380,7 @@ button:hover {
           <option value="Mahogany">Mahogany</option>
           <option value="Espresso">Espresso</option>
         </select><br>
-        <button type="button" onclick="prevStep(1)">Previous</button> 
+        <button type="button" onclick="prevStep(1)">Previous</button>
         <button type="button" onclick="nextStep(3)">Next</button>
       </div>
 
@@ -532,7 +532,7 @@ button:hover {
           <option value="Tiaras">Tiaras</option>
           <option value="Lapel Pins">Lapel Pins</option>
         </select><br>
-        <button type="button" onclick="prevStep(2)">Previous</button> 
+        <button type="button" onclick="prevStep(2)">Previous</button>
         <button type="button" onclick="nextStep(4)">Next</button>
       </div>
 
@@ -588,8 +588,8 @@ button:hover {
           <option value="Dimly Lit">Dimly Lit</option>
           <option value="Fashion Lighting">Fashion Lighting</option>
         </select><br>
-        <button type="button" onclick="prevStep(3)">Previous</button> 
-        <button type="button" onclick="generatePrompt()">Generate Prompt</button> 
+        <button type="button" onclick="prevStep(3)">Previous</button>
+        <button type="button" onclick="generatePrompt()">Generate Prompt</button>
       </div>
 
       <div class="step-content" id="step5">
@@ -611,7 +611,6 @@ button:hover {
       document.getElementById(`step${currentStep}`).classList.remove('active');
       currentStep = stepNum;
       document.getElementById(`step${currentStep}`).classList.add('active');
-
       updateStepsDisplay();
     }
 
@@ -619,12 +618,10 @@ button:hover {
       document.getElementById(`step${currentStep}`).classList.remove('active');
       currentStep = stepNum;
       document.getElementById(`step${currentStep}`).classList.add('active');
-
       updateStepsDisplay();
     }
 
     function updateStepsDisplay() {
-      // Update active step display
       const stepIndicators = document.querySelectorAll('#steps li');
       stepIndicators.forEach((step, index) => {
         step.classList.toggle('active', index + 1 === currentStep);
@@ -632,68 +629,68 @@ button:hover {
     }
 
     function generatePrompt() {
-function generatePrompt() {
-  // Get values from ALL form elements
-  const characterName = document.getElementById("characterName").value;
-  const framing = document.getElementById("framing").value;
-  const pose = document.getElementById("pose").value;
-  const ethnicity = document.getElementById("ethnicity").value;
-  const hairColor = document.getElementById("hairColor").value;
-  const hairstyle = document.getElementById("hairstyle").value;
-  const eyeColor = document.getElementById("eyeColor").value;
-  const bodyType = document.getElementById("bodyType").value;
-  const skinComplexion = document.getElementById("skinComplexion").value;
+      // Get values from ALL form elements (code remains the same)
+      const characterName = document.getElementById("characterName").value;
+      const framing = document.getElementById("framing").value;
+      const pose = document.getElementById("pose").value;
+      const ethnicity = document.getElementById("ethnicity").value;
+      const hairColor = document.getElementById("hairColor").value;
+      const hairstyle = document.getElementById("hairstyle").value;
+      const eyeColor = document.getElementById("eyeColor").value;
+      const bodyType = document.getElementById("bodyType").value;
+      const skinComplexion = document.getElementById("skinComplexion").value;
 
-  const headwear = document.getElementById("headwear").value;
-  const top = document.getElementById("top").value;
-  const bottom = document.getElementById("bottom").value;
-  const shoes = document.getElementById("shoes").value;
-  const accessories = document.getElementById("accessories").value;
+      const headwear = document.getElementById("headwear").value;
+      const top = document.getElementById("top").value;
+      const bottom = document.getElementById("bottom").value;
+      const shoes = document.getElementById("shoes").value;
+      const accessories = document.getElementById("accessories").value;
 
-  const background = document.getElementById("background").value;
-  const lighting = document.getElementById("lighting").value;
+      const background = document.getElementById("background").value;
+      const lighting = document.getElementById("lighting").value;
 
-  // Start constructing the prompt string
-  let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`; 
+      // Start constructing the prompt string
+      let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`; 
 
-  // Add pose if selected
-  if (pose) { 
-    prompt += `, in a ${pose}`; 
-  } 
+      // Add pose if selected
+      if (pose) { 
+        prompt += `, in a ${pose}`; 
+      } 
 
-  // Add details, making them optional
-  if (ethnicity) prompt += `, ${ethnicity}`;
-  if (hairColor) prompt += `, ${hairColor} hair`;
-  if (hairstyle) prompt += ` (${hairstyle})`;
-  if (eyeColor) prompt += `, ${eyeColor} eyes`;
-  if (bodyType) prompt += `, ${bodyType}`; 
-  if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
+      // Add details, making them optional
+      if (ethnicity) prompt += `, ${ethnicity}`;
+      if (hairColor) prompt += `, ${hairColor} hair`;
+      if (hairstyle) prompt += ` (${hairstyle})`;
+      if (eyeColor) prompt += `, ${eyeColor} eyes`;
+      if (bodyType) prompt += `, ${bodyType}`; 
+      if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
 
-  // Add clothing details if provided
-  if (headwear) prompt += `. She is wearing a ${headwear}`;
-  if (top) prompt += `, a ${top}`;
-  if (bottom) prompt += `, and ${bottom}`;
-  if (shoes) prompt += `. She has ${shoes} on her feet`;
-  if (accessories) prompt += `. Her accessories include ${accessories}`;
+      // Add clothing details if provided
+      if (headwear) prompt += `. She is wearing a ${headwear}`;
+      if (top) prompt += `, a ${top}`;
+      if (bottom) prompt += `, and ${bottom}`;
+      if (shoes) prompt += `. She has ${shoes} on her feet`;
+      if (accessories) prompt += `. Her accessories include ${accessories}`;
 
-  // Add environment and lighting
-  prompt += `. The background is ${background} with ${lighting} lighting.`;
+      // Add environment and lighting
+      prompt += `. The background is ${background} with ${lighting} lighting.`;
 
-  // Show loading animation
-  document.getElementById('loading').style.display = 'block';
 
-  // Simulate a short delay 
-  setTimeout(() => {
-    // Hide loading animation
-    document.getElementById('loading').style.display = 'none';
+      // Show loading animation
+      document.getElementById('loading').style.display = 'block';
 
-    // Display the generated prompt 
-    document.getElementById("generatedPrompt").innerText = prompt; 
+// Simulate a short delay
+      setTimeout(() => {
+        // Hide loading animation
+        document.getElementById('loading').style.display = 'none';
 
-    // Move to the result step
-    nextStep(5); 
-  }, 1000); // Adjust the delay (in milliseconds) as needed 
-}
+        // Display the generated prompt 
+        document.getElementById("generatedPrompt").innerText = prompt; 
+
+        // Move to the result step
+        nextStep(5); 
+      }, 1000); // Adjust the delay (in milliseconds) as needed 
+    }
 
   </script>
 </body>
