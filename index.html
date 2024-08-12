@@ -4,14 +4,14 @@
 <title>AI Influencer Prompt Generator</title>
 <style>
 body {
-  font-family: 'Arial', sans-serif; /* Choose a modern font */
+  font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background-color: #f8f9fa; /* Light, neutral background */
+  background-color: #f5f0f5; /* Light purple background */
 }
 
 .container {
@@ -20,26 +20,40 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
-  max-width: 600px; /* Fixed width for content */
+  max-width: 600px;
 }
 
-h1 {
-  text-align: center;
+.header { /* Box for the title and logo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 30px;
-  color: #343a40; /* Dark gray for headings */
+}
+
+.header h1 {
+  text-align: center;
+  color: #e83e8c; /* Pink for title */
   font-size: 2.5em;
+  margin: 0 20px 0 0; /* Add spacing between title and logo */
+}
+
+.logo {
+  width: 80px; /* Adjust logo size as needed */
+  height: 80px;
+  background-color: #d63384; /* Darker pink for logo placeholder */
+  border-radius: 50%; /* Make it a circle */
 }
 
 h2 {
   margin-top: 25px; 
-  color: #495057; /* Slightly lighter gray for subheadings */
+  color: #7048e8; /* Purple for subheadings */
   font-size: 1.8em;
 }
 
 label {
   display: block;
   margin-bottom: 8px;
-  color: #6c757d; /* Medium gray for labels */
+  color: #9c88ff; /* Lighter purple for labels */
   font-weight: bold;
 }
 
@@ -47,13 +61,13 @@ select, input[type="text"] {
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid #ced4da; /* Light gray for input borders */
+  border: 1px solid #d1c4e9; /* Very light purple for input borders */
   border-radius: 6px;
   box-sizing: border-box; 
 }
 
 button {
-  background-color: #007bff; /* Primary blue color */
+  background-color: #e83e8c; /* Pink for buttons */
   color: white;
   padding: 14px 25px;
   border: none;
@@ -61,11 +75,11 @@ button {
   cursor: pointer;
   font-size: 1em;
   margin-right: 8px; 
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #c22e65; /* Darker pink on hover */
 }
 
 #steps {
@@ -80,15 +94,15 @@ button:hover {
   flex: 1;
   text-align: center;
   padding: 12px;
-  background-color: #e9ecef; /* Very light gray for inactive steps */
+  background-color: #f1e9f1; /* Very light purple for inactive steps */
   border-radius: 6px;
-  color: #6c757d;
+  color: #7048e8; 
   font-weight: bold;
-  transition: background-color 0.3s ease; /* Smooth transition for active state */
+  transition: background-color 0.3s ease;
 }
 
 #steps li.active {
-  background-color: #007bff; /* Primary blue for active step */
+  background-color: #e83e8c; /* Pink for active step */
   color: white; 
 }
 
@@ -114,8 +128,10 @@ button:hover {
 </head>
 <body>
   <div class="container">
-    <h1>AI Influencer Prompt Generator</h1>
-
+    <div class="header"> 
+      <h1>AI Influencer Prompt Generator</h1>
+      <div class="logo"></div> </div>
+    
     <ul id="steps">
       <li class="active">Step 1</li>
       <li>Step 2</li>
