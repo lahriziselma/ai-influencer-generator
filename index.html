@@ -4,69 +4,74 @@
 <title>AI Influencer Prompt Generator</title>
 <style>
 body {
-  font-family: sans-serif;
+  font-family: 'Arial', sans-serif; /* Choose a modern font */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background-color: #f4f4f4; 
+  background-color: #f8f9fa; /* Light, neutral background */
 }
 
 .container {
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
+  max-width: 600px; /* Fixed width for content */
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-bottom: 30px;
+  color: #343a40; /* Dark gray for headings */
+  font-size: 2.5em;
 }
 
 h2 {
-  margin-top: 20px; 
-  color: #333;
+  margin-top: 25px; 
+  color: #495057; /* Slightly lighter gray for subheadings */
+  font-size: 1.8em;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
-  color: #555;
+  margin-bottom: 8px;
+  color: #6c757d; /* Medium gray for labels */
+  font-weight: bold;
 }
 
 select, input[type="text"] {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ced4da; /* Light gray for input borders */
+  border-radius: 6px;
   box-sizing: border-box; 
 }
 
 button {
-  background-color: #5cb85c;
+  background-color: #007bff; /* Primary blue color */
   color: white;
-  padding: 12px 20px;
+  padding: 14px 25px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
-  margin-right: 5px; 
+  font-size: 1em;
+  margin-right: 8px; 
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 button:hover {
-  background-color: #4cae4c;
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
 #steps {
   display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
+  justify-content: space-between;
+  margin-bottom: 30px;
   list-style: none;
   padding: 0;
 }
@@ -74,14 +79,16 @@ button:hover {
 #steps li {
   flex: 1;
   text-align: center;
-  padding: 10px;
-  background-color: #eee; 
-  border-radius: 5px;
-  color: #777; 
+  padding: 12px;
+  background-color: #e9ecef; /* Very light gray for inactive steps */
+  border-radius: 6px;
+  color: #6c757d;
+  font-weight: bold;
+  transition: background-color 0.3s ease; /* Smooth transition for active state */
 }
 
 #steps li.active {
-  background-color: #5cb85c; 
+  background-color: #007bff; /* Primary blue for active step */
   color: white; 
 }
 
