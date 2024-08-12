@@ -2,8 +2,7 @@
 <html>
 <head>
 <title>AI Influencer Prompt Generator</title>
-<style>
-body {
+<style>body {
   font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
@@ -11,49 +10,49 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
-  background-color: #f5f0f5; /* Light purple background */
+  background-color: #f5f0f5; 
 }
 
 .container {
   background-color: #ffffff;
   padding: 40px;
-  border-radius: 10px;
+  border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
   max-width: 600px;
 }
 
-.header { /* Box for the title and logo */
+.header {
   display: flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 30px;
 }
 
-.header h1 {
-  text-align: center;
-  color: #e83e8c; /* Pink for title */
-  font-size: 2.5em;
-  margin: 0 20px 0 0; /* Add spacing between title and logo */
+.logo {
+  width: 120px; 
+  height: 120px;
+  background-color: #d63384; 
+  border-radius: 50%;
+  margin-right: 20px;
 }
 
-.logo {
-  width: 80px; /* Adjust logo size as needed */
-  height: 80px;
-  background-color: #d63384; /* Darker pink for logo placeholder */
-  border-radius: 8%; /* Make it a circle */
+.header h1 {
+  text-align: left; /* Align title to the left */
+  color: #e83e8c;
+  font-size: 2.5em;
+  margin: 0; /* Remove default margin */
 }
 
 h2 {
   margin-top: 25px; 
-  color: #7048e8; /* Purple for subheadings */
+  color: #7048e8;
   font-size: 1.8em;
 }
 
 label {
   display: block;
   margin-bottom: 8px;
-  color: #9c88ff; /* Lighter purple for labels */
+  color: #9c88ff; 
   font-weight: bold;
 }
 
@@ -61,13 +60,13 @@ select, input[type="text"] {
   width: 100%;
   padding: 12px;
   margin-bottom: 20px;
-  border: 1px solid #d1c4e9; /* Very light purple for input borders */
+  border: 1px solid #d1c4e9;
   border-radius: 6px;
   box-sizing: border-box; 
 }
 
 button {
-  background-color: #e83e8c; /* Pink for buttons */
+  background-color: #e83e8c;
   color: white;
   padding: 14px 25px;
   border: none;
@@ -79,28 +78,27 @@ button {
 }
 
 button:hover {
-  background-color: #c22e65; /* Darker pink on hover */
+  background-color: #c22e65; 
 }
 
 #steps {
   display: flex;
-  justify-content: center; /* Center the steps */
+  justify-content: space-between;
   margin-bottom: 30px;
   list-style: none;
   padding: 0;
-  gap: 20px; /* Add space between the circles */
 }
 
 #steps li {
-  flex: 10 10 10 10; 
+  flex: 0 0 auto;
   text-align: center;
   padding: 12px;
-  background-color: #f1e9f1; 
-  border-radius: 50%;
+  background-color: #f1e9f1;
+  border-radius: 50%; /* Make step indicators circles */
   color: #7048e8;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  line-height: 1; 
+  line-height: 1; /* Adjust vertical centering if needed */
 }
 
 #steps li span { /* Display only the step number */
