@@ -380,8 +380,8 @@ button:hover {
           <option value="Mahogany">Mahogany</option>
           <option value="Espresso">Espresso</option>
         </select><br>
+        <button type="button" onclick="prevStep(1)">Previous</button> 
         <button type="button" onclick="nextStep(3)">Next</button>
-        <button type="button" onclick="prevStep(1)">Previous</button>
       </div>
 
       <div class="step-content" id="step3">
@@ -532,8 +532,8 @@ button:hover {
           <option value="Tiaras">Tiaras</option>
           <option value="Lapel Pins">Lapel Pins</option>
         </select><br>
+        <button type="button" onclick="prevStep(2)">Previous</button> 
         <button type="button" onclick="nextStep(4)">Next</button>
-        <button type="button" onclick="prevStep(2)">Previous</button>
       </div>
 
       <div class="step-content" id="step4">
@@ -588,8 +588,8 @@ button:hover {
           <option value="Dimly Lit">Dimly Lit</option>
           <option value="Fashion Lighting">Fashion Lighting</option>
         </select><br>
-        <button type="button" onclick="generatePrompt()">Generate Prompt</button>
-        <button type="button" onclick="prevStep(3)">Previous</button>
+        <button type="button" onclick="prevStep(3)">Previous</button> 
+        <button type="button" onclick="generatePrompt()">Generate Prompt</button> 
       </div>
 
       <div class="step-content" id="step5">
@@ -632,12 +632,12 @@ button:hover {
     }
 
     function generatePrompt() {
-      // ... (Your generatePrompt() logic from previous responses) ...
+      // ... (Your prompt generation logic - remains the same) ...
 
       // Show loading animation
       document.getElementById('loading').style.display = 'block';
 
-      // Simulate a short delay (replace with actual API call if you have one)
+      // Simulate delay (replace with actual API call)
       setTimeout(() => {
         // Hide loading animation
         document.getElementById('loading').style.display = 'none';
@@ -645,6 +645,9 @@ button:hover {
         // Display generated prompt (move to the result step)
         nextStep(5); 
       }, 1000); 
+
+      // Display the generated prompt (moved outside setTimeout)
+      document.getElementById("generatedPrompt").innerText = prompt; 
     }
 
   </script>
