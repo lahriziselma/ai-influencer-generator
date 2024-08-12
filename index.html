@@ -3,7 +3,7 @@
 <head>
 <title>AI Influencer Prompt Generator</title>
 <style>
-  body {
+body {
   font-family: 'Arial', sans-serif;
   display: flex;
   flex-direction: column;
@@ -30,8 +30,8 @@
 }
 
 .logo {
-  width: 80px; /* Reduced size */
-  height: 80px; /* Reduced size */
+  width: 80px; 
+  height: 80px; 
   background-color: #d63384; 
   border-radius: 50%;
   margin-right: 20px;
@@ -40,14 +40,14 @@
 .header h1 {
   text-align: left;
   color: #e83e8c;
-  font-size: 2em; /* Slightly smaller font size */
+  font-size: 2em; 
   margin: 0;
 }
 
 h2 {
-  margin-top: 20px; /* Reduced spacing */
+  margin-top: 20px; 
   color: #7048e8;
-  font-size: 1.5em; /* Slightly smaller font size */
+  font-size: 1.5em; 
 }
 
 label {
@@ -59,8 +59,8 @@ label {
 
 select, input[type="text"] {
   width: 100%;
-  padding: 10px; /* Reduced padding */
-  margin-bottom: 15px; /* Reduced spacing */
+  padding: 10px; 
+  margin-bottom: 15px; 
   border: 1px solid #d1c4e9;
   border-radius: 6px;
   box-sizing: border-box; 
@@ -69,7 +69,7 @@ select, input[type="text"] {
 button {
   background-color: #e83e8c;
   color: white;
-  padding: 12px 20px; /* Reduced padding */
+  padding: 12px 20px; 
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -84,23 +84,24 @@ button:hover {
 
 #steps {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Center the list items */
   margin-bottom: 30px;
   list-style: none;
   padding: 0;
-  width: 100%; /* Make steps take full container width */
 }
 
 #steps li {
-  flex: 1; /* Distribute steps evenly */
-  text-align: center;
-  padding: 10px; /* Reduced padding */
+  display: flex; /* Use flexbox for vertical centering */
+  align-items: center; /* Vertically center content */
+  justify-content: center; /* Horizontally center content */
+  width: 30px; /* Fixed width for the circle */
+  height: 30px; /* Fixed height for the circle */
   background-color: #f1e9f1;
   border-radius: 50%;
   color: #7048e8;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  line-height: 1;
+  margin: 0 10px; /* Add spacing between circles */
 }
 
 #steps li span {
