@@ -3,6 +3,29 @@
 <head>
 <title>AI Influencer Prompt Generator</title>
 <script src="https://cdn.tailwindcss.com"></script> 
+<style >
+  /* Add this to the existing <style> tag or in a separate CSS file */
+#steps .step-indicator {
+  border-radius: 50%; /* Make the indicators circular */
+  width: 30px; /* Adjust the size as needed */
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2e8f0; /* Light gray for inactive steps */
+  color: #a0aec0; /* Darker gray for inactive step numbers */
+  margin: 0 5px; /* Spacing between indicators */
+}
+
+#steps .step-indicator.active {
+  background-color: #f687b3; /* Pink for active step */
+  color: white; /* White text for active step number */
+}
+
+#steps .step-indicator span {
+  font-weight: bold;
+}
+</style>
 </head>
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
   <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md">
