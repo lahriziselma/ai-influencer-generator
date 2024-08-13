@@ -536,6 +536,15 @@
       stepIndicators.forEach((step, index) => {
         step.classList.toggle('active', index + 1 === currentStep);
       });
+
+      // Hide all step-content divs
+      const stepContents = document.querySelectorAll('.step-content');
+      stepContents.forEach(content => {
+        content.classList.remove('active');
+      });
+
+      // Show the current step-content div
+      document.getElementById(`step${currentStep}`).classList.add('active');
     }
 
     function generatePrompt() {
