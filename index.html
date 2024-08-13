@@ -84,24 +84,24 @@ button:hover {
 
 #steps {
   display: flex;
-  justify-content: center; /* Center the list items */
+  justify-content: center;
   margin-bottom: 30px;
   list-style: none;
   padding: 0;
 }
 
 #steps li {
-  display: flex; /* Use flexbox for vertical centering */
-  align-items: center; /* Vertically center content */
-  justify-content: center; /* Horizontally center content */
-  width: 30px; /* Fixed width for the circle */
-  height: 30px; /* Fixed height for the circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Increased size */
+  height: 40px; /* Increased size */
   background-color: #f1e9f1;
   border-radius: 50%;
   color: #7048e8;
   font-weight: bold;
   transition: background-color 0.3s ease;
-  margin: 0 10px; /* Add spacing between circles */
+  margin: 0 10px;
 }
 
 #steps li span {
@@ -138,14 +138,6 @@ button:hover {
     <div class="header"> 
       <div class="logo"></div> </div>
       <h1>AI Influencer Prompt Generator</h1>
-    
-    <ul id="steps">
-      <li class="active"><span>1</span></li>
-      <li><span>2</span></li>
-      <li><span>3</span></li>
-      <li><span>4</span></li>
-      <li><span>5</span></li>
-    </ul>
 
     <form id="promptForm">
       <div class="step-content active" id="step1">
@@ -208,7 +200,8 @@ button:hover {
           <option value="Power Walk Pose">Power Walk Pose</option>
           <option value="Editorial Pose">Editorial Pose</option>
         </select><br>
-        <button type="button" onclick="nextStep(2)">Next</button>
+          <div style="text-align: center;"> 
+            <button type="button" onclick="nextStep(2)">Next</button> </div>
       </div>
 
       <div class="step-content" id="step2">
@@ -410,8 +403,10 @@ button:hover {
           <option value="Mahogany">Mahogany</option>
           <option value="Espresso">Espresso</option>
         </select><br>
-        <button type="button" onclick="prevStep(1)">Previous</button>
-        <button type="button" onclick="nextStep(3)">Next</button>
+        <div style="text-align: center;"> 
+            <button type="button" onclick="prevStep(1)">Previous</button>
+            <button type="button" onclick="nextStep(3)">Next</button>
+        </div>
       </div>
 
       <div class="step-content" id="step3">
@@ -562,8 +557,10 @@ button:hover {
           <option value="Tiaras">Tiaras</option>
           <option value="Lapel Pins">Lapel Pins</option>
         </select><br>
-        <button type="button" onclick="prevStep(2)">Previous</button>
-        <button type="button" onclick="nextStep(4)">Next</button>
+        <div style="text-align: center;"> 
+            <button type="button" onclick="prevStep(2)">Previous</button>
+            <button type="button" onclick="nextStep(4)">Next</button>
+        </div>
       </div>
 
       <div class="step-content" id="step4">
@@ -618,8 +615,10 @@ button:hover {
           <option value="Dimly Lit">Dimly Lit</option>
           <option value="Fashion Lighting">Fashion Lighting</option>
         </select><br>
-        <button type="button" onclick="prevStep(3)">Previous</button>
-        <button type="button" onclick="generatePrompt()">Generate Prompt</button>
+        <div style="text-align: center;"> 
+            <button type="button" onclick="prevStep(3)">Previous</button>
+            <button type="button" onclick="generatePrompt()">Generate Prompt</button>
+        </div>
       </div>
 
       <div class="step-content" id="step5">
@@ -631,6 +630,16 @@ button:hover {
       <div id="loading">
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading...">
       </div>
+
+            <!-- Steps Indicator at the bottom -->
+      <ul id="steps">
+        <li class="active"><span>1</span></li>
+        <li><span>2</span></li>
+        <li><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+      </ul>
+      
     </form>
   </div>
 
