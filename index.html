@@ -2,152 +2,24 @@
 <html>
 <head>
 <title>AI Influencer Prompt Generator</title>
-<style>
-body {
-  font-family: 'Arial', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  margin: 0;
-  background-color: #f5f0f5; 
-}
-
-.container {
-  background-color: #ffffff;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
-  max-width: 600px;
-}
-
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
-}
-
-.logo {
-  width: 80px; 
-  height: 80px; 
-  background-color: #d63384; 
-  border-radius: 50%;
-  margin-right: 20px;
-}
-
-.header h1 {
-  text-align: left;
-  color: #e83e8c;
-  font-size: 2em; 
-  margin: 0;
-}
-
-h2 {
-  margin-top: 20px; 
-  color: #7048e8;
-  font-size: 1.5em; 
-}
-
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #9c88ff; 
-  font-weight: bold;
-}
-
-select, input[type="text"] {
-  width: 100%;
-  padding: 10px; 
-  margin-bottom: 15px; 
-  border: 1px solid #d1c4e9;
-  border-radius: 6px;
-  box-sizing: border-box; 
-}
-
-button {
-  background-color: #e83e8c;
-  color: white;
-  padding: 12px 20px; 
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 1em;
-  margin-right: 8px; 
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #c22e65; 
-}
-
-#steps {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 30px;
-  list-style: none;
-  padding: 0;
-}
-
-#steps li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px; /* Increased size */
-  height: 40px; /* Increased size */
-  background-color: #f1e9f1;
-  border-radius: 50%;
-  color: #7048e8;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  margin: 0 10px;
-}
-
-#steps li span {
-  display: block;
-}
-
-#steps li.active {
-  background-color: #e83e8c; 
-  color: white; 
-}
-
-.step-content {
-  display: none; 
-}
-
-.step-content.active {
-  display: block;
-}
-
-#loading {
-  display: none; 
-  text-align: center;
-  margin-top: 20px;
-}
-
-#loading img {
-  width: 50px; 
-  height: 50px; 
-}
-</style>
+<script src="https://cdn.tailwindcss.com"></script> 
 </head>
-<body>
-  <div class="container">
-    <div class="header"> 
-      <div class="logo"></div> </div>
-      <h1>AI Influencer Prompt Generator</h1>
+<body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
+  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md">
+    <div class="header flex items-center mb-6">
+      <div class="logo w-16 h-16 bg-pink-400 rounded-full mr-4"></div>
+      <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
+    </div>
 
     <form id="promptForm">
       <div class="step-content active" id="step1">
-        <h2>Character Name</h2>
-        <label for="characterName">Name:</label>
-        <input type="text" id="characterName" name="characterName" required><br> 
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Character Name</h2>
+        <label for="characterName" class="block text-indigo-400 font-bold mb-2">Name:</label>
+        <input type="text" id="characterName" name="characterName" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required><br>
 
-        <h2>Subject & Composition</h2>
-        <label for="framing">Framing:</label>
-        <select id="framing" name="framing" required>
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Subject & Composition</h2>
+        <label for="framing" class="block text-indigo-400 font-bold mb-2">Framing:</label>
+        <select id="framing" name="framing" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
           <option value="">Select Framing</option> 
           <option value="Close-Up">Close-Up</option>
           <option value="Medium Shot">Medium Shot</option>
@@ -171,8 +43,8 @@ button:hover {
           <option value="Dynamic Framing">Dynamic Framing</option> 
         </select><br>
 
-        <label for="pose">Pose:</label>
-        <select id="pose" name="pose">
+        <label for="pose" class="block text-indigo-400 font-bold mb-2">Pose:</label>
+        <select id="pose" name="pose" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">Select Pose</option> 
           <option value="Chic Pose">Chic Pose</option>
           <option value="Seductive Pose">Seductive Pose</option>
@@ -200,14 +72,15 @@ button:hover {
           <option value="Power Walk Pose">Power Walk Pose</option>
           <option value="Editorial Pose">Editorial Pose</option>
         </select><br>
-          <div style="text-align: center;"> 
-            <button type="button" onclick="nextStep(2)">Next</button> </div>
+        <div class="text-center">
+          <button type="button" onclick="nextStep(2)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+        </div>
       </div>
 
       <div class="step-content" id="step2">
-        <h2>Physical Appearance</h2> 
-        <label for="ethnicity">Ethnicity:</label>
-        <select id="ethnicity" name="ethnicity" required>
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Physical Appearance</h2>
+        <label for="ethnicity" class="block text-indigo-400 font-bold mb-2">Ethnicity:</label>
+        <select id="ethnicity" name="ethnicity" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
           <option value="">Select Ethnicity</option> 
           <option value="North African-Southern European">North African-Southern European</option>
           <option value="Eastern Asian">Eastern Asian</option>
@@ -246,8 +119,8 @@ button:hover {
           <option value="Indo-European">Indo-European</option>
         </select><br>
 
-        <label for="hairColor">Hair Color:</label>
-        <select id="hairColor" name="hairColor">
+        <label for="hairColor" class="block text-indigo-400 font-bold mb-2">Hair Color:</label>
+        <select id="hairColor" name="hairColor" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">Select Hair Color</option> 
           <option value="Black">Black</option>
           <option value="Brown">Brown</option>
@@ -277,8 +150,8 @@ button:hover {
           <option value="Two-Tone">Two-Tone</option>
         </select><br>
 
-        <label for="hairstyle">Hairstyle:</label>
-        <select id="hairstyle" name="hairstyle">
+        <label for="hairstyle" class="block text-indigo-400 font-bold mb-2">Hairstyle:</label>
+        <select id="hairstyle" name="hairstyle" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">Select Hairstyle</option> 
           <option value="Pixie Cut">Pixie Cut</option>
           <option value="Bob Cut">Bob Cut</option>
@@ -337,8 +210,8 @@ button:hover {
           <option value="Classical-Straight Cut">Classical-Straight Cut</option>
         </select><br>
 
-        <label for="eyeColor">Eye Color:</label>
-        <select id="eyeColor" name="eyeColor">
+        <label for="eyeColor" class="block text-indigo-400 font-bold mb-2">Eye Color:</label>
+        <select id="eyeColor" name="eyeColor" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">Select Eye Color</option> 
           <option value="Brown">Brown</option>
           <option value="Blue">Blue</option>
@@ -357,8 +230,8 @@ button:hover {
           <option value="Two-Tone">Two-Tone</option>
         </select><br>
 
-        <label for="bodyType">Body Type:</label>
-        <select id="bodyType" name="bodyType" required>
+        <label for="bodyType" class="block text-indigo-400 font-bold mb-2">Body Type:</label>
+        <select id="bodyType" name="bodyType" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
           <option value="">Select Body Type</option> 
           <option value="Ectomorph">Ectomorph</option>
           <option value="Mesomorph">Mesomorph</option>
@@ -378,8 +251,8 @@ button:hover {
           <option value="Slim">Slim</option>
         </select><br>
 
-        <label for="skinComplexion">Skin Tone:</label>
-        <select id="skinComplexion" name="skinComplexion" required>
+        <label for="skinComplexion" class="block text-indigo-400 font-bold mb-2">Skin Tone:</label>
+        <select id="skinComplexion" name="skinComplexion" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
           <option value="">Select Skin Tone</option> 
           <option value="Fair">Fair</option>
           <option value="Light">Light</option>
@@ -403,16 +276,16 @@ button:hover {
           <option value="Mahogany">Mahogany</option>
           <option value="Espresso">Espresso</option>
         </select><br>
-        <div style="text-align: center;"> 
-            <button type="button" onclick="prevStep(1)">Previous</button>
-            <button type="button" onclick="nextStep(3)">Next</button>
+        <div class="text-center">
+          <button type="button" onclick="prevStep(1)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="nextStep(3)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
         </div>
       </div>
 
       <div class="step-content" id="step3">
-        <h2>Clothing</h2>
-        <label for="headwear">Headwear (Optional):</label>
-        <select id="headwear" name="headwear">
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Clothing</h2>
+        <label for="headwear" class="block text-indigo-400 font-bold mb-2">Headwear (Optional):</label>
+        <select id="headwear" name="headwear" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">None</option> 
           <option value="Baseball Cap">Baseball Cap</option>
           <option value="Beanie">Beanie</option>
@@ -437,8 +310,8 @@ button:hover {
           <option value="Cloche Hat">Cloche Hat</option>
         </select><br>
 
-        <label for="top">Top:</label>
-        <select id="top" name="top">
+        <label for="top" class="block text-indigo-400 font-bold mb-2">Top:</label>
+        <select id="top" name="top" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">None</option> 
           <option value="T-Shirt">T-Shirt</option>
           <option value="Blouse">Blouse</option>
@@ -463,8 +336,8 @@ button:hover {
           <option value="Long Sleeve Shirt">Long Sleeve Shirt</option>
         </select><br>
 
-        <label for="bottom">Bottom:</label>
-        <select id="bottom" name="bottom">
+        <label for="bottom" class="block text-indigo-400 font-bold mb-2">Bottom:</label>
+        <select id="bottom" name="bottom" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">None</option>
           <option value="Jeans">Jeans</option>
           <option value="Trousers">Trousers</option>
@@ -488,8 +361,8 @@ button:hover {
           <option value="Wrap Skirt">Wrap Skirt</option>
         </select><br>
 
-        <label for="shoes">Shoes:</label>
-        <select id="shoes" name="shoes">
+        <label for="shoes" class="block text-indigo-400 font-bold mb-2">Shoes:</label>
+        <select id="shoes" name="shoes" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">None</option>
           <option value="Sneakers">Sneakers</option>
           <option value="Loafers">Loafers</option>
@@ -523,8 +396,8 @@ button:hover {
           <option value="Work Boots">Work Boots</option>
         </select><br>
 
-        <label for="accessories">Accessories:</label>
-        <select id="accessories" name="accessories">
+        <label for="accessories" class="block text-indigo-400 font-bold mb-2">Accessories:</label>
+        <select id="accessories" name="accessories" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">None</option>
           <option value="Statement Necklace">Statement Necklace</option>
           <option value="Earrings">Earrings</option>
@@ -557,16 +430,16 @@ button:hover {
           <option value="Tiaras">Tiaras</option>
           <option value="Lapel Pins">Lapel Pins</option>
         </select><br>
-        <div style="text-align: center;"> 
-            <button type="button" onclick="prevStep(2)">Previous</button>
-            <button type="button" onclick="nextStep(4)">Next</button>
+        <div class="text-center">
+          <button type="button" onclick="prevStep(2)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="nextStep(4)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
         </div>
       </div>
 
       <div class="step-content" id="step4">
-        <h2>Environment & Lighting</h2>
-        <label for="background">Background:</label>
-        <select id="background" name="background">
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Environment & Lighting</h2>
+        <label for="background" class="block text-indigo-400 font-bold mb-2">Background:</label>
+        <select id="background" name="background" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="Urban Street">Urban Street</option>
           <option value="Nature Landscape">Nature Landscape</option>
           <option value="Beach">Beach</option>
@@ -591,8 +464,8 @@ button:hover {
           <option value="Countryside">Countryside</option>
         </select><br>
 
-        <label for="lighting">Lighting:</label>
-        <select id="lighting" name="lighting">
+        <label for="lighting" class="block text-indigo-400 font-bold mb-2">Lighting:</label>
+        <select id="lighting" name="lighting" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="Sunlight">Sunlight</option>
           <option value="Crepuscular Rays">Crepuscular Rays</option>
           <option value="Backlight">Backlight</option>
@@ -615,31 +488,29 @@ button:hover {
           <option value="Dimly Lit">Dimly Lit</option>
           <option value="Fashion Lighting">Fashion Lighting</option>
         </select><br>
-        <div style="text-align: center;"> 
-            <button type="button" onclick="prevStep(3)">Previous</button>
-            <button type="button" onclick="generatePrompt()">Generate Prompt</button>
+        <div class="text-center">
+          <button type="button" onclick="prevStep(3)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="generatePrompt()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Generate Prompt</button>
         </div>
       </div>
 
       <div class="step-content" id="step5">
-        <h2>Generated Prompt</h2>
-        <p id="generatedPrompt"></p>
-        <button type="button" onclick="window.location.reload()">Start Again</button> 
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Generated Prompt</h2>
+        <p id="generatedPrompt" class="mt-2"></p>
+        <button type="button" onclick="window.location.reload()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300">Start Again</button>
       </div>
 
-      <div id="loading">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading...">
+      <div id="loading" class="hidden text-center mt-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading..." class="w-12 h-12 mx-auto">
       </div>
 
-            <!-- Steps Indicator at the bottom -->
-      <ul id="steps">
-        <li class="active"><span>1</span></li>
-        <li><span>2</span></li>
-        <li><span>3</span></li>
-        <li><span>4</span></li>
-        <li><span>5</span></li>
+      <ul id="steps" class="flex justify-center mt-6 list-none p-0">
+        <li class="active step-indicator"><span>1</span></li>
+        <li class="step-indicator"><span>2</span></li>
+        <li class="step-indicator"><span>3</span></li>
+        <li class="step-indicator"><span>4</span></li>
+        <li class="step-indicator"><span>5</span></li>
       </ul>
-      
     </form>
   </div>
 
@@ -661,14 +532,14 @@ button:hover {
     }
 
     function updateStepsDisplay() {
-      const stepIndicators = document.querySelectorAll('#steps li');
+      const stepIndicators = document.querySelectorAll('.step-indicator');
       stepIndicators.forEach((step, index) => {
         step.classList.toggle('active', index + 1 === currentStep);
       });
     }
 
     function generatePrompt() {
-      // Get values from ALL form elements (code remains the same)
+      // Get values from ALL form elements
       const characterName = document.getElementById("characterName").value;
       const framing = document.getElementById("framing").value;
       const pose = document.getElementById("pose").value;
@@ -678,30 +549,28 @@ button:hover {
       const eyeColor = document.getElementById("eyeColor").value;
       const bodyType = document.getElementById("bodyType").value;
       const skinComplexion = document.getElementById("skinComplexion").value;
-
       const headwear = document.getElementById("headwear").value;
       const top = document.getElementById("top").value;
       const bottom = document.getElementById("bottom").value;
       const shoes = document.getElementById("shoes").value;
       const accessories = document.getElementById("accessories").value;
-
       const background = document.getElementById("background").value;
       const lighting = document.getElementById("lighting").value;
 
       // Start constructing the prompt string
-      let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`; 
+      let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`;
 
       // Add pose if selected
-      if (pose) { 
-        prompt += `, in a ${pose}`; 
-      } 
+      if (pose) {
+        prompt += `, in a ${pose}`;
+      }
 
       // Add details, making them optional
       if (ethnicity) prompt += `, ${ethnicity}`;
       if (hairColor) prompt += `, ${hairColor} hair`;
       if (hairstyle) prompt += ` (${hairstyle})`;
       if (eyeColor) prompt += `, ${eyeColor} eyes`;
-      if (bodyType) prompt += `, ${bodyType}`; 
+      if (bodyType) prompt += `, ${bodyType}`;
       if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
 
       // Add clothing details if provided
@@ -714,23 +583,21 @@ button:hover {
       // Add environment and lighting
       prompt += `. The background is ${background} with ${lighting} lighting.`;
 
-
       // Show loading animation
       document.getElementById('loading').style.display = 'block';
 
-// Simulate a short delay
+      // Simulate a short delay
       setTimeout(() => {
         // Hide loading animation
         document.getElementById('loading').style.display = 'none';
 
-        // Display the generated prompt 
-        document.getElementById("generatedPrompt").innerText = prompt; 
+        // Display the generated prompt
+        document.getElementById("generatedPrompt").innerText = prompt;
 
         // Move to the result step
-        nextStep(5); 
-      }, 1000); // Adjust the delay (in milliseconds) as needed 
+        nextStep(5);
+      }, 1000); 
     }
-
   </script>
 </body>
 </html>
