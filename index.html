@@ -561,14 +561,18 @@
 
     function nextStep(stepNum) {
       document.getElementById(`step${currentStep}`).classList.remove('active');
+      document.getElementById(`step${currentStep}`).classList.add('hidden'); // Hide the current step
       currentStep = stepNum;
+      document.getElementById(`step${currentStep}`).classList.remove('hidden'); // Show the next step
       document.getElementById(`step${currentStep}`).classList.add('active');
       updateStepsDisplay();
     }
 
     function prevStep(stepNum) {
       document.getElementById(`step${currentStep}`).classList.remove('active');
+      document.getElementById(`step${currentStep}`).classList.add('hidden'); // Hide the current step
       currentStep = stepNum;
+      document.getElementById(`step${currentStep}`).classList.remove('hidden'); // Show the previous step
       document.getElementById(`step${currentStep}`).classList.add('active');
       updateStepsDisplay();
     }
@@ -578,6 +582,7 @@
       stepIndicators.forEach((step, index) => {
         step.classList.toggle('active', index + 1 === currentStep);
       });
+    }
 
       // Hide all step-content divs
       const stepContents = document.querySelectorAll('.step-content');
