@@ -107,7 +107,7 @@
       </div>
 
       <div class="step-content hidden" id="step3">
-        <h2 class="text-indigo-600 text-xl font-bold mt-4">Physical Appearance</h2>
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Physical Appearance (Part 1)</h2>
         <label for="ethnicity" class="block text-indigo-400 font-bold mb-2">Ethnicity:</label>
         <select id="ethnicity" name="ethnicity" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
           <option value="">Select Ethnicity</option> 
@@ -147,6 +147,62 @@
           <option value="Hmong-Asian">Hmong-Asian</option>
           <option value="Indo-European">Indo-European</option>
         </select><br>
+
+        <label for="bodyType" class="block text-indigo-400 font-bold mb-2 mt-4">Body Type:</label>
+        <select id="bodyType" name="bodyType" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
+          <option value="">Select Body Type</option> 
+          <option value="Ectomorph">Ectomorph</option>
+          <option value="Mesomorph">Mesomorph</option>
+          <option value="Endomorph">Endomorph</option>
+          <option value="Apple-Shaped">Apple-Shaped</option>
+          <option value="Pear-Shaped">Pear-Shaped</option>
+          <option value="Hourglass">Hourglass</option>
+          <option value="Rectangle">Rectangle</option>
+          <option value="Inverted Triangle">Inverted Triangle</option>
+          <option value="Triangle">Triangle</option>
+          <option value="Athletic">Athletic</option>
+          <option value="Petite">Petite</option>
+          <option value="Tall">Tall</option>
+          <option value="Curvy">Curvy</option>
+          <option value="Lean">Lean</option>
+          <option value="Broad">Broad</option>
+          <option value="Slim">Slim</option>
+        </select><br>
+
+        <label for="skinComplexion" class="block text-indigo-400 font-bold mb-2 mt-4">Skin Tone:</label>
+        <select id="skinComplexion" name="skinComplexion" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
+          <option value="">Select Skin Tone</option> 
+          <option value="Fair">Fair</option>
+          <option value="Light">Light</option>
+          <option value="Light-Medium">Light-Medium</option>
+          <option value="Medium">Medium</option>
+          <option value="Olive">Olive</option>
+          <option value="Tan">Tan</option>
+          <option value="Caramel">Caramel</option>
+          <option value="Deep">Deep</option>
+          <option value="Dark">Dark</option>
+          <option value="Ebony">Ebony</option>
+          <option value="Peach">Peach</option>
+          <option value="Golden">Golden</option>
+          <option value="Honey">Honey</option>
+          <option value="Bronze">Bronze</option>
+          <option value="Sable">Sable</option>
+          <option value="Mocha">Mocha</option>
+          <option value="Porcelain">Porcelain</option>
+          <option value="Almond">Almond</option>
+          <option value="Sand">Sand</option>
+          <option value="Mahogany">Mahogany</option>
+          <option value="Espresso">Espresso</option>
+        </select><br>
+
+        <div class="text-center mt-4">
+          <button type="button" onclick="prevStep(2)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="nextStep(4)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+        </div>
+      </div>
+
+      <div class="step-content hidden" id="step4">
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Physical Appearance (Part 2)</h2>
 
         <label for="hairColor" class="block text-indigo-400 font-bold mb-2 mt-4">Hair Color:</label>
         <select id="hairColor" name="hairColor" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
@@ -259,61 +315,14 @@
           <option value="Two-Tone">Two-Tone</option>
         </select><br>
 
-        <label for="bodyType" class="block text-indigo-400 font-bold mb-2 mt-4">Body Type:</label>
-        <select id="bodyType" name="bodyType" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
-          <option value="">Select Body Type</option> 
-          <option value="Ectomorph">Ectomorph</option>
-          <option value="Mesomorph">Mesomorph</option>
-          <option value="Endomorph">Endomorph</option>
-          <option value="Apple-Shaped">Apple-Shaped</option>
-          <option value="Pear-Shaped">Pear-Shaped</option>
-          <option value="Hourglass">Hourglass</option>
-          <option value="Rectangle">Rectangle</option>
-          <option value="Inverted Triangle">Inverted Triangle</option>
-          <option value="Triangle">Triangle</option>
-          <option value="Athletic">Athletic</option>
-          <option value="Petite">Petite</option>
-          <option value="Tall">Tall</option>
-          <option value="Curvy">Curvy</option>
-          <option value="Lean">Lean</option>
-          <option value="Broad">Broad</option>
-          <option value="Slim">Slim</option>
-        </select><br>
-
-        <label for="skinComplexion" class="block text-indigo-400 font-bold mb-2 mt-4">Skin Tone:</label>
-        <select id="skinComplexion" name="skinComplexion" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
-          <option value="">Select Skin Tone</option> 
-          <option value="Fair">Fair</option>
-          <option value="Light">Light</option>
-          <option value="Light-Medium">Light-Medium</option>
-          <option value="Medium">Medium</option>
-          <option value="Olive">Olive</option>
-          <option value="Tan">Tan</option>
-          <option value="Caramel">Caramel</option>
-          <option value="Deep">Deep</option>
-          <option value="Dark">Dark</option>
-          <option value="Ebony">Ebony</option>
-          <option value="Peach">Peach</option>
-          <option value="Golden">Golden</option>
-          <option value="Honey">Honey</option>
-          <option value="Bronze">Bronze</option>
-          <option value="Sable">Sable</option>
-          <option value="Mocha">Mocha</option>
-          <option value="Porcelain">Porcelain</option>
-          <option value="Almond">Almond</option>
-          <option value="Sand">Sand</option>
-          <option value="Mahogany">Mahogany</option>
-          <option value="Espresso">Espresso</option>
-        </select><br>
-
         <div class="text-center mt-4">
-          <button type="button" onclick="prevStep(2)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-          <button type="button" onclick="nextStep(4)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          <button type="button" onclick="prevStep(3)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="nextStep(5)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
         </div>
       </div>
 
-      <div class="step-content hidden" id="step4">
-        <h2 class="text-indigo-600 text-xl font-bold mt-4">Clothing</h2>
+      <div class="step-content hidden" id="step5">
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Clothing (Top & Bottom)</h2>
         <label for="top" class="block text-indigo-400 font-bold mb-2 mt-4">Top:</label>
         <select id="top" name="top" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">None</option> 
@@ -366,13 +375,13 @@
         </select><br>
 
         <div class="text-center mt-4">
-          <button type="button" onclick="prevStep(3)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-          <button type="button" onclick="nextStep(5)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          <button type="button" onclick="prevStep(4)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="nextStep(6)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
         </div>
       </div>
 
-      <div class="step-content hidden" id="step5">
-        <h2 class="text-indigo-600 text-xl font-bold mt-4">Clothing</h2>
+      <div class="step-content hidden" id="step6">
+        <h2 class="text-indigo-600 text-xl font-bold mt-4">Clothing (Accessories & Shoes)</h2>
         <label for="headwear" class="block text-indigo-400 font-bold mb-2">Headwear (Optional):</label>
         <select id="headwear" name="headwear" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="">None</option> 
@@ -470,15 +479,15 @@
         </select><br>
 
         <div class="text-center mt-4">
-          <button type="button" onclick="prevStep(4)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-          <button type="button" onclick="nextStep(6)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          <button type="button" onclick="prevStep(5)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="nextStep(7)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
         </div>
       </div>
 
-      <div class="step-content hidden" id="step6">
+      <div class="step-content hidden" id="step7">
         <h2 class="text-indigo-600 text-xl font-bold mt-4">Environment & Lighting</h2>
         <label for="background" class="block text-indigo-400 font-bold mb-2">Background:</label>
-        <select id="background" name="background" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+         <select id="background" name="background" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="Urban Street">Urban Street</option>
           <option value="Nature Landscape">Nature Landscape</option>
           <option value="Beach">Beach</option>
@@ -506,7 +515,7 @@
         <label for="lighting" class="block text-indigo-400 font-bold mb-2 mt-4">Lighting:</label>
         <select id="lighting" name="lighting" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
           <option value="Sunlight">Sunlight</option>
-          <option value="Crepuscular          Rays">Crepuscular Rays</option>
+          <option value="Crepuscular Rays">Crepuscular Rays</option>
           <option value="Backlight">Backlight</option>
           <option value="Spotlight">Spotlight</option>
           <option value="Side Lighting">Side Lighting</option>
@@ -528,12 +537,12 @@
           <option value="Fashion Lighting">Fashion Lighting</option>
         </select><br>
         <div class="text-center mt-4">
-          <button type="button" onclick="prevStep(5)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+          <button type="button" onclick="prevStep(6)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
           <button type="button" onclick="generatePrompt()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Generate Prompt</button>
         </div>
       </div>
 
-      <div class="step-content hidden" id="step7">
+      <div class="step-content hidden" id="step8">
         <h2 class="text-indigo-600 text-xl font-bold mt-4">Generated Prompt</h2>
         <p id="generatedPrompt" class="mt-2"></p>
         <button type="button" onclick="window.location.reload()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300">Start Again</button>
@@ -551,7 +560,7 @@
         <li class="step-indicator"><span>5</span></li>
         <li class="step-indicator"><span>6</span></li>
         <li class="step-indicator"><span>7</span></li>
-      </ul>
+        <li class="step-indicator"><span>8</span></li> </ul>
     </form>
   </div>
 
@@ -640,7 +649,7 @@
         document.getElementById("generatedPrompt").innerText = prompt;
 
         // Move to the result step
-        nextStep(7); // Updated to reflect the new step number
+        nextStep(8); // Updated to reflect the new step number
       }, 1000); 
     }
   </script>
