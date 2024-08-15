@@ -6,7 +6,7 @@
 <style >
   .container {
     height: 680px;
-    overflow-y: auto;
+    overflow-y: auto; 
   }
 
   .header {
@@ -14,7 +14,10 @@
     top: 0;
     background-color: white;
     z-index: 10;
-    height: 40px;
+    height: 40px; 
+    display: flex; /* Ensures header content stays within bounds */
+    align-items: center; /* Vertically center content */
+    padding: 0 1rem; /* Adds minimal padding for visual comfort */
   }
 
   .footer {
@@ -22,11 +25,14 @@
     bottom: 0;
     background-color: white;
     z-index: 10;
-    height: 40px;
+    height: 40px; 
+    display: flex; /* Ensures footer content stays within bounds */
+    align-items: center; /* Vertically center content */
+    justify-content: center; /* Centers the step indicators horizontally */
   }
 
   .main-content {
-    height: 600px;
+    height: 600px; 
   }
 
   /* ... (rest of your existing CSS) ... */
@@ -35,50 +41,534 @@
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
   <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md"> 
     <div class="header flex items-center mb-6">
-      <div class="logo w-20 h-20 bg-pink-400 rounded-lg mr-4"></div> 
-      <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
+      <div class="logo w-10 h-10 bg-pink-400 rounded-lg mr-4"></div>  
+      <h1 class="text-pink-600 text-lg font-bold">AI Influencer Prompt Generator</h1>
     </div>
 
     <div class="main-content">  
       <form id="promptForm">
-      <div class="step-content active" id="step1">
-        <h2 class="text-indigo-600 text-xl font-bold mt-4">Character Name</h2>
-        <label for="characterName" class="block text-indigo-400 font-bold mb-2">Name:</label>
-        <input type="text" id="characterName" name="characterName" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required><br>
-        <div class="text-center">
-          <button type="button" onclick="nextStep(2)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-4">Next</button>
+        <div class="step-content active" id="step1">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Character Name</h2>
+          <label for="characterName" class="block text-indigo-400 font-bold mb-2">Name:</label>
+          <input type="text" id="characterName" name="characterName" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required><br>
+          <div class="text-center">
+            <button type="button" onclick="nextStep(2)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-4">Next</button>
+          </div>
         </div>
-      </div>
-
-      <div class="step-content hidden" id="step2">
-        <h2 class="text-indigo-600 text-xl font-bold mt-4">Subject & Composition</h2>
-        <label for="framing" class="block text-indigo-400 font-bold mb-2">Framing:</label>
-        <select id="framing" name="framing" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
-          <option value="">Select Framing</option> 
-          <option value="Close-Up">Close-Up</option>
-          <option value="Medium Shot">Medium Shot</option>
-          <option value="Full Shot">Full Shot</option>
-          <option value="Long Shot">Long Shot</option>
+  
+        <div class="step-content hidden" id="step2">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Subject & Composition</h2>
+          <label for="framing" class="block text-indigo-400 font-bold mb-2">Framing:</label>
+          <select id="framing" name="framing" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
+            <option value="">Select Framing</option> 
+            <option value="Close-Up">Close-Up</option>
+            <option value="Medium Shot">Medium Shot</option>
+            <option value="Full Shot">Full Shot</option>
+            <option value="Long Shot">Long Shot</option>
+            <option value="Over-the-Shoulder">Over-the-Shoulder</option>
+            <option value="Profile">Profile</option>
+            <option value="Three-Quarter View">Three-Quarter View</option>
+            <option value="High Angle">High Angle</option>
+            <option value="Low Angle">Low Angle</option>
+            <option value="Bird's Eye View">Bird's Eye View</option>
+            <option value="Worm's Eye View">Worm's Eye View</option>
+            <option value="Dutch Angle">Dutch Angle</option>
+            <option value="Extreme Close-Up">Extreme Close-Up</option>
+            <option value="Extreme Long Shot">Extreme Long Shot</option>
+            <option value="Cut-In">Cut-In</option>
+            <option value="Cutaway">Cutaway</option>
+            <option value="Point of View (POV)">Point of View (POV)</option>
+            <option value="Panoramic">Panoramic</option>
+            <option value="Head-and-Shoulders">Head-and-Shoulders</option>
+            <option value="Dynamic Framing">Dynamic Framing</option> 
           </select><br>
-
-        <label for="pose" class="block text-indigo-400 font-bold mb-2 mt-4">Pose:</label>
-        <select id="pose" name="pose" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
-          <option value="">Select Pose</option> 
-          <option value="Chic Pose">Chic Pose</option>
-          <option value="Seductive Pose">Seductive Pose</option>
-          <option value="Confident Pose">Confident Pose</option>
+  
+          <label for="pose" class="block text-indigo-400 font-bold mb-2 mt-4">Pose:</label>
+          <select id="pose" name="pose" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">Select Pose</option> 
+            <option value="Chic Pose">Chic Pose</option>
+            <option value="Seductive Pose">Seductive Pose</option>
+            <option value="Confident Pose">Confident Pose</option>
+            <option value="Shy Pose">Shy Pose</option>
+            <option value="Playful Pose">Playful Pose</option>
+            <option value="Dramatic Pose">Dramatic Pose</option>
+            <option value="Elegant Pose">Elegant Pose</option>
+            <option value="Casual Pose">Casual Pose</option>
+            <option value="Artistic Pose">Artistic Pose</option>
+            <option value="Energetic Pose">Energetic Pose</option>
+            <option value="Glamorous Pose">Glamorous Pose</option>
+            <option value="Mysterious Pose">Mysterious Pose</option>
+            <option value="Sporty Pose">Sporty Pose</option>
+            <option value="Power Pose">Power Pose</option>
+            <option value="Elegant Sitting Pose">Elegant Sitting Pose</option>
+            <option value="Sassy Pose">Sassy Pose</option>
+            <option value="Melancholic Pose">Melancholic Pose</option>
+            <option value="Cheerful Pose">Cheerful Pose</option>
+            <option value="Sophisticated Pose">Sophisticated Pose</option>
+            <option value="Relaxed Pose">Relaxed Pose</option>
+            <option value="Angelic Pose">Angelic Pose</option>
+            <option value="Rebel Pose">Rebel Pose</option>
+            <option value="Vintage Pose">Vintage Pose</option>
+            <option value="Power Walk Pose">Power Walk Pose</option>
+            <option value="Editorial Pose">Editorial Pose</option>
           </select><br>
-        <div class="text-center mt-4">
-          <button type="button" onclick="prevStep(1)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-          <button type="button" onclick="nextStep(3)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          <div class="text-center mt-4">
+            <button type="button" onclick="prevStep(1)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+            <button type="button" onclick="nextStep(3)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          </div>
         </div>
-      </div>
-
-      </form>
+  
+        <div class="step-content hidden" id="step3">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Physical Appearance (Part 1)</h2>
+          <label for="ethnicity" class="block text-indigo-400 font-bold mb-2">Ethnicity:</label>
+          <select id="ethnicity" name="ethnicity" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
+            <option value="">Select Ethnicity</option> 
+            <option value="North African-Southern European">North African-Southern European</option>
+            <option value="Eastern Asian">Eastern Asian</option>
+            <option value="Western Asian">Western Asian</option>
+            <option value="Latin American-European">Latin American-European</option>
+            <option value="African-American">African-American</option>
+            <option value="Indigenous American">Indigenous American</option>
+            <option value="South Asian">South Asian</option>
+            <option value="Central Asian">Central Asian</option>
+            <option value="Mediterranean">Mediterranean</option>
+            <option value="Scandinavian-Eastern European">Scandinavian-Eastern European</option>
+            <option value="Caribbean-African">Caribbean-African</option>
+            <option value="Northern European">Northern European</option>
+            <option value="Southeast Asian">Southeast Asian</option>
+            <option value="Pacific Islander">Pacific Islander</option>
+            <option value="Middle Eastern-North African">Middle Eastern-North African</option>
+            <option value="Southern European">Southern European</option>
+            <option value="Eastern European">Eastern European</option>
+            <option value="Sub-Saharan African">Sub-Saharan African</option>
+            <option value="Anglo-Caribbean">Anglo-Caribbean</option>
+            <option value="Jewish Diaspora">Jewish Diaspora</option>
+            <option value="Latin American-Indigenous">Latin American-Indigenous</option>
+            <option value="Oceanic">Oceanic</option>
+            <option value="Afro-Latino">Afro-Latino</option>
+            <option value="Western European">Western European</option>
+            <option value="Southern African">Southern African</option>
+            <option value="Mestizo">Mestizo</option>
+            <option value="Balkans-Middle Eastern">Balkans-Middle Eastern</option>
+            <option value="Hispano-Indigenous">Hispano-Indigenous</option>
+            <option value="East African-Arabian">East African-Arabian</option>
+            <option value="Russian-Scandinavian">Russian-Scandinavian</option>
+            <option value="Turkish-Mediterranean">Turkish-Mediterranean</option>
+            <option value="South Asian-Caribbean">South Asian-Caribbean</option>
+            <option value="Germanic-Scandinavian">Germanic-Scandinavian</option>
+            <option value="Hmong-Asian">Hmong-Asian</option>
+            <option value="Indo-European">Indo-European</option>
+          </select><br>
+  
+          <label for="bodyType" class="block text-indigo-400 font-bold mb-2 mt-4">Body Type:</label>
+          <select id="bodyType" name="bodyType" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
+            <option value="">Select Body Type</option> 
+            <option value="Ectomorph">Ectomorph</option>
+            <option value="Mesomorph">Mesomorph</option>
+            <option value="Endomorph">Endomorph</option>
+            <option value="Apple-Shaped">Apple-Shaped</option>
+            <option value="Pear-Shaped">Pear-Shaped</option>
+            <option value="Hourglass">Hourglass</option>
+            <option value="Rectangle">Rectangle</option>
+            <option value="Inverted Triangle">Inverted Triangle</option>
+            <option value="Triangle">Triangle</option>
+            <option value="Athletic">Athletic</option>
+            <option value="Petite">Petite</option>
+            <option value="Tall">Tall</option>
+            <option value="Curvy">Curvy</option>
+            <option value="Lean">Lean</option>
+            <option value="Broad">Broad</option>
+            <option value="Slim">Slim</option>
+          </select><br>
+  
+          <label for="skinComplexion" class="block text-indigo-400 font-bold mb-2 mt-4">Skin Tone:</label>
+          <select id="skinComplexion" name="skinComplexion" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
+            <option value="">Select Skin Tone</option> 
+            <option value="Fair">Fair</option>
+            <option value="Light">Light</option>
+            <option value="Light-Medium">Light-Medium</option>
+            <option value="Medium">Medium</option>
+            <option value="Olive">Olive</option>
+            <option value="Tan">Tan</option>
+            <option value="Caramel">Caramel</option>
+            <option value="Deep">Deep</option>
+            <option value="Dark">Dark</option>
+            <option value="Ebony">Ebony</option>
+            <option value="Peach">Peach</option>
+            <option value="Golden">Golden</option>
+            <option value="Honey">Honey</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Sable">Sable</option>
+            <option value="Mocha">Mocha</option>
+            <option value="Porcelain">Porcelain</option>
+            <option value="Almond">Almond</option>
+            <option value="Sand">Sand</option>
+            <option value="Mahogany">Mahogany</option>
+            <option value="Espresso">Espresso</option>
+          </select><br>
+  
+          <div class="text-center mt-4">
+            <button type="button" onclick="prevStep(2)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+            <button type="button" onclick="nextStep(4)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          </div>
+        </div>
+  
+        <div class="step-content hidden" id="step4">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Physical Appearance (Part 2)</h2>
+  
+          <label for="hairColor" class="block text-indigo-400 font-bold mb-2 mt-4">Hair Color:</label>
+          <select id="hairColor" name="hairColor" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">Select Hair Color</option> 
+            <option value="Black">Black</option>
+            <option value="Brown">Brown</option>
+            <option value="Blonde">Blonde</option>
+            <option value="Red">Red</option>
+            <option value="Gray">Gray</option>
+            <option value="White">White</option>
+            <option value="Auburn">Auburn</option>
+            <option value="Platinum Blonde">Platinum Blonde</option>
+            <option value="Strawberry Blonde">Strawberry Blonde</option>
+            <option value="Silver">Silver</option>
+            <option value="Bleach Blonde">Bleach Blonde</option>
+            <option value="Dark Brown">Dark Brown</option>
+            <option value="Light Brown">Light Brown</option>
+            <option value="Copper">Copper</option>
+            <option value="Champagne Blonde">Champagne Blonde</option>
+            <option value="Rose Gold">Rose Gold</option>
+            <option value="Purple">Purple</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Pink">Pink</option>
+            <option value="Ombre">Ombre</option>
+            <option value="Highlights">Highlights</option>
+            <option value="Low Lights">Low Lights</option>
+            <option value="Balayage">Balayage</option>
+            <option value="Dip Dye">Dip Dye</option>
+            <option value="Two-Tone">Two-Tone</option>
+          </select><br>
+  
+          <label for="hairstyle" class="block text-indigo-400 font-bold mb-2 mt-4">Hairstyle:</label>
+          <select id="hairstyle" name="hairstyle" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">Select Hairstyle</option> 
+            <option value="Pixie Cut">Pixie Cut</option>
+            <option value="Bob Cut">Bob Cut</option>
+            <option value="Lob Cut (Long Bob)">Lob Cut (Long Bob)</option>
+            <option value="Shag Cut">Shag Cut</option>
+            <option value="Blunt Cut">Blunt Cut</option>
+            <option value="Layered Cut">Layered Cut</option>
+            <option value="Feathered Cut">Feathered Cut</option>
+            <option value="Asymmetrical Cut">Asymmetrical Cut</option>
+            <option value="Undercut">Undercut</option>
+            <option value="Crop Cut">Crop Cut</option>
+            <option value="Mohawk">Mohawk</option>
+            <option value="Bowl Cut">Bowl Cut</option>
+            <option value="Tapered Cut">Tapered Cut</option>
+            <option value="French Bob Cut">French Bob Cut</option>
+            <option value="Side-Swept Bangs Cut">Side-Swept Bangs Cut</option>
+            <option value="Blunt Bangs Cut">Blunt Bangs Cut</option>
+            <option value="Wispy Bangs Cut">Wispy Bangs Cut</option>
+            <option value="Micro Bangs Cut">Micro Bangs Cut</option>
+            <option value="Baby Bangs Cut">Baby Bangs Cut</option>
+            <option value="Long Layers Cut">Long Layers Cut</option>
+            <option value="Short Layers Cut">Short Layers Cut</option>
+            <option value="Choppy Layers Cut">Choppy Layers Cut</option>
+            <option value="Face-Framing Layers Cut">Face-Framing Layers Cut</option>
+            <option value="Textured Layers Cut">Textured Layers Cut</option>
+            <option value="Angled Bob Cut">Angled Bob Cut</option>
+            <option value="A-Line Bob Cut">A-Line Bob Cut</option>
+            <option value="Inverted Bob Cut">Inverted Bob Cut</option>
+            <option value="Stacked Bob Cut">Stacked Bob Cut</option>
+            <option value="Graduated Bob Cut">Graduated Bob Cut</option>
+            <option value="Mermaid Haircut">Mermaid Haircut</option>
+            <option value="Unicorn Haircut">Unicorn Haircut</option>
+            <option value="Balayage Layers Cut">Balayage Layers Cut</option>
+            <option value="Ombre Layers Cut">Ombre Layers Cut</option>
+            <option value="Sombre Layers Cut">Sombre Layers Cut</option>
+            <option value="Dip-Dye Layers Cut">Dip-Dye Layers Cut</option>
+            <option value="Layered Pixie Cut">Layered Pixie Cut</option>
+            <option value="Layered Bob Cut">Layered Bob Cut</option>
+            <option value="Layered Lob Cut">Layered Lob Cut</option>
+            <option value="Razor Cut">Razor Cut</option>
+            <option value="Neo-Wave Cut">Neo-Wave Cut</option>
+            <option value="SideCurl-Up Cut">SideCurl-Up Cut</option>
+            <option value="Straight Bob Cut">Straight Bob Cut</option>
+            <option value="Round Bob Cut">Round Bob Cut</option>
+            <option value="Layer-Wolf Cut">Layer-Wolf Cut</option>
+            <option value="Fuzzed Bob Cut">Fuzzed Bob Cut</option>
+            <option value="Geometric Cut">Geometric Cut</option>
+            <option value="Geometric-Shaggy Cut">Geometric-Shaggy Cut</option>
+            <option value="Pony Cut">Pony Cut</option>
+            <option value="Swing-Layer Cut">Swing-Layer Cut</option>
+            <option value="Chiffon-Layer Cut">Chiffon-Layer Cut</option>
+            <option value="Natural-Up Cut">Natural-Up Cut</option>
+            <option value="Mush Cut">Mush Cut</option>
+            <option value="Fluffy Cut">Fluffy Cut</option>
+            <option value="Milky-Bob Cut">Milky-Bob Cut</option>
+            <option value="Classical-Straight Cut">Classical-Straight Cut</option>
+          </select><br>
+  
+          <label for="eyeColor" class="block text-indigo-400 font-bold mb-2 mt-4">Eye Color:</label>
+          <select id="eyeColor" name="eyeColor" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">Select Eye Color</option> 
+            <option value="Brown">Brown</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Hazel">Hazel</option>
+            <option value="Gray">Gray</option>
+            <option value="Amber">Amber</option>
+            <option value="Black">Black</option>
+            <option value="Light Brown">Light Brown</option>
+            <option value="Dark Brown">Dark Brown</option>
+            <option value="Turquoise">Turquoise</option>
+            <option value="Aqua">Aqua</option>
+            <option value="Steel Blue">Steel Blue</option>
+            <option value="Olive">Olive</option>
+            <option value="Violet">Violet</option>
+            <option value="Two-Tone">Two-Tone</option>
+          </select><br>
+  
+          <div class="text-center mt-4">
+            <button type="button" onclick="prevStep(3)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+            <button type="button" onclick="nextStep(5)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          </div>
+        </div>
+  
+        <div class="step-content hidden" id="step5">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Clothing (Top & Bottom)</h2>
+          <label for="top" class="block text-indigo-400 font-bold mb-2 mt-4">Top:</label>
+          <select id="top" name="top" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">None</option> 
+            <option value="T-Shirt">T-Shirt</option>
+            <option value="Blouse">Blouse</option>
+            <option value="Shirt">Shirt</option>
+            <option value="Tank Top">Tank Top</option>
+            <option value="Sweater">Sweater</option>
+            <option value="Cardigan">Cardigan</option>
+            <option value="Hoodie">Hoodie</option>
+            <option value="Polo Shirt">Polo Shirt</option>
+            <option value="Crop Top">Crop Top</option>
+            <option value="Tunic">Tunic</option> 
+            <option value="Henley Shirt">Henley Shirt</option>
+            <option value="Wrap Top">Wrap Top</option>
+            <option value="Peplum Top">Peplum Top</option>
+            <option value="Kimono">Kimono</option>
+            <option value="Blazer">Blazer</option>
+            <option value="Sweatshirt">Sweatshirt</option>
+            <option value="Bandeau">Bandeau</option>
+            <option value="Chiffon Top">Chiffon Top</option>
+            <option value="Off-the-Shoulder Top">Off-the-Shoulder Top</option>
+            <option value="V-Neck Top">V-Neck Top</option>
+            <option value="Long Sleeve Shirt">Long Sleeve Shirt</option>
+          </select><br>
+  
+          <label for="bottom" class="block text-indigo-400 font-bold mb-2">Bottom:</label>
+          <select id="bottom" name="bottom" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">None</option>
+            <option value="Jeans">Jeans</option>
+            <option value="Trousers">Trousers</option>
+            <option value="Skirt">Skirt</option>
+            <option value="Shorts">Shorts</option>
+            <option value="Leggings">Leggings</option>
+            <option value="Capri Pants">Capri Pants</option>
+            <option value="Joggers">Joggers</option>
+            <option value="Chinos">Chinos</option>
+            <option value="Culottes">Culottes</option>
+            <option value="Skort">Skort</option>
+            <option value="Cargo Pants">Cargo Pants</option>
+            <option value="Overalls">Overalls</option>
+            <option value="Palazzo Pants">Palazzo Pants</option>
+            <option value="Dress Pants">Dress Pants</option>
+            <option value="Sweatpants">Sweatpants</option>
+            <option value="Track Pants">Track Pants</option>
+            <option value="Harem Pants">Harem Pants</option>
+            <option value="Pencil Skirt">Pencil Skirt</option>
+            <option value="A-Line Skirt">A-Line Skirt</option>
+            <option value="Wrap Skirt">Wrap Skirt</option>
+          </select><br>
+  
+          <div class="text-center mt-4">
+            <button type="button" onclick="prevStep(4)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+            <button type="button" onclick="nextStep(6)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          </div>
+        </div>
+  
+        <div class="step-content hidden" id="step6">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Clothing (Accessories & Shoes)</h2>
+          <label for="headwear" class="block text-indigo-400 font-bold mb-2">Headwear (Optional):</label>
+          <select id="headwear" name="headwear" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">None</option> 
+            <option value="Baseball Cap">Baseball Cap</option>
+            <option value="Beanie">Beanie</option>
+            <option value="Beret">Beret</option> 
+            <option value="Bowler Hat">Bowler Hat</option>
+            <option value="Bucket Hat">Bucket Hat</option>
+            <option value="Fedora">Fedora</option>
+            <option value="Flat Cap">Flat Cap</option>
+            <option value="Kufi">Kufi</option>
+            <option value="Panama Hat">Panama Hat</option>
+            <option value="Pith Helmet">Pith Helmet</option>
+            <option value="Sombrero">Sombrero</option>
+            <option value="Sun Hat">Sun Hat</option>
+            <option value="Top Hat">Top Hat</option>
+            <option value="Turban">Turban</option>
+            <option value="Trilby">Trilby</option>
+            <option value="Visor">Visor</option>
+            <option value="Cowboy Hat">Cowboy Hat</option>
+            <option value="Newsboy Cap">Newsboy Cap</option>
+            <option value="Hood">Hood</option>
+            <option value="Helm">Helm</option>
+            <option value="Cloche Hat">Cloche Hat</option>
+          </select><br>
+  
+          <label for="shoes" class="block text-indigo-400 font-bold mb-2 mt-4">Shoes:</label>
+          <select id="shoes" name="shoes" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">None</option>
+            <option value="Sneakers">Sneakers</option>
+            <option value="Loafers">Loafers</option>
+            <option value="Boots">Boots</option>
+            <option value="Heels">Heels</option>
+            <option value="Sandals">Sandals</option>
+            <option value="Oxfords">Oxfords</option>
+            <option value="Brogues">Brogues</option>
+            <option value="Espadrilles">Espadrilles</option>
+            <option value="Moccasins">Moccasins</option>
+            <option value="Ballet Flats">Ballet Flats</option>
+            <option value="Clogs">Clogs</option>
+            <option value="Wedges">Wedges</option>
+            <option value="Mary Janes">Mary Janes</option>
+            <option value="Derby Shoes">Derby Shoes</option>
+            <option value="Monk Strap Shoes">Monk Strap Shoes</option>
+            <option value="Chukka Boots">Chukka Boots</option>
+            <option value="Chelsea Boots">Chelsea Boots</option>
+            <option value="Combat Boots">Combat Boots</option>
+            <option value="Slippers">Slippers</option>
+            <option value="Flip-Flops">Flip-Flops</option>
+            <option value="Mules">Mules</option>
+            <option value="Gladiator Sandals">Gladiator Sandals</option>
+            <option value="Platform Shoes">Platform Shoes</option>
+            <option value="Ankle Boots">Ankle Boots</option>
+            <option value="Riding Boots">Riding Boots</option>
+            <option value="Stilettos">Stilettos</option>
+            <option value="Kitten Heels">Kitten Heels</option>
+            <option value="Hiking Boots">Hiking Boots</option>
+            <option value="Rain Boots">Rain Boots</option>
+            <option value="Work Boots">Work Boots</option>
+          </select><br>
+  
+          <label for="accessories" class="block text-indigo-400 font-bold mb-2">Accessories:</label>
+          <select id="accessories" name="accessories" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="">None</option>
+            <option value="Statement Necklace">Statement Necklace</option>
+            <option value="Earrings">Earrings</option>
+            <option value="Bracelets">Bracelets</option>
+            <option value="Rings">Rings</option>
+            <option value="Watches">Watches</option>
+            <option value="Sunglasses">Sunglasses</option>
+            <option value="Hats">Hats</option>
+            <option value="Scarves">Scarves</option>
+            <option value="Belts">Belts</option>
+            <option value="Handbags">Handbags</option>
+            <option value="Ties">Ties</option>
+            <option value="Cufflinks">Cufflinks</option>
+            <option value="Brooches">Brooches</option>
+            <option value="Hair Accessories">Hair Accessories</option>
+            <option value="Gloves">Gloves</option>
+            <option value="Wallets">Wallets</option>
+            <option value="Suspenders">Suspenders</option>
+            <option value="Pocket Squares">Pocket Squares</option>
+            <option value="Anklets">Anklets</option>
+            <option value="Sashes">Sashes</option>
+            <option value="Chokers">Chokers</option>
+            <option value="Pins">Pins</option>
+            <option value="Keychains">Keychains</option>
+            <option value="Leg Warmers">Leg Warmers</option>
+            <option value="Fascinators">Fascinators</option>
+            <option value="Masks">Masks</option>
+            <option value="Bandanas">Bandanas</option>
+            <option value="Hair Clips">Hair Clips</option>
+            <option value="Tiaras">Tiaras</option>
+            <option value="Lapel Pins">Lapel Pins</option>
+          </select><br>
+  
+          <div class="text-center mt-4">
+            <button type="button" onclick="prevStep(5)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+            <button type="button" onclick="nextStep(7)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          </div>
+        </div>
+  
+        <div class="step-content hidden" id="step7">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Environment & Lighting</h2>
+          <label for="background" class="block text-indigo-400 font-bold mb-2">Background:</label>
+           <select id="background" name="background" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="Urban Street">Urban Street</option>
+            <option value="Nature Landscape">Nature Landscape</option>
+            <option value="Beach">Beach</option>
+            <option value="Office">Office</option>
+            <option value="Home Interior">Home Interior</option>
+            <option value="Cafe">Cafe</option>
+            <option value="Library">Library</option>
+            <option value="Restaurant">Restaurant</option>
+            <option value="Park">Park</option>
+            <option value="Shopping Mall">Shopping Mall</option>
+            <option value="Historical Setting">Historical Setting</option>
+            <option value="Sci-Fi Environment">Sci-Fi Environment</option>
+            <option value="Industrial">Industrial</option>
+            <option value="Classroom">Classroom</option>
+            <option value="Art Studio">Art Studio</option>
+            <option value="Garden">Garden</option>
+            <option value="Gym">Gym</option>
+            <option value="Hospital">Hospital</option>
+            <option value="Construction Site">Construction Site</option>
+            <option value="Festival">Festival</option>
+            <option value="Warehouse">Warehouse</option>
+            <option value="Countryside">Countryside</option>
+          </select><br>
+  
+          <label for="lighting" class="block text-indigo-400 font-bold mb-2 mt-4">Lighting:</label>
+          <select id="lighting" name="lighting" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+            <option value="Sunlight">Sunlight</option>
+            <option value="Crepuscular Rays">Crepuscular Rays</option>
+            <option value="Backlight">Backlight</option>
+            <option value="Spotlight">Spotlight</option>
+            <option value="Side Lighting">Side Lighting</option>
+            <option value="Top Lighting">Top Lighting</option>
+            <option value="Under Lighting">Under Lighting</option>
+            <option value="Diffuse Lighting">Diffuse Lighting</option>
+            <option value="Ambient Lighting">Ambient Lighting</option>
+            <option value="Volumetric Lighting">Volumetric Lighting</option>
+            <option value="Rim Lighting">Rim Lighting</option>
+            <option value="Color Gel Lighting">Color Gel Lighting</option>
+            <option value="Silhouette Lighting">Silhouette Lighting</option>
+            <option value="Hard Lighting">Hard Lighting</option>
+            <option value="Soft Lighting">Soft Lighting</option>
+            <option value="Mixed Lighting">Mixed Lighting</option>
+            <option value="Bounce Lighting">Bounce Lighting</option>
+            <option value="Low Key Lighting">Low Key Lighting</option>
+            <option value="High Key Lighting">High Key Lighting</option>
+            <option value="Dimly Lit">Dimly Lit</option>
+            <option value="Fashion Lighting">Fashion Lighting</option>
+          </select><br>
+          <div class="text-center mt-4">
+            <button type="button" onclick="prevStep(6)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
+            <button type="button" onclick="generatePrompt()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Generate Prompt</button>
+          </div>
+        </div>
+  
+        <div class="step-content hidden" id="step8">
+          <h2 class="text-indigo-600 text-xl font-bold mt-4">Generated Prompt</h2>
+          <p id="generatedPrompt" class="mt-2"></p>
+          <button type="button" onclick="window.location.reload()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300">Start Again</button>
+        </div>
+  
+        <div id="loading" class="hidden text-center mt-4">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading..." class="w-12 h-12 mx-auto">
+        </div>
+  
+        </form>
     </div>
 
     <div class="footer">
-      <ul id="steps" class="flex justify-center mt-6 list-none p-0">
+      <ul id="steps" class="flex justify-center mt-2 list-none p-0">
         <li class="active step-indicator"><span>1</span></li>
         <li class="step-indicator"><span>2</span></li>
         <li class="step-indicator"><span>3</span></li>
@@ -92,93 +582,93 @@
   </div>
 
   <script>
-        let currentStep = 1;
+    let currentStep = 1;
 
-          function nextStep(stepNum) {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            document.getElementById(`step${currentStep}`).classList.add('hidden'); 
-            currentStep = stepNum;
-            document.getElementById(`step${currentStep}`).classList.remove('hidden'); 
-            document.getElementById(`step${currentStep}`).classList.add('active');
-            updateStepsDisplay(); 
-          }
+    function nextStep(stepNum) {
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      document.getElementById(`step${currentStep}`).classList.add('hidden'); 
+      currentStep = stepNum;
+      document.getElementById(`step${currentStep}`).classList.remove('hidden'); 
+      document.getElementById(`step${currentStep}`).classList.add('active');
+      updateStepsDisplay(); 
+    }
 
-          function prevStep(stepNum) {
-            document.getElementById(`step${currentStep}`).classList.remove('active');
-            document.getElementById(`step${currentStep}`).classList.add('hidden'); 
-            currentStep = stepNum;
-            document.getElementById(`step${currentStep}`).classList.remove('hidden'); 
-            document.getElementById(`step${currentStep}`).classList.add('active');
-            updateStepsDisplay(); 
-          }
+    function prevStep(stepNum) {
+      document.getElementById(`step${currentStep}`).classList.remove('active');
+      document.getElementById(`step${currentStep}`).classList.add('hidden'); 
+      currentStep = stepNum;
+      document.getElementById(`step${currentStep}`).classList.remove('hidden'); 
+      document.getElementById(`step${currentStep}`).classList.add('active');
+      updateStepsDisplay(); 
+    }
 
-          function updateStepsDisplay() {
-            const stepIndicators = document.querySelectorAll('.step-indicator');
-            stepIndicators.forEach((step, index) => {
-              step.classList.toggle('active', index + 1 === currentStep);
-            });
-          }
+    function updateStepsDisplay() {
+      const stepIndicators = document.querySelectorAll('.step-indicator');
+      stepIndicators.forEach((step, index) => {
+        step.classList.toggle('active', index + 1 === currentStep);
+      });
+    }
 
-          function generatePrompt() {
-            // Get values from ALL form elements
-            const characterName = document.getElementById("characterName").value;
-            const framing = document.getElementById("framing").value;
-            const pose = document.getElementById("pose").value;
-            const ethnicity = document.getElementById("ethnicity").value;
-            const hairColor = document.getElementById("hairColor").value;
-            const hairstyle = document.getElementById("hairstyle").value;
-            const eyeColor = document.getElementById("eyeColor").value;
-            const bodyType = document.getElementById("bodyType").value;
-            const skinComplexion = document.getElementById("skinComplexion").value;
-            const headwear = document.getElementById("headwear").value;
-            const top = document.getElementById("top").value;
-            const bottom = document.getElementById("bottom").value;
-            const shoes = document.getElementById("shoes").value;
-            const accessories = document.getElementById("accessories").value;
-            const background = document.getElementById("background").value;
-            const lighting = document.getElementById("lighting").value;
+    function generatePrompt() {
+      // Get values from ALL form elements
+      const characterName = document.getElementById("characterName").value;
+      const framing = document.getElementById("framing").value;
+      const pose = document.getElementById("pose").value;
+      const ethnicity = document.getElementById("ethnicity").value;
+      const hairColor = document.getElementById("hairColor").value;
+      const hairstyle = document.getElementById("hairstyle").value;
+      const eyeColor = document.getElementById("eyeColor").value;
+      const bodyType = document.getElementById("bodyType").value;
+      const skinComplexion = document.getElementById("skinComplexion").value;
+      const headwear = document.getElementById("headwear").value;
+      const top = document.getElementById("top").value;
+      const bottom = document.getElementById("bottom").value;
+      const shoes = document.getElementById("shoes").value;
+      const accessories = document.getElementById("accessories").value;
+      const background = document.getElementById("background").value;
+      const lighting = document.getElementById("lighting").value;
 
-            // Start constructing the prompt string
-            let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`;
+      // Start constructing the prompt string
+      let prompt = `A ${framing} photo of a beautiful woman named ${characterName}`;
 
-            // Add pose if selected
-            if (pose) {
-              prompt += `, in a ${pose}`;
-            }
+      // Add pose if selected
+      if (pose) {
+        prompt += `, in a ${pose}`;
+      }
 
-            // Add details, making them optional
-            if (ethnicity) prompt += `, ${ethnicity}`;
-            if (hairColor) prompt += `, ${hairColor} hair`;
-            if (hairstyle) prompt += ` (${hairstyle})`;
-            if (eyeColor) prompt += `, ${eyeColor} eyes`;
-            if (bodyType) prompt += `, ${bodyType}`;
-            if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
+      // Add details, making them optional
+      if (ethnicity) prompt += `, ${ethnicity}`;
+      if (hairColor) prompt += `, ${hairColor} hair`;
+      if (hairstyle) prompt += ` (${hairstyle})`;
+      if (eyeColor) prompt += `, ${eyeColor} eyes`;
+      if (bodyType) prompt += `, ${bodyType}`;
+      if (skinComplexion) prompt += ` with ${skinComplexion} skin complexion`;
 
-            // Add clothing details if provided
-            if (headwear) prompt += `. She is wearing a ${headwear}`;
-            if (top) prompt += `, a ${top}`;
-            if (bottom) prompt += `, and ${bottom}`;
-            if (shoes) prompt += `. She has ${shoes} on her feet`;
-            if (accessories) prompt += `. Her accessories include ${accessories}`;
+      // Add clothing details if provided
+      if (headwear) prompt += `. She is wearing a ${headwear}`;
+      if (top) prompt += `, a ${top}`;
+      if (bottom) prompt += `, and ${bottom}`;
+      if (shoes) prompt += `. She has ${shoes} on her feet`;
+      if (accessories) prompt += `. Her accessories include ${accessories}`;
 
-            // Add environment and lighting
-            prompt += `. The background is ${background} with ${lighting} lighting.`;
+      // Add environment and lighting
+      prompt += `. The background is ${background} with ${lighting} lighting.`;
 
-            // Show loading animation
-            document.getElementById('loading').style.display = 'block';
+      // Show loading animation
+      document.getElementById('loading').style.display = 'block';
 
-            // Simulate a short delay
-            setTimeout(() => {
-              // Hide loading animation
-              document.getElementById('loading').style.display = 'none';
+      // Simulate a short delay
+      setTimeout(() => {
+        // Hide loading animation
+        document.getElementById('loading').style.display = 'none';
 
-              // Display the generated prompt
-              document.getElementById("generatedPrompt").innerText = prompt;
+        // Display the generated prompt
+        document.getElementById("generatedPrompt").innerText = prompt;
 
-              // Move to the result step
-              nextStep(8); // Updated to reflect the new step number
-            }, 1000); 
-          }
+        // Move to the result step
+        nextStep(8); // Updated to reflect the new step number
+      }, 1000); 
+    }
   </script>
 </body>
 </html>
