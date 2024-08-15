@@ -5,8 +5,39 @@
 <script src="https://cdn.tailwindcss.com"></script> 
 <style >
   .container {
-  height: 600px; /* Adjust this value as needed */
+  height: 680px; /* Adjusted height */
   }
+
+  /* Fixed header */
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 10; /* Ensure header is above other content */
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0; /* Add a subtle bottom border */
+  }
+
+  /* Fixed footer */
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 10; /* Ensure footer is above other content */
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0; /* Add a subtle top border */
+  }
+
+  /* Adjust main content to account for fixed header and footer */
+  .main-content {
+    padding-top: 5rem; /* Adjust based on header height */
+    padding-bottom: 5rem; /* Adjust based on footer height */
+  }
+
   /* Add this to the existing <style> tag or in a separate CSS file */
 #steps .step-indicator {
   border-radius: 50%; /* Make the indicators circular */
@@ -36,8 +67,9 @@
       <div class="logo w-20 h-20 bg-pink-400 rounded-lg mr-4"></div> 
       <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
     </div>
-    
-    <form id="promptForm">
+
+    <div class="main-content">  
+      <form id="promptForm">
       <div class="step-content active" id="step1">
         <h2 class="text-indigo-600 text-xl font-bold mt-4">Character Name</h2>
         <label for="characterName" class="block text-indigo-400 font-bold mb-2">Name:</label>
@@ -555,7 +587,11 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading..." class="w-12 h-12 mx-auto">
       </div>
 
-      <ul id="steps" class="flex justify-center mt-6 list-none p-0">
+      </form>
+    </div>
+
+      <div class="footer">
+        <ul id="steps" class="flex justify-center mt-6 list-none p-0">
         <li class="active step-indicator"><span>1</span></li>
         <li class="step-indicator"><span>2</span></li>
         <li class="step-indicator"><span>3</span></li>
@@ -563,8 +599,9 @@
         <li class="step-indicator"><span>5</span></li>
         <li class="step-indicator"><span>6</span></li>
         <li class="step-indicator"><span>7</span></li>
-        <li class="step-indicator"><span>8</span></li> </ul>
-    </form>
+        <li class="step-indicator"><span>8</span></li> 
+        </ul>
+      </div>
   </div>
 
   <script>
