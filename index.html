@@ -5,13 +5,13 @@
 <script src="https://cdn.tailwindcss.com"></script> 
 <style >
   .container {
-  height: 680px; /* Adjusted height */
+  height: 680px; 
   }
 
   /* Fixed header (within container) */
   .header {
-    position: sticky; /* Use sticky instead of fixed */
-    top: 0;
+    position: fixed; 
+    top: 40px; /* 40px from the top */
     left: 0;
     right: 0;
     background-color: white;
@@ -22,8 +22,8 @@
 
   /* Fixed footer (within container) */
   .footer {
-    position: sticky; /* Use sticky instead of fixed */
-    bottom: 0;
+    position: fixed; 
+    bottom: 40px; /* 40px from the bottom */
     left: 0;
     right: 0;
     background-color: white;
@@ -34,41 +34,54 @@
 
   /* Adjust main content to account for fixed header and footer */
   .main-content {
-    padding-top: 1rem; /* Adjust based on header height */
-    padding-bottom: 1rem; /* Adjust based on footer height */
+    height: 600px; /* Fixed height for the content area */
+    overflow-y: auto; /* Add vertical scroll if content overflows */
+    padding-top: 1rem; 
+    padding-bottom: 1rem; 
+  }
+
+  /* Center content vertically and horizontally */
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+    align-items: center;    /* Horizontally center content */
+    height: 100%;
   }
   
   /* Add this to the existing <style> tag or in a separate CSS file */
-#steps .step-indicator {
-  border-radius: 50%; /* Make the indicators circular */
-  width: 30px; /* Adjust the size as needed */
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e2e8f0; /* Light gray for inactive steps */
-  color: #a0aec0; /* Darker gray for inactive step numbers */
-  margin: 0 5px; /* Spacing between indicators */
-}
+  #steps .step-indicator {
+    border-radius: 50%; /* Make the indicators circular */
+    width: 30px; /* Adjust the size as needed */
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e8f0; /* Light gray for inactive steps */
+    color: #a0aec0; /* Darker gray for inactive step numbers */
+    margin: 0 5px; /* Spacing between indicators */
+  }
 
-#steps .step-indicator.active {
-  background-color: #f687b3; /* Pink for active step */
-  color: white; /* White text for active step number */
-}
-
-#steps .step-indicator span {
-  font-weight: bold;
-}
+  #steps .step-indicator.active {
+    background-color: #f687b3; /* Pink for active step */
+    color: white; /* White text for active step number */
+  }
+    
+  #steps .step-indicator span {
+    font-weight: bold;
+  }
+  
 </style>
 </head>
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
-  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md overflow-y-auto"> 
+  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md overflow-hidden relative"> 
     <div class="header flex items-center mb-6">
       <div class="logo w-20 h-20 bg-pink-400 rounded-lg mr-4"></div> 
       <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
     </div>
 
     <div class="main-content">  
+      <div class="content-wrapper">  
       <form id="promptForm">
       <div class="step-content active" id="step1">
         <h2 class="text-indigo-600 text-xl font-bold mt-4">Character Name</h2>
@@ -77,6 +90,7 @@
         <div class="text-center">
           <button type="button" onclick="nextStep(2)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-4">Next</button>
         </div>
+      </div>
       </div>
 
       <div class="step-content hidden" id="step2">
