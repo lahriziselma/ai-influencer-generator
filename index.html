@@ -5,7 +5,7 @@
 <script src="https://cdn.tailwindcss.com"></script> 
 <style >
   .container {
-    /* Removed fixed height */
+    height: 680px;
     overflow-y: auto; 
   }
 
@@ -34,30 +34,30 @@
   }
 
   .main-content {
-    /* Removed fixed height */
+    height: 480px; /* Reduced main content height */
   }
 
   /* Styling for step indicators */
   #steps .step-indicator {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #e2e8f0;
-  color: #a0aec0;
-  margin: 0 5px;
-}
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2e8f0;
+    color: #a0aec0;
+    margin: 0 5px;
+  }
 
-#steps .step-indicator.active {
-  background-color: #f687b3;
-  color: white;
-}
+  #steps .step-indicator.active {
+    background-color: #f687b3;
+    color: white;
+  }
 
-#steps .step-indicator span {
-  font-weight: bold;
-}
+  #steps .step-indicator span {
+    font-weight: bold;
+  }
 
   /* Added spacing between buttons and page numbers */
   .buttons {
