@@ -66,31 +66,32 @@
 
   /* Mobile responsiveness */
   @media (max-width: 640px) {
-    html, body { 
-      height: 100%; /* Make sure html and body take full viewport height */
-      margin: 0; /* Remove default margin */
-    }
     .container {
-      width: 100%; /* Occupy full screen width */
-      height: 100%; /* Occupy full screen height */
+      height: 100vh; /* Use vh for viewport height */
+      overflow-y: auto;
     }
 
     .header {
-      flex-direction: column; /* Stack header elements vertically */
-      height: auto; /* Adjust header height based on content */
-      text-align: center; /* Center text in header */
+      flex-direction: column;
+      height: auto;
+      padding: 0.5rem; /* Reduced padding */
     }
 
     .header h1 {
-      font-size: 1.5rem; /* Reduce font size for smaller screens */
+      font-size: 1.5rem;
     }
 
     .main-content {
-      height: auto; /* Let the main content height adjust dynamically */
+      padding: 1rem; /* Reduced padding */
+    }
+
+    .footer {
+      height: auto; /* Adjust height based on content */
+      padding: 0.5rem; /* Reduced padding */
     }
 
     select, input[type="text"] {
-      width: 100%; /* Make form fields occupy full width */
+      width: 100%;
     }
   }
 </style>
