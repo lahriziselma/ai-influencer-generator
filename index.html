@@ -25,17 +25,18 @@
     bottom: 0;
     background-color: white;
     z-index: 10;
-    height: 40px; 
+    height: 100px; /* Increased footer height */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* Distribute buttons and steps evenly */
+    padding: 0 1rem; /* Add padding to the footer */
   }
 
   .main-content {
-    height: 540px; /* Reduced main content height */
+    height: 480px; /* Reduced main content height */
   }
 
-    /* Add this to the existing <style> tag or in a separate CSS file */
+  /* Add this to the existing <style> tag or in a separate CSS file */
 #steps .step-indicator {
   border-radius: 50%; /* Make the indicators circular */
   width: 30px; /* Adjust the size as needed */
@@ -72,9 +73,6 @@
           <h2 class="text-indigo-600 text-xl font-bold mt-4">Character Name</h2>
           <label for="characterName" class="block text-indigo-400 font-bold mb-2">Name:</label>
           <input type="text" id="characterName" name="characterName" class="w-full px-4 py-2 border border-indigo-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-transparent" required><br>
-          <div class="text-center">
-            <button type="button" onclick="nextStep(2)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-4">Next</button>
-          </div>
         </div>
   
         <div class="step-content hidden" id="step2">
@@ -133,10 +131,6 @@
             <option value="Power Walk Pose">Power Walk Pose</option>
             <option value="Editorial Pose">Editorial Pose</option>
           </select><br>
-          <div class="text-center mt-4">
-            <button type="button" onclick="prevStep(1)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-            <button type="button" onclick="nextStep(3)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
-          </div>
         </div>
   
         <div class="step-content hidden" id="step3">
@@ -227,11 +221,6 @@
             <option value="Mahogany">Mahogany</option>
             <option value="Espresso">Espresso</option>
           </select><br>
-  
-          <div class="text-center mt-4">
-            <button type="button" onclick="prevStep(2)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-            <button type="button" onclick="nextStep(4)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
-          </div>
         </div>
   
         <div class="step-content hidden" id="step4">
@@ -347,11 +336,6 @@
             <option value="Violet">Violet</option>
             <option value="Two-Tone">Two-Tone</option>
           </select><br>
-  
-          <div class="text-center mt-4">
-            <button type="button" onclick="prevStep(3)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-            <button type="button" onclick="nextStep(5)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
-          </div>
         </div>
   
         <div class="step-content hidden" id="step5">
@@ -406,11 +390,6 @@
             <option value="A-Line Skirt">A-Line Skirt</option>
             <option value="Wrap Skirt">Wrap Skirt</option>
           </select><br>
-  
-          <div class="text-center mt-4">
-            <button type="button" onclick="prevStep(4)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-            <button type="button" onclick="nextStep(6)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
-          </div>
         </div>
   
         <div class="step-content hidden" id="step6">
@@ -510,11 +489,6 @@
             <option value="Tiaras">Tiaras</option>
             <option value="Lapel Pins">Lapel Pins</option>
           </select><br>
-  
-          <div class="text-center mt-4">
-            <button type="button" onclick="prevStep(5)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-            <button type="button" onclick="nextStep(7)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
-          </div>
         </div>
   
         <div class="step-content hidden" id="step7">
@@ -569,26 +543,26 @@
             <option value="Dimly Lit">Dimly Lit</option>
             <option value="Fashion Lighting">Fashion Lighting</option>
           </select><br>
-          <div class="text-center mt-4">
-            <button type="button" onclick="prevStep(6)" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300">Previous</button>
-            <button type="button" onclick="generatePrompt()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Generate Prompt</button>
-          </div>
         </div>
   
         <div class="step-content hidden" id="step8">
           <h2 class="text-indigo-600 text-xl font-bold mt-4">Generated Prompt</h2>
           <p id="generatedPrompt" class="mt-2"></p>
-          <button type="button" onclick="window.location.reload()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300">Start Again</button>
         </div>
   
         <div id="loading" class="hidden text-center mt-4">
           <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="Loading..." class="w-12 h-12 mx-auto">
         </div>
-  
-        </form>
+      </form>
     </div>
 
     <div class="footer">
+      <div class="buttons">
+        <button type="button" onclick="prevStep(currentStep - 1)" id="prevButton" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300 hidden">Previous</button>
+        <button type="button" onclick="nextStep(currentStep + 1)" id="nextButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+        <button type="button" onclick="generatePrompt()" id="generateButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 hidden">Generate Prompt</button>
+        <button type="button" onclick="window.location.reload()" id="startAgainButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300 hidden">Start Again</button>
+      </div>
       <ul id="steps" class="flex justify-center mt-2 list-none p-0">
         <li class="active step-indicator"><span>1</span></li>
         <li class="step-indicator"><span>2</span></li>
@@ -612,6 +586,13 @@
       document.getElementById(`step${currentStep}`).classList.remove('hidden'); 
       document.getElementById(`step${currentStep}`).classList.add('active');
       updateStepsDisplay(); 
+
+      // Update button visibility
+      document.getElementById('prevButton').style.display = 'inline-block'; // Show Previous button
+      if (stepNum === 7) {
+        document.getElementById('nextButton').style.display = 'none'; // Hide Next button on last step
+        document.getElementById('generateButton').style.display = 'inline-block'; // Show Generate button on last step
+      }
     }
 
     function prevStep(stepNum) {
@@ -621,6 +602,13 @@
       document.getElementById(`step${currentStep}`).classList.remove('hidden'); 
       document.getElementById(`step${currentStep}`).classList.add('active');
       updateStepsDisplay(); 
+
+      // Update button visibility
+      if (stepNum === 1) {
+        document.getElementById('prevButton').style.display = 'none'; // Hide Previous button on first step
+      }
+      document.getElementById('nextButton').style.display = 'inline-block'; // Show Next button
+      document.getElementById('generateButton').style.display = 'none'; // Hide Generate button
     }
 
     function updateStepsDisplay() {
@@ -687,7 +675,13 @@
         document.getElementById("generatedPrompt").innerText = prompt;
 
         // Move to the result step
-        nextStep(8); // Updated to reflect the new step number
+        nextStep(8); 
+
+        // Show Start Again button and hide other buttons
+        document.getElementById('startAgainButton').style.display = 'inline-block';
+        document.getElementById('prevButton').style.display = 'none';
+        document.getElementById('nextButton').style.display = 'none';
+        document.getElementById('generateButton').style.display = 'none';
       }, 1000); 
     }
   </script>
