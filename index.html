@@ -8,36 +8,36 @@
   height: 680px; /* Adjusted height */
   }
 
-  /* Fixed header */
+  /* Fixed header (within container) */
   .header {
-    position: fixed;
+    position: sticky; /* Use sticky instead of fixed */
     top: 0;
     left: 0;
     right: 0;
     background-color: white;
-    z-index: 10; /* Ensure header is above other content */
+    z-index: 10; 
     padding: 1rem;
-    border-bottom: 1px solid #e2e8f0; /* Add a subtle bottom border */
+    border-bottom: 1px solid #e2e8f0; 
   }
 
-  /* Fixed footer */
+  /* Fixed footer (within container) */
   .footer {
-    position: fixed;
+    position: sticky; /* Use sticky instead of fixed */
     bottom: 0;
     left: 0;
     right: 0;
     background-color: white;
-    z-index: 10; /* Ensure footer is above other content */
+    z-index: 10; 
     padding: 1rem;
-    border-top: 1px solid #e2e8f0; /* Add a subtle top border */
+    border-top: 1px solid #e2e8f0; 
   }
 
   /* Adjust main content to account for fixed header and footer */
   .main-content {
-    padding-top: 5rem; /* Adjust based on header height */
-    padding-bottom: 5rem; /* Adjust based on footer height */
+    padding-top: 4rem; /* Adjust based on header height */
+    padding-bottom: 4rem; /* Adjust based on footer height */
   }
-
+  
   /* Add this to the existing <style> tag or in a separate CSS file */
 #steps .step-indicator {
   border-radius: 50%; /* Make the indicators circular */
