@@ -14,10 +14,10 @@
     top: 0;
     background-color: white;
     z-index: 10;
-    height: 40px; 
-    display: flex; /* Ensures header content stays within bounds */
-    align-items: center; /* Vertically center content */
-    padding: 0 1rem; /* Adds minimal padding for visual comfort */
+    height: 100px; /* Increased header height */
+    display: flex;
+    align-items: center;
+    padding: 0 1rem; 
   }
 
   .footer {
@@ -26,15 +26,36 @@
     background-color: white;
     z-index: 10;
     height: 40px; 
-    display: flex; /* Ensures footer content stays within bounds */
-    align-items: center; /* Vertically center content */
-    justify-content: center; /* Centers the step indicators horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .main-content {
-    height: 600px; 
+    height: 540px; /* Reduced main content height */
   }
 
+    /* Add this to the existing <style> tag or in a separate CSS file */
+#steps .step-indicator {
+  border-radius: 50%; /* Make the indicators circular */
+  width: 30px; /* Adjust the size as needed */
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2e8f0; /* Light gray for inactive steps */
+  color: #a0aec0; /* Darker gray for inactive step numbers */
+  margin: 0 5px; /* Spacing between indicators */
+}
+
+#steps .step-indicator.active {
+  background-color: #f687b3; /* Pink for active step */
+  color: white; /* White text for active step number */
+}
+
+#steps .step-indicator span {
+  font-weight: bold;
+}
   /* ... (rest of your existing CSS) ... */
 </style>
 </head>
