@@ -558,11 +558,13 @@
     </div>
 
     <div class="footer">
-      <div class="buttons mb-4"> <div class="buttons mb-4"> 
-        <button type="button" onclick="prevStep(currentStep - 1)" id="prevButton" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300 hidden">Previous</button>
-        <button type="button" onclick="nextStep(currentStep + 1)" id="nextButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
-        <button type="button" onclick="generatePrompt()" id="generateButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 hidden">Generate Prompt</button>
-        <button type="button" onclick="window.location.reload()" id="startAgainButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300 hidden">Start Again</button>
+      <div class="text-center mb-4"> <div class="text-center mb-4"> 
+        <div class="buttons">
+          <button type="button" onclick="prevStep(currentStep - 1)" id="prevButton" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300 hidden">Previous</button>
+          <button type="button" onclick="nextStep(currentStep + 1)" id="nextButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+          <button type="button" onclick="generatePrompt()" id="generateButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 hidden">Generate Prompt</button>
+          <button type="button" onclick="window.location.reload()" id="startAgainButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300 hidden">Start Again</button>
+        </div>
       </div>
       <ul id="steps" class="flex justify-center mt-2 list-none p-0">
         <li class="active step-indicator"><span>1</span></li>
