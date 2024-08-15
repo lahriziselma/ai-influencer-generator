@@ -5,37 +5,33 @@
 <script src="https://cdn.tailwindcss.com"></script> 
 <style >
   .container {
-  height: 680px; /* Adjusted height */
+    height: 680px; 
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds container height */
   }
 
-  /* Fixed header (within container) */
   .header {
-    position: sticky; /* Use sticky instead of fixed */
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
     background-color: white;
-    z-index: 10; 
+    z-index: 10;
     padding: 1rem;
-    border-bottom: 1px solid #e2e8f0; 
+    border-bottom: 1px solid #e2e8f0;
+    height: 40px; /* Fixed height for the header */
   }
 
-  /* Fixed footer (within container) */
   .footer {
-    position: sticky; /* Use sticky instead of fixed */
+    position: sticky;
     bottom: 0;
-    left: 0;
-    right: 0;
     background-color: white;
-    z-index: 10; 
+    z-index: 10;
     padding: 1rem;
-    border-top: 1px solid #e2e8f0; 
+    border-top: 1px solid #e2e8f0;
+    height: 40px; /* Fixed height for the footer */
   }
 
-  /* Adjust main content to account for fixed header and footer */
   .main-content {
-    padding-top: 1rem; /* Adjust based on header height */
-    padding-bottom: 1rem; /* Adjust based on footer height */
+    padding-top: 40px; /* Account for the fixed header height */
+    padding-bottom: 40px; /* Account for the fixed footer height */
   }
   
   /* Add this to the existing <style> tag or in a separate CSS file */
@@ -62,10 +58,10 @@
 </style>
 </head>
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
-  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md overflow-y-auto"> 
-    <div class="header flex items-center mb-6">
-      <div class="logo w-20 h-20 bg-pink-400 rounded-lg mr-4"></div> 
-      <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
+  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md"> 
+    <div class="header flex items-center">
+      <div class="logo w-8 h-8 bg-pink-400 rounded-lg mr-4"></div> 
+      <h1 class="text-pink-600 text-lg font-bold">AI Influencer Prompt Generator</h1>
     </div>
 
     <div class="main-content">  
