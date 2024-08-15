@@ -64,11 +64,16 @@
     margin-bottom: 1rem; /* Space between buttons and page numbers */
   }
 
-    /* Mobile responsiveness */
+  /* Mobile responsiveness */
   @media (max-width: 640px) {
+    html, body { 
+      height: 100%; /* Make sure html and body take full viewport height */
+      margin: 0; /* Remove default margin */
+    }
     .container {
-      max-width: 95%; /* Occupy most of the screen width */
-      height: auto; /* Let the height adjust dynamically */
+      width: 100%; /* Occupy full screen width */
+      height: 100%; /* Occupy full screen height */
+      max-width: none; /* Remove max-width restriction */
     }
 
     .header {
