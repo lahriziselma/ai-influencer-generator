@@ -64,8 +64,8 @@
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
   <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md"> 
     <div class="header flex items-center mb-6">
-      <div class="logo w-10 h-10 bg-pink-400 rounded-lg mr-4"></div>  
-      <h1 class="text-pink-600 text-lg font-bold">AI Influencer Prompt Generator</h1>
+      <div class="logo w-20 h-20 bg-pink-400 rounded-lg mr-4"></div>  
+      <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
     </div>
 
     <div class="main-content">  
@@ -558,13 +558,11 @@
     </div>
 
     <div class="footer">
-      <div class="text-center mb-4"> <div class="text-center mb-4"> 
-        <div class="buttons">
-          <button type="button" onclick="prevStep(currentStep - 1)" id="prevButton" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300 hidden">Previous</button>
-          <button type="button" onclick="nextStep(currentStep + 1)" id="nextButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
-          <button type="button" onclick="generatePrompt()" id="generateButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 hidden">Generate Prompt</button>
-          <button type="button" onclick="window.location.reload()" id="startAgainButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300 hidden">Start Again</button>
-        </div>
+      <div class="buttons mb-4"> <div class="buttons mb-4"> 
+        <button type="button" onclick="prevStep(currentStep - 1)" id="prevButton" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300 hidden">Previous</button>
+        <button type="button" onclick="nextStep(currentStep + 1)" id="nextButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
+        <button type="button" onclick="generatePrompt()" id="generateButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 hidden">Generate Prompt</button>
+        <button type="button" onclick="window.location.reload()" id="startAgainButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md mt-4 transition duration-300 hidden">Start Again</button>
       </div>
       <ul id="steps" class="flex justify-center mt-2 list-none p-0">
         <li class="active step-indicator"><span>1</span></li>
