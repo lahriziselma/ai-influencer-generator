@@ -27,8 +27,9 @@
     z-index: 10;
     height: 100px; /* Increased footer height */
     display: flex;
-    align-items: center;
-    justify-content: space-between; /* Distribute buttons and steps evenly */
+    flex-direction: column; /* Stack buttons above steps */
+    align-items: center; /* Center buttons horizontally */
+    justify-content: center; /* Center buttons vertically */
     padding: 0 1rem; /* Add padding to the footer */
   }
 
@@ -37,7 +38,7 @@
   }
 
   /* Add this to the existing <style> tag or in a separate CSS file */
-#steps .step-indicator {
+  #steps .step-indicator {
   border-radius: 50%; /* Make the indicators circular */
   width: 30px; /* Adjust the size as needed */
   height: 30px;
@@ -557,7 +558,7 @@
     </div>
 
     <div class="footer">
-      <div class="buttons">
+      <div class="buttons mb-4"> <div class="buttons mb-4"> 
         <button type="button" onclick="prevStep(currentStep - 1)" id="prevButton" class="bg-gray-400 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded-md mr-2 transition duration-300 hidden">Previous</button>
         <button type="button" onclick="nextStep(currentStep + 1)" id="nextButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300">Next</button>
         <button type="button" onclick="generatePrompt()" id="generateButton" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 hidden">Generate Prompt</button>
