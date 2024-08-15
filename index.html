@@ -4,85 +4,71 @@
 <title>AI Influencer Prompt Generator</title>
 <script src="https://cdn.tailwindcss.com"></script> 
 <style >
-    .container {
-      height: 680px;
-      position: relative; /* Add this to contain fixed elements */
-    }
+  .container {
+  height: 680px; /* Adjusted height */
+  }
 
-    .header {
-      position: fixed;
-      top: 40px;
-      left: 0;
-      right: 0; /* Ensures header spans the full container width */
-      background-color: white;
-      z-index: 10;
-      padding: 1rem;
-      border-bottom: 1px solid #e2e8f0;
-      width: 100%; /* Ensures header spans the full container width */
-      box-sizing: border-box; /* Include padding and border in the width */
-    }
+  /* Fixed header (within container) */
+  .header {
+    position: sticky; /* Use sticky instead of fixed */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 10; 
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0; 
+  }
 
-    .footer {
-      position: fixed;
-      bottom: 40px;
-      left: 0;
-      right: 0; /* Ensures footer spans the full container width */
-      background-color: white;
-      z-index: 10;
-      padding: 1rem;
-      border-top: 1px solid #e2e8f0;
-      width: 100%; /* Ensures footer spans the full container width */
-      box-sizing: border-box; /* Include padding and border in the width */
-    }
+  /* Fixed footer (within container) */
+  .footer {
+    position: sticky; /* Use sticky instead of fixed */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    z-index: 10; 
+    padding: 1rem;
+    border-top: 1px solid #e2e8f0; 
+  }
 
-    .main-content {
-      height: 600px;
-      overflow-y: auto;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-
-    .content-wrapper {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
+  /* Adjust main content to account for fixed header and footer */
+  .main-content {
+    padding-top: 1rem; /* Adjust based on header height */
+    padding-bottom: 1rem; /* Adjust based on footer height */
+  }
   
   /* Add this to the existing <style> tag or in a separate CSS file */
-  #steps .step-indicator {
-    border-radius: 50%; /* Make the indicators circular */
-    width: 30px; /* Adjust the size as needed */
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #e2e8f0; /* Light gray for inactive steps */
-    color: #a0aec0; /* Darker gray for inactive step numbers */
-    margin: 0 5px; /* Spacing between indicators */
-  }
+#steps .step-indicator {
+  border-radius: 50%; /* Make the indicators circular */
+  width: 30px; /* Adjust the size as needed */
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2e8f0; /* Light gray for inactive steps */
+  color: #a0aec0; /* Darker gray for inactive step numbers */
+  margin: 0 5px; /* Spacing between indicators */
+}
 
-  #steps .step-indicator.active {
-    background-color: #f687b3; /* Pink for active step */
-    color: white; /* White text for active step number */
-  }
-    
-  #steps .step-indicator span {
-    font-weight: bold;
-  }
-  
+#steps .step-indicator.active {
+  background-color: #f687b3; /* Pink for active step */
+  color: white; /* White text for active step number */
+}
+
+#steps .step-indicator span {
+  font-weight: bold;
+}
 </style>
 </head>
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
-  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md overflow-hidden">
+  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md overflow-y-auto"> 
     <div class="header flex items-center mb-6">
       <div class="logo w-20 h-20 bg-pink-400 rounded-lg mr-4"></div> 
       <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
     </div>
 
     <div class="main-content">  
-      <div class="content-wrapper">  
       <form id="promptForm">
       <div class="step-content active" id="step1">
         <h2 class="text-indigo-600 text-xl font-bold mt-4">Character Name</h2>
@@ -91,7 +77,6 @@
         <div class="text-center">
           <button type="button" onclick="nextStep(2)" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-md transition duration-300 mt-4">Next</button>
         </div>
-      </div>
       </div>
 
       <div class="step-content hidden" id="step2">
