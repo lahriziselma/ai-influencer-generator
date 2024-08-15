@@ -63,6 +63,32 @@
   .buttons {
     margin-bottom: 1rem; /* Space between buttons and page numbers */
   }
+
+    /* Mobile responsiveness */
+  @media (max-width: 640px) {
+    .container {
+      max-width: 95%; /* Occupy most of the screen width */
+      height: auto; /* Let the height adjust dynamically */
+    }
+
+    .header {
+      flex-direction: column; /* Stack header elements vertically */
+      height: auto; /* Adjust header height based on content */
+      text-align: center; /* Center text in header */
+    }
+
+    .header h1 {
+      font-size: 1.5rem; /* Reduce font size for smaller screens */
+    }
+
+    .main-content {
+      height: auto; /* Let the main content height adjust dynamically */
+    }
+
+    select, input[type="text"] {
+      width: 100%; /* Make form fields occupy full width */
+    }
+  }
 </style>
 </head>
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
