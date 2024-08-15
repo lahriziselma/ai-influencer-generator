@@ -4,50 +4,51 @@
 <title>AI Influencer Prompt Generator</title>
 <script src="https://cdn.tailwindcss.com"></script> 
 <style >
-  .container {
-  height: 680px; 
-  }
+    .container {
+      height: 680px;
+      position: relative; /* Add this to contain fixed elements */
+    }
 
-  /* Fixed header (within container) */
-  .header {
-    position: fixed; 
-    top: 40px; /* 40px from the top */
-    left: 0;
-    right: 0;
-    background-color: white;
-    z-index: 10; 
-    padding: 1rem;
-    border-bottom: 1px solid #e2e8f0; 
-  }
+    .header {
+      position: fixed;
+      top: 40px;
+      left: 0;
+      right: 0; /* Ensures header spans the full container width */
+      background-color: white;
+      z-index: 10;
+      padding: 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      width: 100%; /* Ensures header spans the full container width */
+      box-sizing: border-box; /* Include padding and border in the width */
+    }
 
-  /* Fixed footer (within container) */
-  .footer {
-    position: fixed; 
-    bottom: 40px; /* 40px from the bottom */
-    left: 0;
-    right: 0;
-    background-color: white;
-    z-index: 10; 
-    padding: 1rem;
-    border-top: 1px solid #e2e8f0; 
-  }
+    .footer {
+      position: fixed;
+      bottom: 40px;
+      left: 0;
+      right: 0; /* Ensures footer spans the full container width */
+      background-color: white;
+      z-index: 10;
+      padding: 1rem;
+      border-top: 1px solid #e2e8f0;
+      width: 100%; /* Ensures footer spans the full container width */
+      box-sizing: border-box; /* Include padding and border in the width */
+    }
 
-  /* Adjust main content to account for fixed header and footer */
-  .main-content {
-    height: 600px; /* Fixed height for the content area */
-    overflow-y: auto; /* Add vertical scroll if content overflows */
-    padding-top: 1rem; 
-    padding-bottom: 1rem; 
-  }
+    .main-content {
+      height: 600px;
+      overflow-y: auto;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
 
-  /* Center content vertically and horizontally */
-  .content-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically center content */
-    align-items: center;    /* Horizontally center content */
-    height: 100%;
-  }
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
   
   /* Add this to the existing <style> tag or in a separate CSS file */
   #steps .step-indicator {
@@ -74,7 +75,7 @@
 </style>
 </head>
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
-  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md overflow-hidden relative"> 
+  <div class="container bg-white p-8 rounded-lg shadow-md text-left max-w-md overflow-hidden">
     <div class="header flex items-center mb-6">
       <div class="logo w-20 h-20 bg-pink-400 rounded-lg mr-4"></div> 
       <h1 class="text-pink-600 text-2xl font-bold">AI Influencer Prompt Generator</h1>
