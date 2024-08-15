@@ -64,36 +64,43 @@
     margin-bottom: 1rem; /* Space between buttons and page numbers */
   }
 
-  /* Mobile responsiveness */
-  @media (max-width: 640px) {
-    .container {
-      height: 100vh; /* Use vh for viewport height */
-      overflow-y: auto;
+    /* Mobile responsiveness */
+    @media (max-width: 640px) {
+      .container {
+        height: 100vh; 
+        overflow-y: auto;
+      }
+
+      .header {
+        flex-direction: column;
+        height: auto; 
+        padding: 0.5rem; 
+      }
+
+      .header h1 {
+        font-size: 1.5rem;
+      }
+
+      .main-content {
+        padding: 1rem; 
+      }
+
+      .footer {
+        height: auto; 
+        padding: 0.5rem; 
+      }
+
+      select, input[type="text"] {
+        width: 100%;
+      }
     }
 
-    .header {
-      flex-direction: column;
-      height: auto;
-      padding: 0.5rem; /* Reduced padding */
+    /* Apply max-w-md only on larger screens */
+    @media (min-width: 641px) {
+      .container {
+        max-width: 48rem; /* Equivalent to max-w-md */
+      }
     }
-
-    .header h1 {
-      font-size: 1.5rem;
-    }
-
-    .main-content {
-      padding: 1rem; /* Reduced padding */
-    }
-
-    .footer {
-      height: auto; /* Adjust height based on content */
-      padding: 0.5rem; /* Reduced padding */
-    }
-
-    select, input[type="text"] {
-      width: 100%;
-    }
-  }
 </style>
 </head>
 <body class="bg-pink-50 font-sans flex flex-col items-center justify-center h-screen m-0">
